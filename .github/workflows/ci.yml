@@ -40,11 +40,12 @@ jobs:
     strategy:
       matrix:
         node: [20]
+    needs: install-cache
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: Run lint
@@ -58,11 +59,12 @@ jobs:
     strategy:
       matrix:
         node: [20]
+    needs: install-cache
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: Run test
@@ -78,7 +80,7 @@ jobs:
       - name: Checkout Commit
         uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: Run build
