@@ -50,7 +50,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Run lint
         run: |
-          npm run lint:js
+          npm run lint
       - name: Run prettier
         run: |
           npm run format

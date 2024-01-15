@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint:js": "eslint . --ext .js,.jsx",
+    "lint:report": "eslint --ext .jsx,.js --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif ./**/src",
     "lint:js:fix": "eslint . --fix --ext .js",
     "lint:css": "stylelint **/*.{scss,css}",
     "lint:css:fix": "stylelint --fix **/*.{scss,css}",
@@ -15,7 +16,8 @@
     "lint:fix": "npm run lint:js:fix && npm run lint:css:fix && npm run lint:json:fix",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "vitest"
   },
   "dependencies": {
     "next": "14.0.4",
