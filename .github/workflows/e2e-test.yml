@@ -39,9 +39,8 @@ jobs:
   # the dependencies that have been previously cached and use them here.
  
   build:
-    ...
+    
     steps:
-      ...
       - name: Run build
         run: |
           yarn build
@@ -55,10 +54,8 @@ jobs:
           # The path might need to be changed based on your build settings or the framework your team is using.
           path: .next
   e2e-tests-chrome:
-    ...
     needs: build
     steps:
-      ...
       # Here we restore the build output generated in the previous job by downloading the artifact we uploaded
       - name: Download build artifacts
         uses: actions/download-artifact@v2
@@ -73,10 +70,8 @@ jobs:
           start: next start
           browser: chrome
   e2e-tests-firefox:
-    ...
     needs: build
     steps:
-      ...
       # Here we restore the same build output as we did in the e2e-tests-chrome job
       - name: Download build artifacts
         uses: actions/download-artifact@v2
