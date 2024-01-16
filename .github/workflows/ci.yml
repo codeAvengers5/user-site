@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, stage ]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -17,7 +17,7 @@ jobs:
         node-version: [20]
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
@@ -43,7 +43,7 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
@@ -62,7 +62,7 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
@@ -78,7 +78,7 @@ jobs:
     needs: [lint-format, unit-test]
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
