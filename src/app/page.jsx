@@ -14,7 +14,15 @@ export default function Home() {
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             rel="noopener noreferrer"
             target="_blank">
-            By <Image alt="Vercel Logo" className="dark:invert" height={24} priority src="/vercel.svg" width={100} />
+            By{" "}
+            <Image
+              alt="Vercel Logo"
+              className="dark:invert"
+              height={24}
+              priority
+              src="/vercel.svg"
+              width={100}
+            />
           </a>
         </div>
       </div>
@@ -74,7 +82,9 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p className={"m-0 max-w-[30ch] text-sm opacity-50"}>Explore starter templates for Next.js.</p>
+          <p className={"m-0 max-w-[30ch] text-sm opacity-50"}>
+            Explore starter templates for Next.js.
+          </p>
         </a>
 
         <a
