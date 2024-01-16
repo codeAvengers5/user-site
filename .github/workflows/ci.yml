@@ -105,9 +105,16 @@ jobs:
         node-version: [20]
     needs: build
     steps:
-     - name: Run cypress
+     - name: Checkout
        uses: actions/checkout@v4
-     - uses: cypress-io/github-action@v6
+     - name: Use Node.js ${{ matrix.node }}
+       uses: actions/setup-node@v4
+       with:
+         node-version: 20
+     - name: Install dependencies
+       run: npm ci
+     - name: Run cypress
+       uses: cypress-io/github-action@v6
        with:
           browser: chrome
           start: npm start
@@ -129,10 +136,17 @@ jobs:
         node-version: [20]
     needs: build
     steps:
-     - name: Run cypress
+      - name: Checkout
        uses: actions/checkout@v4
-     - uses: cypress-io/github-action@v6
-       with:
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Run cypress
+        uses: cypress-io/github-action@v6
+        with:
           browser: firefox
           start: npm start
           wait-on: 'http://localhost:3000' # Waits for above
@@ -142,7 +156,7 @@ jobs:
           parallel: true # Runs test in parallel using settings above
           # Cancel the run after 2 failed tests
           auto-cancel-after-failures: 2
-       env:
+        env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.CODEAVEN_TOKEN }}
           
