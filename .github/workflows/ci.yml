@@ -66,8 +66,10 @@ jobs:
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
-      - name: Run test
+          node-version: 20
+      - name: Install dependencies
+        run: nom ci
+      - name: Run tests
         run: |
           npm run test
   build:
