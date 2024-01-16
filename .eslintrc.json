@@ -19,7 +19,6 @@
     "next/core-web-vitals",
     "prettier"
   ],
-  "parser": "@babel/eslint-parser",
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -49,8 +48,7 @@
           "group": "external",
           "position": "before"
         }
-      ],
-      "newlines-between": "always"
+      ]
     }],
     // Prettier
     // eslint looks for the prettier config at the top level of the package/app
