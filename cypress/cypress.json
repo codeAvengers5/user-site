@@ -1,7 +1,7 @@
 {
-    "fixturesFolder": "cypress/fixtures",
-    "integrationFolder": "./e2e",
-    "screenshotsFolder": "cypress/screenshots",
-    "videosFolder": "cypress/videos",
-    "supportFile": "cypress/support/"
-  }
+  "fixturesFolder": "cypress/fixtures",
+  "integrationFolder": "./e2e",
+  "screenshotsFolder": "cypress/screenshots",
+  "videosFolder": "cypress/videos",
+  "supportFile": "cypress/support/"
+}
