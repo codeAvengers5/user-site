@@ -130,7 +130,7 @@ jobs:
           auto-cancel-after-failures: 2
        env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.CODEAVEN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
   e2e-tests-firefox:
     runs-on: ubuntu-latest
@@ -164,5 +164,5 @@ jobs:
           auto-cancel-after-failures: 2
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.CODEAVEN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
