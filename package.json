@@ -38,7 +38,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "@vue/test-utils": "^2.4.3",
     "autoprefixer": "^10.0.1",
-    "eslint": "^8",
+    "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
