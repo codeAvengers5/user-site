@@ -38,7 +38,8 @@ module.exports = {
         600: "#17A1FA",
         700: "#2B53CF",
         800: "#7091EE",
-        900: "#4456A4"
+        900: "#4456A4",
+        950: "#00FF38"
       },
 
       //background
@@ -92,7 +93,7 @@ module.exports = {
       borderRadius: {
         small: "0.25rem",
         medium: "0.5rem",
-        large: "1rem"
+        large: "0.8rem"
       },
       // transition time
       transitionDuration: {
