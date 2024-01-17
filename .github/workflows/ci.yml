@@ -116,16 +116,14 @@ jobs:
      - name: Run build
        run: |
           npm run build
-     - name: Run cypress
-       uses: cypress-io/github-action@v6
-       with:
-          browser: chrome
-          start: npm start
-          wait-on: 'http://localhost:3000' # Waits for above
-          # Records to Cypress Cloud
-          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
-          record: true
-          parallel: true # Runs test in parallel using settings above
+     - name: Run cypress   
+       cypress-command: 'npx cypress run --record --parallel --group chrome --browser chrome'
+       start: npm start
+       wait-on: 'http://localhost:3000' # Waits for above
+       # Records to Cypress Cloud
+       # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+       record: true
+       parallel: true # Runs test in parallel using settings above
          
        env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -159,6 +157,7 @@ jobs:
           browser: firefox
           start: npm start
           wait-on: 'http://localhost:3000' # Waits for above
+          cypress-command: 'npx cypress run --record --parallel --group firefox --browser firefox'
           # Records to Cypress Cloud
           # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
           record: true
