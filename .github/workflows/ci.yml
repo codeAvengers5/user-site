@@ -116,10 +116,15 @@ jobs:
      - name: Run build
        run: |
           npm run build
-     - name: Run cypress   
-       cypress-command: 'npx cypress run --record --parallel --group chrome --browser chrome'
-       start: npm start
-       wait-on: 'http://localhost:3000' # Waits for above
+     - name: start app
+       uses: cypress-io/github-action@v6
+       with: 
+         start: npm start
+         wait-on: 'http://localhost:3000' # Waits for above 
+     - name: Run cypress  
+       run: |
+              npx cypress run --record --parallel --group chrome --browser chrome
+       
        # Records to Cypress Cloud
        # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
          
