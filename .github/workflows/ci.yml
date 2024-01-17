@@ -160,7 +160,6 @@ jobs:
           browser: firefox
           start: npm start
           wait-on: 'http://localhost:3000' # Waits for above
-          cypress-command: 'npx cypress run --record --parallel --group firefox --browser firefox'
           # Records to Cypress Cloud
           # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
           record: true
