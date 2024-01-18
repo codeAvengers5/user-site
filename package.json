@@ -12,13 +12,13 @@
 
     "build": "next build",
 
-    "lint:js": "eslint 'src/**/*.{js,jsx}' --quiet",
+    "lint:js": "eslint src/**/*.js --quiet",
 
-    "lint:js:fix": "eslint . --fix 'src/**/*.{js,jsx}' --quiet",
+    "lint:js:fix": "eslint src --fix --quiet",
 
-    "lint:css": "stylelint **/*.{scss,css}",
+    "lint:css": "stylelint **/*.{scss,css} --quiet",
 
-    "lint:css:fix": "stylelint --fix **/*.{scss,css}",
+    "lint:css:fix": "stylelint --fix **/*.{scss,css} --quiet",
 
     "format": "prettier --check '*/**/*.{js,jsx,json,css,md}'",
 
