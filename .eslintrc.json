@@ -58,7 +58,7 @@
   },
   "settings": {
     "next": {
-      "rootDir": "packages/my-app/"
+      "rootDir": "erp-system-frontend/src/"
     }
   }
 }
