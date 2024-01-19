@@ -2,6 +2,7 @@
   "extends": [
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
+    
   ],
   "formatter": "stylelint-checkstyle-formatter",
   "plugins": ["stylelint-scss"],
