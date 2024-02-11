@@ -14,7 +14,7 @@ const Button = ({ children, color, size, ...props }) => {
 
   return (
     <button
-      className={`inline-flex items-center justify-center ${buttonSizeClass} flex-shrink-0 flex-wrap gap-3 border border-none bg-${color}
+      className={`inline-flex items-center justify-center ${buttonSizeClass} flex-shrink-0 flex-wrap gap-4 border border-none bg-${color}
        text-white hover:${color} hover:opacity-80 focus:outline-none  focus:ring-meke-500 focus:ring-offset-0`}
       {...props}>
       {children}
