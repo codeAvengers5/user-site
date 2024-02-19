@@ -179,7 +179,7 @@ const Sidebar = ({ currentPage }) => {
   return (
     <div className="relative h-[1024px] w-full overflow-hidden bg-[#f5f8fa]">
       <div className="absolute left-[0px] top-[0px] h-[1024px] w-[312px] bg-[#cbd4de]" />
-      <div className="absolute left-[0px] top-[0px] h-[111px] w-[312px] bg-[#f5f8fa] shadow-[0px 4px 4px rgba(0, 0, 0, 0.25)]" />
+      <div className="shadow-[0px 4px 4px rgba(0, 0, 0, 0.25)] absolute left-[0px] top-[0px] h-[111px] w-[312px] bg-[#f5f8fa]" />
       <div className="font-inter absolute left-[65px] top-[24px] inline-block h-[45px] w-[191px] text-3xl font-semibold text-[#17A1FA]">
         Mekedoina
       </div>
@@ -190,12 +190,11 @@ const Sidebar = ({ currentPage }) => {
       />
       <nav className="absolute left-[35px] top-[130px]">
         <ul>
-          {pageLinks.map((link) => (
+          {pageLinks.map(link => (
             <li key={link.id}>
               <a
                 href={link.href}
-                className="font-Inter my-[49px] flex items-center py-[10px] text-[18px] text-black"
-              >
+                className="font-Inter my-[49px] flex items-center py-[10px] text-[18px] text-black">
                 {link.icon && (
                   <span className="mr-2 inline-flex items-center">
                     <img
