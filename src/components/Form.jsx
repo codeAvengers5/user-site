@@ -5,7 +5,7 @@ import Text from './TextField';
 import Button from './Button';
 import TextArea from './TextArea';
 
-const Form = ({ fields, onSubmit, btnText }) => {
+const Form = ({ fields, onSubmit, btnText, className}) => {
   const [formData, setFormData] = useState({});
   const [selectedValue, setSelectedValue] = useState(null); 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -42,7 +42,7 @@ const Form = ({ fields, onSubmit, btnText }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-y-[14px]'>
+      <form onSubmit={handleSubmit} className={className || 'w-full md:w-[580px] md:max-w-full flex flex-col gap-y-[14px]'}>
       {fields.map((field) => (
         <div key={field.id}>
           {field.feildType === 'textFeild' && (
@@ -56,7 +56,7 @@ const Form = ({ fields, onSubmit, btnText }) => {
               onChange={handleChange}
               {...field.props}
               placeholder={field.placeholder}
-              width='520'
+              width='470'
             />
             </>
           )}
@@ -72,7 +72,7 @@ const Form = ({ fields, onSubmit, btnText }) => {
         {...field.props}
         placeholder={field.placeholder}
         rows='5'
-        cols='59'
+        cols='53'
       />
       </>
     )}
@@ -101,7 +101,7 @@ const Form = ({ fields, onSubmit, btnText }) => {
             multiple
             onChange={handleFileChange}
             placeholder={field.placeholder}
-            width='520'
+            width='470'
           />
         </div>
             )}
