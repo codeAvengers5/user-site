@@ -1,15 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-const Button = ({ children, color, size, ...props }) => {
+const Button = ({ children, color, size = "default", ...props }) => {
   let buttonSizeClass = "";
 
   if (size === "small") {
-    buttonSizeClass = "h-[26px] w-[74px] px-4 text-sm rounded-small";
+    buttonSizeClass = "h-[26px] w-full px-4 text-sm rounded-small";
   } else if (size === "large") {
-    buttonSizeClass = " w-[470px] h-12 px-10 rounded-large";
+    buttonSizeClass = " w-full h-12 px-10 rounded-large";
   } else {
-    buttonSizeClass = "h-[60px] w-[206px] px-15 rounded-small";
+    buttonSizeClass = "h-[60px] w-full px-15 rounded-small";
   }
 
   return (
@@ -20,15 +19,6 @@ const Button = ({ children, color, size, ...props }) => {
       {children}
     </button>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  size: PropTypes.oneOf(["small", "default", "large"])
-};
-
-Button.defaultProps = {
-  size: "default"
 };
 
 export default Button;

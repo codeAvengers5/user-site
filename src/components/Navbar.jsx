@@ -3,9 +3,9 @@ import { useState } from "react";
 import InputField from "./InputField";
 import Image from "next/image";
 import Avatar from "./Avater";
-import notificationbell from "../../public/icons/notify.svg";
-import search from "../../public/icons/search.svg";
-import outline from "../../public/icons/outline.svg";
+// import notificationbell from "../../public/icons/notify.svg";
+// import search from "../../public/icons/search.svg";
+// import outline from "../../public/icons/outline.svg";
 
 const Navbar = () => {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -13,7 +13,7 @@ const Navbar = () => {
     setInputVisible(!isInputVisible);
   };
   return (
-    <div className="max-w-screen fixed top-0 z-40 flex h-[53px] w-full items-center justify-end overflow-x-hidden bg-white">
+    <div className="max-w-screen sticky top-0 z-999 flex h-[67px] w-full items-center justify-end overflow-x-hidden bg-white">
       <div className="mr-4 flex items-center space-x-4">
         <div className="relative flex items-center">
           <div className="hidden md:block">
@@ -30,26 +30,26 @@ const Navbar = () => {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2">
             <div className="hidden md:block">
               <button>
-                <Image src={search} alt="search icon" height={29} width={29} />
+                {/* <Image src={search} alt="search icon" height={29} width={29} /> */}
               </button>
             </div>
           </div>
         </div>
 
         <button className="md:hidden" onClick={toggleInputVisibility}>
-          <Image src={search} alt="search icon" height={29} width={29} />
+          {/* <Image src={search} alt="search icon" height={29} width={29} /> */}
         </button>
 
         <div className="relative cursor-pointer">
-          <Image
+          {/* <Image
             src={notificationbell}
             alt="notification bell icon"
             width={24}
             height={24}
-          />
+          /> */}
         </div>
         <div className="relative cursor-pointer">
-          <Image src={outline} alt="outline icon" width={24} height={24} />
+          {/* <Image src={outline} alt="outline icon" width={24} height={24} /> */}
         </div>
         <div className="relative items-center">
           <Avatar initials="BE" width={40} height={40} />
@@ -70,7 +70,7 @@ const Navbar = () => {
             /> */}
             <div className="absolute inset-y-0 right-0 flex items-center pr-2">
               <button onClick={toggleInputVisibility}>
-                <Image src={search} alt="search icon" height={29} width={29} />
+                {/* <Image src={search} alt="search icon" height={29} width={29} /> */}
               </button>
             </div>
           </div>

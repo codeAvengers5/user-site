@@ -48,7 +48,7 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
           <div key={field.id}>
             {field.feildType === "textFeild" && (
               <>
-                <Text className="pb-[14px]">{field.label}</Text>
+                <Text className="pb-[14px]" content={field.label} />
                 <InputField
                   type={field.type}
                   name={field.name}
@@ -61,7 +61,7 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
             )}
             {field.feildType === "areaFeild" && (
               <>
-                <Text className="pb-[14px]">{field.label}</Text>
+                <Text className="pb-[14px]" content={field.label} />
                 <TextArea
                   type={field.type}
                   name={field.name}
@@ -88,7 +88,7 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
             )}
             {field.feildType === "fileFeild" && (
               <div>
-                <Text className="pb-[14px]">{field.label}</Text>
+                 <Text className="pb-[14px]" content={field.label} />
                 <InputField
                   type="file"
                   multiple
