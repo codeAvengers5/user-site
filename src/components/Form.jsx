@@ -56,7 +56,6 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
                   onChange={handleChange}
                   {...field.props}
                   placeholder={field.placeholder}
-                  width="470"
                 />
               </>
             )}
@@ -83,7 +82,6 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
                   value={field.name}
                   checked={selectedValue === field.name}
                   onChange={() => handleRadioChange(field.name)}
-                  width="20"
                 />
                 <label htmlFor={field.name}>{field.name}</label>
               </div>
@@ -96,7 +94,6 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
                   multiple
                   onChange={handleFileChange}
                   placeholder={field.placeholder}
-                  width="470"
                 />
               </div>
             )}
