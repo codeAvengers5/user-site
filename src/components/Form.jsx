@@ -74,21 +74,26 @@ const Form = ({ fields, onSubmit, btnText, className }) => {
                 />
               </>
             )}
-            {field.feildType === "radioFeild" && (
+            {field.fieldType === "radioField" && (
               <div className="flex flex-row gap-[10px]">
-                <input
-                  type={field.type}
-                  id={field.name}
-                  value={field.name}
-                  checked={selectedValue === field.name}
-                  onChange={() => handleRadioChange(field.name)}
-                />
-                <label htmlFor={field.name}>{field.name}</label>
+                {field.options.map(option => (
+                  <div key={option.value}>
+                    <input
+                      type="radio"
+                      id={option.value}
+                      name={field.label}
+                      value={option.value}
+                      checked={selectedValue === option.value}
+                      onChange={() => handleRadioChange(option.value)}
+                    />
+                    <label htmlFor={option.value}>{option.label}</label>
+                  </div>
+                ))}
               </div>
             )}
             {field.feildType === "fileFeild" && (
               <div>
-                 <Text className="pb-[14px]" content={field.label} />
+                <Text className="pb-[14px]" content={field.label} />
                 <InputField
                   type="file"
                   multiple

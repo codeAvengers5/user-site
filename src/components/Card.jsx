@@ -4,7 +4,8 @@ const Displaycard = ({
   width,
   height,
   className,
-  style
+  style,
+  children
 }) => {
   const baseProps = {
     className: "flex "
@@ -68,8 +69,9 @@ const Displaycard = ({
         ...style,
         width: width || selectedProps.width,
         height: height || selectedProps.height
-      }}
-    />
+      }}>
+      {children}
+    </div>
   );
 };
 
