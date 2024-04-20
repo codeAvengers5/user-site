@@ -1,6 +1,6 @@
-import FrameComponent from "@components/frame-component";
-import ErrorHandler from "@components/ErrorHandler";
-import DataFlow from "@components/data-flow";
+import DataFlow from "@/components/data-flow";
+import ErrorHandler from "@/components/error-handler";
+import FrameComponent from "@/components/frame-component";
 
 const HomePage = () => {
   return (
