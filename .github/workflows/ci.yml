@@ -158,7 +158,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: firefox
-          start: npm start
+          start: npm run dev
           wait-on: 'http://localhost:3000' # Waits for above
           # Records to Cypress Cloud
           # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
