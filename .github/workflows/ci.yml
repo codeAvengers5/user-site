@@ -154,18 +154,19 @@ jobs:
       - name: Run build
         run: |
           npm run build
-      - name: start app
+      - name: Run cypress
         uses: cypress-io/github-action@v6
-        with: 
+        with:
           start: npm start
           wait-on: 'http://localhost:3000' # Waits for above 
       - name: Run cypress
         run: |
           npx cypress run --record --parallel --group firefox --browser firefox
-
-        # Records to Cypress Cloud
-        # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
-        
+          
+          # Records to Cypress Cloud
+          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+          record: true
+          parallel: true # Runs test in parallel using settings above
          
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
