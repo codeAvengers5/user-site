@@ -157,17 +157,14 @@ jobs:
       - name: Run cypress
         uses: cypress-io/github-action@v6
         with:
+          browser: firefox
           start: npm start
-          wait-on: 'http://localhost:3000' # Waits for above 
-      - name: Run cypress
-        run: |
-          npx cypress run --record --parallel --group firefox --browser firefox
-          
+          wait-on: 'http://localhost:3000' # Waits for above
           # Records to Cypress Cloud
           # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
-        # record: true
-        # parallel: true # Runs test in parallel using settings above
-         
+          record: true
+          parallel: true # Runs test in parallel using settings above
+          
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
@@ -179,4 +176,4 @@ jobs:
           # re-enable PR comment bot
           COMMIT_INFO_SHA: ${{github.event.pull_request.head.sha}}
 
-          
+        
