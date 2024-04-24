@@ -28,6 +28,7 @@ const Card1 = ({ imageUrl, header, place }) => {
         </p>
       </div>
     </div>
+    </div>
   );
 };
 
