@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,jsx}",
-    "./node_modules/tw-elements/dist/js/**/*.js",
+    "./node_modules/tw-elements/dist/js/**/*.js"
   ],
   module: {
     rules: [
@@ -70,19 +70,19 @@ module.exports = {
       darkslategray: "#2d3142",
       snow: "#fff8f8",
       orangered: {
-        "100": "#ed3405",
-        "200": "rgba(237, 52, 5, 0.35)"
+        100: "#ed3405",
+        200: "rgba(237, 52, 5, 0.35)"
       },
       tomato: "#ff592b",
       aliceblue: "#eff4f9",
       crimson: {
-        "100": "#ff425c",
-        "200": "#e71d36"
+        100: "#ff425c",
+        200: "#e71d36"
       },
       red: {
-        "100": "#ff2626",
-        "200": "#ff0000",
-        "300": "rgba(255, 38, 38, 0.09)"
+        100: "#ff2626",
+        200: "#ff0000",
+        300: "rgba(255, 38, 38, 0.09)"
       }
     },
     extend: {
@@ -123,7 +123,6 @@ module.exports = {
         large: "2rem"
       },
       borderRadius: {
-
         small: "0.25rem",
         medium: "0.5rem",
         large: "0.8rem",
