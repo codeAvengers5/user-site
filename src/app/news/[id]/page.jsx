@@ -7,7 +7,7 @@ function page() {
   return (
     <div className="flex w-[100vw] max-w-full flex-row items-start justify-start tracking-[normal]">
       <section className="relative flex max-w-full flex-1 flex-col items-start justify-start overflow-hidden bg-white text-left font-roboto text-xl text-white">
-        <div className=" felx-col m-[20px] flex items-center justify-evenly w-full ">
+        <div className=" felx-col m-[20px] flex w-full items-center justify-evenly ">
           <div className="flex w-[800px] flex-shrink-0 flex-col items-center justify-center gap-10">
             <p className="text-4xl font-bold text-black">
               Ethiopian Press Visit Mekedoina

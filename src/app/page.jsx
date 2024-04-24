@@ -94,10 +94,12 @@ export default function Home() {
         />
       </div>
       <div
-        className="ml-[100px] mt-[182px] flex  flex-col flex-shrink-0 items-center justify-center text-center text-black"
+        className="ml-[100px] mt-[182px] flex  flex-shrink-0 flex-col items-center justify-center text-center text-black"
         style={{ width: "491px", height: "56px" }}>
-        <p className="font-roboto ml-[600px] text-4xl font-medium">Our Beloved Sponsors</p>
-        <div className="flex mt-[80px] flex-row">
+        <p className="ml-[600px] font-roboto text-4xl font-medium">
+          Our Beloved Sponsors
+        </p>
+        <div className="mt-[80px] flex flex-row">
           <img
             src="https://upload.wikimedia.org/wikipedia/en/6/6c/CBE_SA.png"
             alt="Logo"
