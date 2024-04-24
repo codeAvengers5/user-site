@@ -15,7 +15,7 @@ module.exports = {
   },
   theme: {
     screens: {
-      sm: "480px", // @media (min-width: 480px)
+      sm: "525px", // @media (min-width: 480px)
       md: "991px", // @media (min-width: 768px)
       lg: "1024px", //  @media (min-width: 1024px)
       xl: "1280px", //  @media (min-width: 1280px)
@@ -93,8 +93,9 @@ module.exports = {
         roboto: "Roboto"
       },
       fontSize: {
-        heading_1: "35px",
-        heading_2: "20px",
+        heading_1: "48px",
+        heading_2: "35px",
+        medium: "20px",
         base: "16px",
         small: "14px",
         xl: "20px",
