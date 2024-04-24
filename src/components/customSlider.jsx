@@ -22,7 +22,7 @@ function CustomCarousel({ images }) {
     setActiveIndex(val => {
       const newIndex = val + 1;
       const lastIndex = images.length - 1;
-      const maxRange = lastIndex - getVisibleImageCount();
+      const maxRange = lastIndex - 4; // Display 5 images at a time
       if (newIndex > maxRange) {
         return maxRange;
       } else {
@@ -55,37 +55,6 @@ function CustomCarousel({ images }) {
     }
   };
 
-  const getVisibleImageCount = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) {
-      return 5; // Display 5 images on larger screens
-    } else if (screenWidth >= 768) {
-      return 3; // Display 3 images on medium-sized screens
-    } else {
-      return 1; // Display 1 image on smaller screens
-    }
-  };
-
-  const getImageWidth = () => {
-    const visibleImageCount = getVisibleImageCount();
-    let imageWidth;
-    if (window.innerWidth <= 480) {
-      // For mobile devices with width less than or equal to 480px
-      const maxImageWidth = 200; // Adjust this value according to your needs
-      const availableWidth = window.innerWidth - 80 * (visibleImageCount - 1); // Subtract the total space occupied by gaps
-      imageWidth = Math.min(
-        maxImageWidth,
-        Math.floor(availableWidth / visibleImageCount)
-      );
-    } else {
-      // For larger screens
-      imageWidth = Math.floor(
-        (window.innerWidth - 80 * (visibleImageCount - 1)) / visibleImageCount
-      );
-    }
-    return imageWidth;
-  };
-
   return (
     <div
       className="container__slider mb-11"
@@ -94,8 +63,8 @@ function CustomCarousel({ images }) {
       <div
         className="slider__images flex flex-row"
         style={{
-          transform: `translateX(-${activeIndex * (getImageWidth() + 80)}px)`,
-          transition: "transform 0.5s ease"
+          transform: "translateX(" + "-" + activeIndex * 260 + "px" + ")", // Adjust the width of each image accordingly
+          transition: "transform 0.5s ease" // Apply smooth transition
         }}>
         {images.map((image, index) => (
           <img
@@ -103,14 +72,14 @@ function CustomCarousel({ images }) {
             src={image.imgURL}
             alt={image.imgAlt}
             className={
-              index === activeIndex + Math.floor(getVisibleImageCount() / 2)
+              index === activeIndex + 2 // Display the active image in the center
                 ? "slider__image slider__image-active"
                 : "slider__image"
             }
             style={{
-              width: `${getImageWidth()}px`,
+              width: "225px",
               height: "214px",
-              marginRight: index === images.length - 1 ? "0" : "80px",
+              marginRight: "80px",
               flexShrink: 0
             }}
           />
@@ -118,7 +87,7 @@ function CustomCarousel({ images }) {
       </div>
 
       <button
-        className="slider__btn-next pl-[70px] md:pl-[70px]"
+        className="slider__btn-next pl-[70px]"
         onClick={e => {
           e.preventDefault();
           slideNext();
@@ -150,7 +119,7 @@ function CustomCarousel({ images }) {
         </svg>
       </button>
       <button
-        className="slider__btn-prev mr-10 md:mr-11"
+        className="slider__btn-prev mr-11"
         onClick={e => {
           e.preventDefault();
           slidePrev();
