@@ -5,10 +5,6 @@ import FrameComponent from "@/components/frame-component";
 const HomePage = () => {
   return (
     <div className="flex w-[100vw] max-w-full flex-row items-start justify-start tracking-[normal]">
-    
-     
-     
-
       {/* <section className="relative flex max-w-full flex-1 flex-col items-start justify-start overflow-hidden bg-white text-left font-roboto text-xl text-white">
       </section> */}
 
