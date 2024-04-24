@@ -1,10 +1,10 @@
-import FrameComponent from "../../components/frame-component";
-import ErrorHandler from "../../components/error-handler";
-import DataFlow from "../../components/data-flow";
+import DataFlow from "@/components/data-flow";
+import ErrorHandler from "@/components/error-handler";
+import FrameComponent from "@/components/frame-component";
 
 const HomePage = () => {
   return (
-    <div className="flex w-[100vm] max-w-full flex-row items-start justify-start tracking-[normal]">
+    <div className="flex w-[1440px] max-w-full flex-row items-start justify-start tracking-[normal]">
       <section className="relative flex max-w-full flex-1 flex-col items-start justify-start overflow-hidden bg-white text-left font-roboto text-xl text-white">
         <img
           className="absolute left-[0px] right-[0px] top-[163px] !m-[0] h-[422px] w-full max-w-full shrink-0 overflow-hidden object-cover"
@@ -124,9 +124,9 @@ const HomePage = () => {
                   </h1>
                 </div>
                 <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch py-0 pl-[11px] pr-0 text-xl">
-                  <div className="max-w-full·flex-1·flex-row·flex-wrap·items-start·justify-start·gap-[20px]">
-                    <div className="relative·z-[2]·inline-block·min-w-[263px]·max-w-full·flex-1 mq450:text-base">{`Lorem ipsum dolor sit amet consectetur. Tellus velit ultrices bibendum `}</div>
-                    <button className="z-[2]·box-border·flex·w-[117px]·cursor-pointer·flex-row·items-start·justify-start·rounded-3xs·border-[3px]·border-solid·border-red-200·bg-[transparent]·px-[19px]·py-[9px]·hover:box-border·hover:border-[3px]·hover:border-solid·hover:border-red-100·hover:bg-red-300">
+                  <div className="flex max-w-full flex-1 flex-row flex-wrap items-start justify-start gap-[20px]">
+                    <div className="relative z-[2] inline-block min-w-[263px] max-w-full flex-1 mq450:text-base">{`Lorem ipsum dolor sit amet consectetur. Tellus velit ultrices bibendum `}</div>
+                    <button className="z-[2] box-border flex w-[117px] cursor-pointer flex-row items-start justify-start rounded-3xs border-[3px] border-solid border-red-200 bg-[transparent] px-[19px] py-[9px] hover:box-border hover:border-[3px] hover:border-solid hover:border-red-100 hover:bg-red-300">
                       <div className="relative inline-block min-w-[72px] text-left font-inter text-base font-semibold leading-[28px] text-white">
                         About Us
                       </div>
