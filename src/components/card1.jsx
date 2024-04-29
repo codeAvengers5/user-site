@@ -8,7 +8,7 @@ const Card1 = ({ imageUrl, header, place }) => {
   };
 
   return (
-    <div className="rounded-lg shadow-lg" style={cardStyle}>
+    <div className="rounded-lg shadow-lg">
       <img src={imageUrl} alt="Card Image" style={imageStyle} />
       <div className="md:w-364 w-100 md:h-548 mb-5 ml-5 mr-11 mt-10 w-full rounded-lg shadow-lg">
         <img src={imageUrl} alt="pho" style={imageStyle} />
