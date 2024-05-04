@@ -1,20 +1,20 @@
 "use client";
 import React, { useEffect } from "react";
-import { search } from "../../../public/icons/index";
+// import { search } from "../../../public/icons/index";
 import Image from "../../../node_modules/next/image";
 import Slider from "@/components/slider";
 import images from "@/components/images";
 import Newscard from "@/components/newsCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNews } from "@/slices/news";
+// import { fetchNews } from "@/slices/news";
 
 function page() {
-  const dispatch = useDispatch();
-  const { data, loading, error } = useSelector(state => state.news);
-  console.log(data);
-  useEffect(() => {
-    dispatch(fetchNews());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // const { data, loading, error } = useSelector(state => state.news);
+  // console.log(data);
+  // useEffect(() => {
+  //   dispatch(fetchNews());
+  // }, [dispatch]);
   return (
     <div className="flex w-[100vw] max-w-full flex-row items-start justify-start tracking-[normal]">
       <section className="relative flex max-w-full flex-1 flex-col items-start justify-start overflow-hidden bg-white text-left font-roboto text-xl text-white">
@@ -28,7 +28,7 @@ function page() {
               placeholder="search....."
             />
             <div className="absolute inset-y-0 right-0 flex items-center pl-3">
-              <button>
+              {/* <button>
                 <Image
                   src={search}
                   alt="search icon"
@@ -36,12 +36,12 @@ function page() {
                   width="auto"
                   color="red"
                 />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
         <div className="flex">
-          <Slider images={images} width="1200px" height="500px" />
+          <Slider images={images} width="400px" height="500px" />
 
           <div className="flex flex-shrink-0 flex-col items-center justify-center">
             <p className="text-4xl font-bold text-black mq800:text-4xl mq450:text-3xl">
