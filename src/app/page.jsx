@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/*************************************************************  Our project Section ******************************************************************/}
-      <section className="m-[40px] mt-[40px] min-h-[700px] max-w-full p-[20px] md:mx-[80px] ">
+      <section className="m-[40px] mt-[40px] min-h-[700px] max-w-full p-[20px] md:mx-[80px]">
         <div className="flex w-full flex-col  gap-[37px] mq800:gap-[18px_37px]">
           <div className="box-border flex max-w-full flex-row items-start justify-center self-stretch py-0 pl-[66px] pr-5 mq800:box-border mq800:pl-[33px]">
             <h1 className="font-inherit relative m-0 flex w-[404px] max-w-full shrink-0 items-center text-[48px] font-medium mq800:text-19xl mq450:text-10xl">

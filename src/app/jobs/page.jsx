@@ -69,7 +69,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-24">
+    <div className="m-[40px] mt-[40px] min-h-[700px] max-w-full p-[20px] md:mx-[80px] flex flex-col gap-24">
       <div className="relative h-[300px] w-full">
         <Image src={jobbanner} alt="banner" layout="fill" objectFit="cover" />
         <div className="absolute bottom-0 left-0 p-4">
@@ -77,7 +77,7 @@ const Page = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="focus:border-blue-500 w-[500px] appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404033] focus:outline-none"
+              className="focus:border-blue-500 w-full md:w-[500px] appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404033] focus:outline-none"
             />
             <div className="pointer-events-none absolute bottom-0 right-0 mr-4 flex h-full items-center">
               <FaSearch className="text-gray-500" />
@@ -88,7 +88,7 @@ const Page = () => {
       <div className="text-center font-roboto text-[40px] font-bold">
         Jobs Category
       </div>
-      <div className="flex flex-row justify-between px-40">
+      <div className="w-full flex flex-wrap md:flex-row justify-evenly gap-[10px]">
         <div className="flex h-[150px]  w-[180px] flex-shrink-0  flex-col items-center justify-center gap-[25px] bg-[#FFF2F2] shadow-md">
           <FaBullhorn size="1.6em" fill="#ED3405" />
           <div className="font-roboto text-[25px] font-[300px]">Marketing</div>
@@ -114,7 +114,7 @@ const Page = () => {
           <div className="p-2 font-roboto text-[40px] font-bold">
             Jobs Listing
           </div>
-          <div className="flex flex-row justify-between">
+          <div className="flex  flex-col-reverse xl:flex-row justify-between">
             <div>
               <div className="overflow-x-auto">
                 <table
@@ -172,7 +172,7 @@ const Page = () => {
             <div>
               <div className="flex flex-col gap-2">
                 <div className="text-[20px] font-medium">Recent Jobs</div>
-                <div className="m-4 flex min-h-[230px] w-[250px]  flex-shrink-0 flex-col items-center justify-center gap-[15px] bg-[#FFF2F2] p-4 shadow-md">
+                <div className="m-4 flex min-h-[230px] max-w-[250px]  flex-shrink-0 flex-col items-center justify-center gap-[15px] bg-[#FFF2F2] p-4 shadow-md">
                   <div className="flex flex-col items-center justify-center">
                     <FaHeart size="1.6em" fill="#ED3405" />
                     <div className="font-roboto text-[25px] font-[300px]">

@@ -4,7 +4,8 @@ import group from "../../../../public/images/Group.png";
 import logo from "../../../../public/images/logo.png";
 const page = () => {
   return (
-    <div>
+    <div className="w-full">
+      <div className="m-[40px] mt-[40px] min-h-[700px] p-[20px] md:mx-[80px]">
       <div className="flex flex-col gap-4 pt-10">
         <div className="flex flex-row items-center justify-center gap-20">
           <div className="flex flex-row gap-1">
@@ -24,7 +25,7 @@ const page = () => {
           <Image src={logo} alt="fill" width={50} height={50} />
         </div>
       </div>
-      <div className="flex w-[800px] flex-col gap-6 pl-20 pt-10">
+      <div className="flex max-w-[800px] flex-col gap-6">
         <div className="text-xl font-bold">
           Registered Nurse - Hospital Setting
         </div>
@@ -68,11 +69,12 @@ const page = () => {
       </div>
       <div className="flex h-[51px] flex-col items-end justify-start px-20 py-20">
         <button className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] [border:none] hover:bg-[#e71d35bb]  md:py-[6.5px]">
-          <div className="relative inline-block w-[70px] text-left font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
-            next
+          <div className="relative inline-block w-[70px] text-center font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
+            Next
           </div>
         </button>
       </div>
+    </div>
     </div>
   );
 };

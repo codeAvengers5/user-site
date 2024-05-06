@@ -5,6 +5,7 @@ import logo from "../../../../public/images/logo.png";
 const page = () => {
   return (
     <div>
+
       <div className="flex flex-col gap-4 pt-10">
         <div className="flex flex-row items-center justify-center gap-20">
           <div className="flex flex-row gap-1">
@@ -24,6 +25,7 @@ const page = () => {
           <Image src={logo} alt="fill" width={50} height={50} />
         </div>
       </div>
+
       <div className="flex h-screen items-center justify-center ">
         <div className="w-[550px] rounded bg-[#fcf9f9] p-10 shadow-lg">
           <form>

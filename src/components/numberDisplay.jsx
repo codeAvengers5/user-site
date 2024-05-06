@@ -20,7 +20,7 @@ const NumberEldersComponent = ({ number, text }) => {
   return (
     <div className="mt-0 flex flex-row">
       <div
-        className="fixed-size-box flex flex-col items-center justify-center gap-[1px] self-stretch bg-aliceblue px-[23px] text-left font-roboto text-41xl text-crimson-200"
+        className="fixed-size-box flex flex-col items-center justify-center gap-[1px] self-stretch px-[23px] text-left font-roboto text-41xl text-crimson-200"
         style={{ width: "243px" }}>
         <div
           className="relative mb-1 mq800:text-29xl mq450:text-17xl"

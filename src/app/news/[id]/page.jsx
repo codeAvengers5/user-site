@@ -5,14 +5,15 @@ import Newscard from "@/components/newsCard";
 
 function page() {
   return (
-    <div className="flex w-[100vw] max-w-full flex-row items-start justify-start tracking-[normal]">
-      <section className="relative flex max-w-full flex-1 flex-col items-start justify-start overflow-hidden bg-white text-left font-roboto text-xl text-white">
-        <div className=" felx-col m-[20px] flex w-full items-center justify-evenly ">
-          <div className="flex w-[800px] flex-shrink-0 flex-col items-center justify-center gap-10">
-            <p className="text-4xl font-bold text-black">
+    <div className="m-[40px] mt-[40px] min-h-[700px] max-w-full p-[20px] md:mx-[80px]">
+      <section className="flex flex-col items-start justify-start">
+          <div className="flex w-full flex-col-reverse lg:flex-row gap-[10px] lg:gap-[50px] items-center justify-center align-center">
+          <div className="box-border flex  max-w-full flex-col items-center justify-start mq800:min-w-full">
+              <div className="relative md:max-w-[500px] flex flex-col items-center justify-center">
+              <p className="text-2xl font-bold text-black mb-[5px]">
               Ethiopian Press Visit Mekedoina
             </p>
-            <p className="text-2xl text-black">
+            <p className="text-[18px] text-black w-full">
               We would like to thank Mr. Getnat Tadese, the CEO of the Ethiopian
               Press Organization, and the management members and staff of the
               Press Organization.Dear Commercial Bank of Ethiopia President Abe
@@ -27,12 +28,16 @@ function page() {
               appreciative that you visited our center, spoke with the elderly,
               and inquired about the building's condition. Thank you very much.
             </p>
+              </div>
+            </div>
+          <div className="min-h-[200px] md:w-[700px] md:h-[700px]">
+            <Slider images={images} width="600" />
           </div>
-          <Slider images={images} width="700px" height="500px" />
-        </div>
-        <div className="m-10 mt-20 flex flex-shrink-0 flex-col justify-center">
+          </div>
+        {/* </div> */}
+        <div className="flex flex-shrink-0 flex-col justify-center mt-[40px]">
           <p className="text-2xl font-bold text-black">Recent News</p>
-          <div className="mt-10 flex flex-shrink-0 flex-row items-center justify-center gap-10">
+          <div className="flex flex-col md:flex-row items-start justify-start gap-10">
             <Newscard
               imageUrl="../images/rectangle-46@2x.png"
               header="Title of news"

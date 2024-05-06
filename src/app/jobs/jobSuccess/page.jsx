@@ -4,7 +4,7 @@ import logo from "../../../../public/images/Group72.png";
 
 const Page = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="m-[40px] mt-[40px] min-h-[700px] md:mx-[80px] flex flex-col items-center justify-center">
       <div className="relative h-[100px]  w-[100px] overflow-hidden">
         <Image
           src={logo}
