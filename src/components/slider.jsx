@@ -10,7 +10,7 @@ export default function Slider({ images, width, preview = 1 }) {
   console.log(width);
   return (
     <section className="p-2">
-      <div className="container hidden md:flex w-full flex-wrap">
+      <div className="container hidden w-full flex-wrap md:flex">
         <Swiper
           navigation
           pagination={{ type: "bullets" }}
@@ -20,7 +20,8 @@ export default function Slider({ images, width, preview = 1 }) {
           slidesPerView={preview}>
           {images.map((image, index) => (
             <SwiperSlide key={index}>
-              <div className={`flex h-full max-w-[${width}px] items-center justify-center mx-[80px]`}>
+              <div
+                className={`flex h-full max-w-[${width}px] mx-[80px] items-center justify-center`}>
                 <img
                   src={image.imgURL}
                   alt={image.imgAlt}
@@ -41,12 +42,12 @@ export default function Slider({ images, width, preview = 1 }) {
           autoplay={{ delay: 3000 }}
           slidesPerView={1}>
           {images.map((image, index) => (
-            <SwiperSlide key={index} className='flex justify-center'>
-              <div className="flex h-full w-[200px] items-center justify-center mx-[40px]">
+            <SwiperSlide key={index} className="flex justify-center">
+              <div className="mx-[40px] flex h-full w-[200px] items-center justify-center">
                 <img
                   src={image.imgURL}
                   alt={image.imgAlt}
-                  className="block w-full h-full object-contain"
+                  className="block h-full w-full object-contain"
                 />
               </div>
             </SwiperSlide>

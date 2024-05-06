@@ -69,7 +69,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="m-[40px] mt-[40px] min-h-[700px] max-w-full p-[20px] md:mx-[80px] flex flex-col gap-24">
+    <div className="m-[40px] mt-[40px] flex min-h-[700px] max-w-full flex-col gap-24 p-[20px] md:mx-[80px]">
       <div className="relative h-[300px] w-full">
         <Image src={jobbanner} alt="banner" layout="fill" objectFit="cover" />
         <div className="absolute bottom-0 left-0 p-4">
@@ -77,7 +77,7 @@ const Page = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="focus:border-blue-500 w-full md:w-[500px] appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404033] focus:outline-none"
+              className="focus:border-blue-500 w-full appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404033] focus:outline-none md:w-[500px]"
             />
             <div className="pointer-events-none absolute bottom-0 right-0 mr-4 flex h-full items-center">
               <FaSearch className="text-gray-500" />
@@ -88,7 +88,7 @@ const Page = () => {
       <div className="text-center font-roboto text-[40px] font-bold">
         Jobs Category
       </div>
-      <div className="w-full flex flex-wrap md:flex-row justify-evenly gap-[10px]">
+      <div className="flex w-full flex-wrap justify-evenly gap-[10px] md:flex-row">
         <div className="flex h-[150px]  w-[180px] flex-shrink-0  flex-col items-center justify-center gap-[25px] bg-[#FFF2F2] shadow-md">
           <FaBullhorn size="1.6em" fill="#ED3405" />
           <div className="font-roboto text-[25px] font-[300px]">Marketing</div>
@@ -114,7 +114,7 @@ const Page = () => {
           <div className="p-2 font-roboto text-[40px] font-bold">
             Jobs Listing
           </div>
-          <div className="flex  flex-col-reverse xl:flex-row justify-between">
+          <div className="flex  flex-col-reverse justify-between xl:flex-row">
             <div>
               <div className="overflow-x-auto">
                 <table

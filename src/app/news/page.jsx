@@ -17,8 +17,8 @@ function page() {
   // }, [dispatch]);
   return (
     <div className="w-full max-w-[100vw] ">
-      <section className="flex h-full flex-col justify-start bg-white  text-left font-roboto text-xl text-white m-[40px] mt-[40px] min-h-[700px] max-w-full md:mx-[80px]">
-        <div className="flex flex-col md:flex-row justify-between ">
+      <section className="m-[40px] mt-[40px] flex h-full min-h-[700px]  max-w-full flex-col justify-start bg-white text-left font-roboto text-xl text-white md:mx-[80px]">
+        <div className="flex flex-col justify-between md:flex-row ">
           <h1 className="text-6xl font-bold leading-[50px] text-black mq800:text-6xl mq450:text-3xl">
             News
           </h1>
@@ -33,11 +33,11 @@ function page() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col  md:flex-row justify-around">
-          <div className="min-h-[200px] md:w-[900px] md:h-[700px]">
-            <Slider images={images} width={700}/>
+        <div className="flex w-full flex-col  justify-around md:flex-row">
+          <div className="min-h-[200px] md:h-[700px] md:w-[900px]">
+            <Slider images={images} width={700} />
           </div>
-          <div className="w-full flex flex-col items-center justify-center p-[5px] md:p-[20px]">
+          <div className="flex w-full flex-col items-center justify-center p-[5px] md:p-[20px]">
             <p className="text-4xl font-bold text-black mq800:text-4xl mq450:text-3xl">
               Trending News
             </p>
@@ -49,10 +49,10 @@ function page() {
             />
           </div>
         </div>
-        
-        <div className="flex flex-shrink-0 flex-col justify-center mt-[40px]">
+
+        <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
           <p className="text-4xl font-bold text-black">Latest News</p>
-          <div className="flex flex-col md:flex-row items-start justify-start gap-10">
+          <div className="flex flex-col items-start justify-start gap-10 md:flex-row">
             <Newscard
               imageUrl="images/rectangle-46@2x.png"
               header="Title of news"
@@ -67,7 +67,6 @@ function page() {
             />
           </div>
         </div>
-
       </section>
     </div>
   );

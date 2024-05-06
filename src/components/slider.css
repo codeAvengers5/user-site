@@ -1,5 +1,5 @@
-.swiper-wraper{
-    align-items: center;
+.swiper-wraper {
+  align-items: center;
 }
 .swiper-button-next,
 .swiper-button-prev {
@@ -12,9 +12,9 @@
 }
 
 .swiper-button-next::after,
-.swiper-button-prev::after{
-    font-size: 30px;
-    font-weight: bold;
+.swiper-button-prev::after {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 /* Custom styles for Swiper navigation arrows on hover */
@@ -23,23 +23,23 @@
   background-color: #333; /* Customize the background color on hover */
 }
 
-.swiper-pagination-bullet{
-    background-color: #ff0000;
+.swiper-pagination-bullet {
+  background-color: #ff0000;
 }
 
 @media (max-width: 600px) {
-    .swiper{
-        width: 300px;
-        justify-content: center;
-    }
-    .swiper-button-next,
-    .swiper-button-prev {
+  .swiper {
+    width: 300px;
+    justify-content: center;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
     width: 25px; /* Customize the width */
     height: 25px; /* Customize the height */
-    }
-    .swiper-button-next::after,
-    .swiper-button-prev::after{
-        font-size: 15px;
-        font-weight: bold;
-    }
   }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 15px;
+    font-weight: bold;
+  }
+}

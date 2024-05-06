@@ -8,21 +8,19 @@ const Card1 = ({ imageUrl, header, place }) => {
   };
 
   return (
-    <div className="max-w-[500px] rounded-lg shadow-lg flex flex-col jjustify-center items-center bg-[#FFF8F8]"
-    style= {{ boxShadow: "0px 10px 40px 0px #FF00001A"}}>
-
-      <div className="flex flex-col items-center md:w-[400px]  md:h-[548px] mb-5 mt-10 w-full">
-        <img src={imageUrl} alt="pho" className="w-full h-full object-cover" />
-        <div
-          className="mt-[30px] flex flex-shrink-0 flex-col items-center justify-center w-[200px] md:w-[404px] h-[40px] md:h-[56px]"
-        >
+    <div
+      className="jjustify-center flex max-w-[500px] flex-col items-center rounded-lg bg-[#FFF8F8] shadow-lg"
+      style={{ boxShadow: "0px 10px 40px 0px #FF00001A" }}>
+      <div className="mb-5 mt-10 flex w-full  flex-col items-center md:h-[548px] md:w-[400px]">
+        <img src={imageUrl} alt="pho" className="h-full w-full object-cover" />
+        <div className="mt-[30px] flex h-[40px] w-[200px] flex-shrink-0 flex-col items-center justify-center md:h-[56px] md:w-[404px]">
           <p
-            className="font-roboto  font-bold  text-black text-[18px] md:text-[24px]"
+            className="font-roboto  text-[18px]  font-bold text-black md:text-[24px]"
             style={{ color: "#000" }}>
             {header}
           </p>
           <p
-            className="mb-3 font-roboto font-light text-black text-[20px]"
+            className="mb-3 font-roboto text-[20px] font-light text-black"
             style={{ color: "#000" }}>
             {place}
           </p>

@@ -16,43 +16,44 @@ export default function AboutUs() {
       {/*************************************************************  story Section ******************************************************************/}
 
       <div className="mx-[40px] mt-[40px] min-h-[600px] max-w-full p-[20px] md:mx-[80px]">
-        <div className="flex w-full flex-col-reverse md:flex-row gap-[10px] lg:gap-[60px] items-center justify-center align-center">
-        <div className=" mt-[40px] flex flex-shrink-0 justify-center flex-col md:h-[457px] md:max-w-[700px] p-[20px]">
-          <h2
-            className="mb-2 flex text-center flex-col md:mx-2 md:mt-4"
-            style={{
-              color: "#000",
-              fontFamily: "Inter",
-              fontSize: "32px",
-              fontStyle: "normal",
-              fontWeight: 700,
-              lineHeight: "normal"
-            }}>
-            About the Organization
-          </h2>
-          <h4 className="md:text-24 text-center font-roboto font-semibold leading-7 text-black md:mb-3">
-            7,500 People in 9 Cities.
-          </h4>
-          <p className="text-24 font-roboto font-normal leading-7 text-black">
-            Ato Biniam Belete Founder Of Mekedonia. An organization focused on
-            helping the lives of the people with an organization focused on
-            helping the lives of people with a motto of It is enough to be a
-            person to help someone. More than 8260 elderly, mentally disabled,
-            visually disabled, and bedridden individuals have been supported in
-            Mekedonia; these individuals, particularly those who are bedridden
-            and unable to clean, eat, or move independently, need human support
-            but have none. We are Expanding our community to help more,
-            Providing medical, health check, Providing food, water & Shelter and
-            Improving public awareness to help others. Founder Of Mekedonia.
-          </p>
-        </div>
-        <Card imageUrl="https://pbs.twimg.com/media/Dti_P0qW4AEY0Xa?format=jpg&name=4096x4096" />
+        <div className="align-center flex w-full flex-col-reverse items-center justify-center gap-[10px] md:flex-row lg:gap-[60px]">
+          <div className=" mt-[40px] flex flex-shrink-0 flex-col justify-center p-[20px] md:h-[457px] md:max-w-[700px]">
+            <h2
+              className="mb-2 flex flex-col text-center md:mx-2 md:mt-4"
+              style={{
+                color: "#000",
+                fontFamily: "Inter",
+                fontSize: "32px",
+                fontStyle: "normal",
+                fontWeight: 700,
+                lineHeight: "normal"
+              }}>
+              About the Organization
+            </h2>
+            <h4 className="md:text-24 text-center font-roboto font-semibold leading-7 text-black md:mb-3">
+              7,500 People in 9 Cities.
+            </h4>
+            <p className="text-24 font-roboto font-normal leading-7 text-black">
+              Ato Biniam Belete Founder Of Mekedonia. An organization focused on
+              helping the lives of the people with an organization focused on
+              helping the lives of people with a motto of It is enough to be a
+              person to help someone. More than 8260 elderly, mentally disabled,
+              visually disabled, and bedridden individuals have been supported
+              in Mekedonia; these individuals, particularly those who are
+              bedridden and unable to clean, eat, or move independently, need
+              human support but have none. We are Expanding our community to
+              help more, Providing medical, health check, Providing food, water
+              & Shelter and Improving public awareness to help others. Founder
+              Of Mekedonia.
+            </p>
+          </div>
+          <Card imageUrl="https://pbs.twimg.com/media/Dti_P0qW4AEY0Xa?format=jpg&name=4096x4096" />
         </div>
       </div>
 
       {/*************************************************************  elder Section ******************************************************************/}
 
-      <div className="mx-[40px] mt-[40px] md:mx-[80px] flex flex-col flex-wrap justify-center items-center gap-[5px] md:flex-row  md:py-8">
+      <div className="mx-[40px] mt-[40px] flex flex-col flex-wrap items-center justify-center gap-[5px] md:mx-[80px] md:flex-row  md:py-8">
         <NumberEldersComponent number="3100" text="Elders" />
         <NumberEldersComponent number="1450" text="Bed Riders" />
         <NumberEldersComponent number="1560" text="Mentally Disabled" />
@@ -63,12 +64,11 @@ export default function AboutUs() {
 
       {/*************************************************************  members Section ******************************************************************/}
 
-
       <div className="mx-[40px] mt-[40px] min-h-[600px] max-w-full p-[20px] md:mx-[80px]">
         <div className="mt-[70px] flex w-full items-center justify-center font-roboto text-4xl font-medium text-black">
           Our Team Members
         </div>
-        <div className="w-full flex flex-col flex-wrap items-center justify-center md:mb-[10px] md:mt-[85px] md:flex-row md:gap-[80px]">
+        <div className="flex w-full flex-col flex-wrap items-center justify-center md:mb-[10px] md:mt-[85px] md:flex-row md:gap-[80px]">
           <Card1
             imageUrl="https://media.licdn.com/dms/image/C561BAQEMSkmFWVHlkg/company-background_10000/0/1584562871848/mekedonia_cover?e=2147483647&v=beta&t=5LIygS9oGggxFqLubq8vfgGv658xpXR-2j0agTIbY3E"
             header="Dr. Biniyam  Belete"
@@ -85,7 +85,6 @@ export default function AboutUs() {
             place="Human Resource"
           />
         </div>
-
       </div>
 
       {/*************************************************************  sponsors Section ******************************************************************/}

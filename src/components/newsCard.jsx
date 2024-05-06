@@ -13,17 +13,23 @@ const Newscard = ({ imageUrl, header, place, date, handleClick }) => {
   };
 
   return (
-    <div className="p-[5px] md:p-[20px] rounded-lg shadow-lg w-full h-full md:max-w-[500px] min-h-[450px]" style={cardStyle}>
-      <img src={imageUrl} alt="Card Image" className="max-w-[200px] h-full md:max-w-[400px] min-h-[300px]" style={imageStyle} />
-      <div
-        className="h-full w-full mt-[10px] max-h-[400px] flex flex-col items-center place-content-evenly">
+    <div
+      className="h-full min-h-[450px] w-full rounded-lg p-[5px] shadow-lg md:max-w-[500px] md:p-[20px]"
+      style={cardStyle}>
+      <img
+        src={imageUrl}
+        alt="Card Image"
+        className="h-full min-h-[300px] max-w-[200px] md:max-w-[400px]"
+        style={imageStyle}
+      />
+      <div className="mt-[10px] flex h-full max-h-[400px] w-full flex-col place-content-evenly items-center">
         <p
-          className="font-roboto text-[20px] md:text-[32px] font-bold  text-black"
+          className="font-roboto text-[20px] font-bold text-black  md:text-[32px]"
           style={{ color: "#000", fontWeight: "bold" }}>
           {header}
         </p>
         <p
-          className="font-roboto text-base font-light text-black text-center"
+          className="text-center font-roboto text-base font-light text-black"
           style={{ color: "#000", fontSize: "20px" }}>
           {place}
         </p>

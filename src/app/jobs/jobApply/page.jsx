@@ -5,7 +5,6 @@ import logo from "../../../../public/images/logo.png";
 const page = () => {
   return (
     <div>
-
       <div className="flex flex-col gap-4 pt-10">
         <div className="flex flex-row items-center justify-center gap-20">
           <div className="flex flex-row gap-1">
