@@ -2,27 +2,26 @@ import React from "react";
 
 const Card1 = ({ imageUrl, header, place }) => {
   const imageStyle = {
-    width: "100%",
+    width: "426px",
     height: "426px",
     objectFit: "cover"
   };
 
   return (
-    <div className="rounded-lg shadow-lg" style={cardStyle}>
-      <img src={imageUrl} alt="Card Image" style={imageStyle} />
-      <div className="md:w-364 w-100 md:h-548 mb-5 ml-5 mr-11 mt-10 w-full rounded-lg shadow-lg">
-        <img src={imageUrl} alt="pho" style={imageStyle} />
-        <div
-          className="mt-[30px] flex flex-shrink-0 flex-col items-center justify-center"
-          style={{ width: "404px", height: "56px" }}>
+    <div
+      className="jjustify-center flex max-w-[500px] flex-col items-center rounded-lg bg-[#FFF8F8] shadow-lg"
+      style={{ boxShadow: "0px 10px 40px 0px #FF00001A" }}>
+      <div className="mb-5 mt-10 flex w-full  flex-col items-center md:h-[548px] md:w-[400px]">
+        <img src={imageUrl} alt="pho" className="h-full w-full object-cover" />
+        <div className="mt-[30px] flex h-[40px] w-[200px] flex-shrink-0 flex-col items-center justify-center md:h-[56px] md:w-[404px]">
           <p
-            className="font-roboto text-2xl font-bold  text-black"
-            style={{ color: "#000", fontSize: "24px" }}>
+            className="font-roboto  text-[18px]  font-bold text-black md:text-[24px]"
+            style={{ color: "#000" }}>
             {header}
           </p>
           <p
-            className="mb-3 font-roboto text-base font-light text-black"
-            style={{ color: "#000", fontSize: "20px" }}>
+            className="mb-3 font-roboto text-[20px] font-light text-black"
+            style={{ color: "#000" }}>
             {place}
           </p>
         </div>
