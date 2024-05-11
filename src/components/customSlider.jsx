@@ -98,7 +98,7 @@ function CustomCarousel({ images }) {
           viewBox="0 0 57 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_373_3332)">
+          <g clipPath="url(#clip0_373_3332)">
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"
@@ -130,7 +130,7 @@ function CustomCarousel({ images }) {
           viewBox="0 0 57 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_373_3324)">
+          <g clipPath="url(#clip0_373_3324)">
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"

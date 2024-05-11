@@ -11,6 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-[#ffffff]">
         <Header />
+        {/* <Index /> */}
         <main className="min-h-[100vh]">{children}</main>
         <Footer />
       </body>

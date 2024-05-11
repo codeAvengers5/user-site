@@ -2,37 +2,34 @@ import React from "react";
 
 const Newscard = ({ imageUrl, header, place, date, handleClick }) => {
   const cardStyle = {
-    height: "450",
-    width: "400",
-    marginLeft: "2px",
-    marginRight: "2px",
-    marginTop: "2px",
-    marginBottom: "2px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#F5F8FF"
   };
   const imageStyle = {
-    width: "300px",
-    height: "300px",
     objectFit: "cover",
     marginTop: "20px"
   };
 
   return (
-    <div className="rounded-lg shadow-lg" style={cardStyle}>
-      <img src={imageUrl} alt="Card Image" style={imageStyle} />
-      <div
-        className=" m-[20px] flex flex-shrink-0 flex-col items-center justify-center"
-        style={{ width: "400px" }}>
+    <div
+      className="h-full min-h-[450px] w-full rounded-lg p-[5px] shadow-lg md:max-w-[500px] md:p-[20px]"
+      style={cardStyle}>
+      <img
+        src={imageUrl}
+        alt="Card Image"
+        className="h-full min-h-[300px] max-w-[200px] md:max-w-[400px]"
+        style={imageStyle}
+      />
+      <div className="mt-[10px] flex h-full max-h-[400px] w-full flex-col place-content-evenly items-center">
         <p
-          className="font-roboto text-2xl font-bold  text-black"
-          style={{ color: "#000", fontSize: "32px", fontWeight: "bold" }}>
+          className="font-roboto text-[20px] font-bold text-black  md:text-[32px]"
+          style={{ color: "#000", fontWeight: "bold" }}>
           {header}
         </p>
         <p
-          className="font-roboto text-base font-light text-black"
+          className="text-center font-roboto text-base font-light text-black"
           style={{ color: "#000", fontSize: "20px" }}>
           {place}
         </p>
