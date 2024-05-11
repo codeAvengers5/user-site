@@ -5,28 +5,27 @@ const Property1Default = ({
   property1DefaultWidth,
   property1DefaultHeight,
   property1DefaultPosition,
-  homeFontSize,
+  homeFontSize
 }) => {
   const property1DefaultStyle = useMemo(() => {
     return {
       width: property1DefaultWidth,
       height: property1DefaultHeight,
-      position: property1DefaultPosition,
+      position: property1DefaultPosition
     };
   }, [property1DefaultWidth, property1DefaultHeight, property1DefaultPosition]);
 
   const homeStyle = useMemo(() => {
     return {
-      fontSize: homeFontSize,
+      fontSize: homeFontSize
     };
   }, [homeFontSize]);
 
   return (
     <div
-      className="w-[54px] h-[23px] text-left text-xl text-black font-roboto"
-      style={property1DefaultStyle}
-    >
-      <div className="absolute top-[0%] left-[0%]" style={homeStyle}>
+      className="h-[23px] w-[54px] text-left font-roboto text-xl text-black"
+      style={property1DefaultStyle}>
+      <div className="absolute left-[0%] top-[0%]" style={homeStyle}>
         {home}
       </div>
     </div>
