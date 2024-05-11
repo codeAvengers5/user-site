@@ -1,8 +1,53 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
-import group from "../../../../public/images/Group.png";
-import logo from "../../../../public/images/logo.png";
+import group from "../../../../../public/images/Group.png";
+import logo from "../../../../../public/images/logo.png";
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { applyToJob } from "@/slices/jobSlice";
+import { useParams } from "../../../../../node_modules/next/navigation";
+import { useRouter } from "../../../../../node_modules/next/navigation";
+
 const page = () => {
+  const dispatch = useDispatch();
+  // const {success} = useSelector(state => state.jobs);
+  const [formData, setFormData] = useState({
+    full_name: "",
+    email: "",
+    phone_no: "",
+    cv: null
+  });
+
+  const { id } = useParams();
+  const router = useRouter();
+
+  const { loading, success, error } = useSelector(state => state.jobApply);
+
+  const handleInputChange = e => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleFileChange = e => {
+    setFormData({
+      ...formData,
+      cv: e.target.files[0]
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("sbmited");
+    dispatch(applyToJob({ jobId: id, formData }));
+  };
+  if (success) {
+    console.log("success");
+    router.push("/jobs/jobSuccess");
+  }
+
   return (
     <div>
       <div className="flex flex-col gap-4 pt-10">
@@ -24,10 +69,9 @@ const page = () => {
           <Image src={logo} alt="fill" width={50} height={50} />
         </div>
       </div>
-
       <div className="flex h-screen items-center justify-center ">
         <div className="w-[550px] rounded bg-[#fcf9f9] p-10 shadow-lg">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <div className="mb-4">
                 <label htmlFor="name" className="mb-1 block font-semibold">
@@ -35,8 +79,10 @@ const page = () => {
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  id="full_name"
+                  name="full_name"
+                  value={formData.full_name}
+                  onChange={handleInputChange}
                   className="focus:border-blue-500 w-full rounded border border-[#DC8E7B] px-3 py-2 placeholder-[#e2404033] focus:outline-none"
                   required
                 />
@@ -49,6 +95,8 @@ const page = () => {
                   type="email"
                   id="email"
                   name="email"
+                  onChange={handleInputChange}
+                  value={formData.email}
                   className="focus:border-blue-500 w-full rounded border border-[#DC8E7B] px-3 py-2 placeholder-[#e2404033] focus:outline-none"
                   required
                 />
@@ -60,7 +108,9 @@ const page = () => {
                 <input
                   type="tel"
                   id="phone"
-                  name="phone"
+                  name="phone_no"
+                  onChange={handleInputChange}
+                  value={formData.phone_no}
                   className="focus:border-blue-500 w-full  rounded border border-[#DC8E7B] px-3 py-2 placeholder-[#e2404033] focus:outline-none"
                   required
                 />
@@ -92,7 +142,12 @@ const page = () => {
                   <div>
                     Click or drag to this area to upload from local drive
                   </div>
-                  <input id="dropzone-file" type="file" class="hidden" />
+                  <input
+                    id="dropzone-file"
+                    type="file"
+                    class="hidden"
+                    onChange={handleFileChange}
+                  />
                 </label>
               </div>
 
@@ -104,6 +159,15 @@ const page = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="flex h-[51px] flex-col items-start justify-start md:px-[400px] ">
+        <Link href="/jobs">
+          <button className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-white px-[20px] py-[4px] shadow-lg [border:none] hover:border-2  md:py-[6.5px]">
+            <div className="relative inline-block w-[70px] text-left font-inter text-xl font-semibold leading-[28px] text-red-200 mq450:text-base mq450:leading-[22px]">
+              Back
+            </div>
+          </button>
+        </Link>
       </div>
     </div>
   );
