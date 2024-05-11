@@ -11,7 +11,7 @@ const FillYes = ({
   propAlignSelf1,
   propFlex1,
   propDisplay,
-  propMinWidth,
+  propMinWidth
 }) => {
   const fillYes1Style = useMemo(() => {
     return {
@@ -19,14 +19,14 @@ const FillYes = ({
       backgroundColor: propBackgroundColor,
       alignSelf: propAlignSelf,
       flex: propFlex,
-      debugCommit: propDebugCommit,
+      debugCommit: propDebugCommit
     };
   }, [
     propHeight,
     propBackgroundColor,
     propAlignSelf,
     propFlex,
-    propDebugCommit,
+    propDebugCommit
   ]);
 
   const text5Style = useMemo(() => {
@@ -35,19 +35,17 @@ const FillYes = ({
       alignSelf: propAlignSelf1,
       flex: propFlex1,
       display: propDisplay,
-      minWidth: propMinWidth,
+      minWidth: propMinWidth
     };
   }, [propColor, propAlignSelf1, propFlex1, propDisplay, propMinWidth]);
 
   return (
     <div
-      className="h-[1.5rem] flex-1 rounded bg-black flex flex-row items-start justify-start py-[0.343rem] px-[0.5rem] box-border text-center text-[0.688rem] text-white font-inter"
-      style={fillYes1Style}
-    >
+      className="box-border flex h-[1.5rem] flex-1 flex-row items-start justify-start rounded bg-black px-[0.5rem] py-[0.343rem] text-center font-inter text-[0.688rem] text-white"
+      style={fillYes1Style}>
       <div
-        className="self-stretch flex-1 relative flex items-center justify-center"
-        style={text5Style}
-      >
+        className="relative flex flex-1 items-center justify-center self-stretch"
+        style={text5Style}>
         {text}
       </div>
     </div>

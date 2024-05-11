@@ -12,7 +12,7 @@ const FillYes1 = ({
   propAlignSelf1,
   propFlex1,
   propDisplay,
-  propMinWidth,
+  propMinWidth
 }) => {
   const fillYesStyle = useMemo(() => {
     return {
@@ -21,7 +21,7 @@ const FillYes1 = ({
       height: propHeight,
       alignSelf: propAlignSelf,
       flex: propFlex,
-      width: propWidth,
+      width: propWidth
     };
   }, [
     propBorder,
@@ -29,7 +29,7 @@ const FillYes1 = ({
     propHeight,
     propAlignSelf,
     propFlex,
-    propWidth,
+    propWidth
   ]);
 
   const text4Style = useMemo(() => {
@@ -38,19 +38,17 @@ const FillYes1 = ({
       alignSelf: propAlignSelf1,
       flex: propFlex1,
       display: propDisplay,
-      minWidth: propMinWidth,
+      minWidth: propMinWidth
     };
   }, [propColor, propAlignSelf1, propFlex1, propDisplay, propMinWidth]);
 
   return (
     <button
-      className="cursor-pointer [border:none] py-[0.343rem] px-[0.5rem] bg-black h-[1.5rem] flex-1 rounded flex flex-row items-start justify-start box-border hover:bg-darkslategray-100"
-      style={fillYesStyle}
-    >
+      className="hover:bg-darkslategray-100 box-border flex h-[1.5rem] flex-1 cursor-pointer flex-row items-start justify-start rounded bg-black px-[0.5rem] py-[0.343rem] [border:none]"
+      style={fillYesStyle}>
       <div
-        className="self-stretch flex-1 relative text-[0.688rem] font-inter text-white text-center flex items-center justify-center"
-        style={text4Style}
-      >
+        className="relative flex flex-1 items-center justify-center self-stretch text-center font-inter text-[0.688rem] text-white"
+        style={text4Style}>
         {text}
       </div>
     </button>

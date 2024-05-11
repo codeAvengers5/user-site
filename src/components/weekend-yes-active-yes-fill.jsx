@@ -14,7 +14,7 @@ const WeekendYesActiveYesFill = ({
   propMinWidth1,
   propAlignSelf,
   propFlex1,
-  propWidth1,
+  propWidth1
 }) => {
   const weekendYesActiveYesFillStyle = useMemo(() => {
     return {
@@ -24,7 +24,7 @@ const WeekendYesActiveYesFill = ({
       width: propWidth,
       flex: propFlex,
       border: propBorder,
-      minWidth: propMinWidth,
+      minWidth: propMinWidth
     };
   }, [
     propBackgroundColor,
@@ -33,7 +33,7 @@ const WeekendYesActiveYesFill = ({
     propWidth,
     propFlex,
     propBorder,
-    propMinWidth,
+    propMinWidth
   ]);
 
   const textStyle = useMemo(() => {
@@ -43,7 +43,7 @@ const WeekendYesActiveYesFill = ({
       minWidth: propMinWidth1,
       alignSelf: propAlignSelf,
       flex: propFlex1,
-      width: propWidth1,
+      width: propWidth1
     };
   }, [
     propColor,
@@ -51,14 +51,13 @@ const WeekendYesActiveYesFill = ({
     propMinWidth1,
     propAlignSelf,
     propFlex1,
-    propWidth1,
+    propWidth1
   ]);
 
   return (
     <div
-      className="rounded bg-cornflowerblue flex flex-row items-start justify-start py-[0.343rem] px-[0.312rem] text-center text-[0.688rem] text-white font-inter"
-      style={weekendYesActiveYesFillStyle}
-    >
+      className="flex flex-row items-start justify-start rounded bg-cornflowerblue px-[0.312rem] py-[0.343rem] text-center font-inter text-[0.688rem] text-white"
+      style={weekendYesActiveYesFillStyle}>
       <div className="relative inline-block min-w-[0.875rem]" style={textStyle}>
         {text}
       </div>

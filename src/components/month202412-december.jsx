@@ -6,8 +6,8 @@ import WeekendYesActiveYesFill from "./weekend-yes-active-yes-fill";
 
 const Month202412December = () => {
   return (
-    <div className="h-[13.75rem] w-[13.75rem] flex flex-col items-center justify-start ml-[-1.2rem]">
-      <div className="self-stretch h-[1.75rem] overflow-hidden shrink-0 flex flex-row items-start justify-center pt-[0rem] px-[4.687rem] pb-[0.25rem] box-border">
+    <div className="ml-[-1.2rem] flex h-[13.75rem] w-[13.75rem] flex-col items-center justify-start">
+      <div className="box-border flex h-[1.75rem] shrink-0 flex-row items-start justify-center self-stretch overflow-hidden px-[4.687rem] pb-[0.25rem] pt-[0rem]">
         <FillYes1
           text="December"
           propBorder="unset"
@@ -23,7 +23,7 @@ const Month202412December = () => {
           propMinWidth="unset"
         />
       </div>
-      <div className="self-stretch flex-1 overflow-hidden flex flex-row flex-wrap items-start justify-start gap-[0.25rem_0.212rem]">
+      <div className="flex flex-1 flex-row flex-wrap items-start justify-start gap-[0.25rem_0.212rem] self-stretch overflow-hidden">
         <ActiveYes1
           text="12"
           propHeight="1.5rem"

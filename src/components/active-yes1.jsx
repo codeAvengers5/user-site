@@ -9,13 +9,13 @@ const ActiveYes1 = ({
   propDisplay,
   propMinWidth,
   propAlignSelf,
-  propFlex,
+  propFlex
 }) => {
   const activeYesStyle = useMemo(() => {
     return {
       height: propHeight,
       width: propWidth,
-      padding: propPadding,
+      padding: propPadding
     };
   }, [propHeight, propWidth, propPadding]);
 
@@ -25,19 +25,17 @@ const ActiveYes1 = ({
       display: propDisplay,
       minWidth: propMinWidth,
       alignSelf: propAlignSelf,
-      flex: propFlex,
+      flex: propFlex
     };
   }, [propColor, propDisplay, propMinWidth, propAlignSelf, propFlex]);
 
   return (
     <div
-      className="rounded flex flex-row items-start justify-start py-[0.343rem] px-[0.312rem] text-center text-[0.688rem] text-white font-inter"
-      style={activeYesStyle}
-    >
+      className="flex flex-row items-start justify-start rounded px-[0.312rem] py-[0.343rem] text-center font-inter text-[0.688rem] text-white"
+      style={activeYesStyle}>
       <div
-        className="relative font-extralight inline-block min-w-[0.875rem]"
-        style={text1Style}
-      >
+        className="relative inline-block min-w-[0.875rem] font-extralight"
+        style={text1Style}>
         {text}
       </div>
     </div>

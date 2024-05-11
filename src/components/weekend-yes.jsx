@@ -11,7 +11,7 @@ const WeekendYes = ({
   propAlignSelf1,
   propFlex1,
   propDisplay,
-  propMinWidth,
+  propMinWidth
 }) => {
   const weekendYesStyle = useMemo(() => {
     return {
@@ -19,7 +19,7 @@ const WeekendYes = ({
       flex: propFlex,
       padding: propPadding,
       height: propHeight,
-      width: propWidth,
+      width: propWidth
     };
   }, [propAlignSelf, propFlex, propPadding, propHeight, propWidth]);
 
@@ -29,19 +29,17 @@ const WeekendYes = ({
       alignSelf: propAlignSelf1,
       flex: propFlex1,
       display: propDisplay,
-      minWidth: propMinWidth,
+      minWidth: propMinWidth
     };
   }, [propColor, propAlignSelf1, propFlex1, propDisplay, propMinWidth]);
 
   return (
     <div
-      className="self-stretch flex-1 rounded flex flex-row items-start justify-start py-[0.343rem] px-[0.093rem] text-center text-[0.688rem] text-cornflowerblue font-inter"
-      style={weekendYesStyle}
-    >
+      className="flex flex-1 flex-row items-start justify-start self-stretch rounded px-[0.093rem] py-[0.343rem] text-center font-inter text-[0.688rem] text-cornflowerblue"
+      style={weekendYesStyle}>
       <div
-        className="self-stretch flex-1 relative flex items-center justify-center"
-        style={text3Style}
-      >
+        className="relative flex flex-1 items-center justify-center self-stretch"
+        style={text3Style}>
         {text}
       </div>
     </div>
