@@ -36,6 +36,24 @@ module.exports = {
     colors: {
       white: "#FFFFFF",
       black: "#000000",
+      pink: "rgba(253, 189, 189, 0.2)",
+      cornflowerblue: "#17a1fa",
+      steelblue: "#1270b0",
+      dimgray: "#616161",
+      darkgray: "#b3b3b3",
+      blueviolet: "#9647ff",
+      lavenderblush: "#ffebed",
+      darkslateblue: "#354370",
+      lightsteelblue: "#b5bad2",
+      mistyrose: "rgba(244, 220, 220, 0.2)",
+      gray: "#7d7d7d",
+      indigo: "#47008e",
+      whitesmoke: "#f5f8fa",
+      darksalmon: "#dc8f7b",
+      lightgray: "#cbd4de",
+      lightcoral: "rgba(243, 129, 129, 0.2)",
+      lavenderblush: "#ffebed",
+      darkslateblue: "#354370",
       meke: {
         100: "#F3797E",
         200: "#ED3405",
@@ -127,7 +145,8 @@ module.exports = {
         medium: "0.5rem",
         large: "0.8rem",
         "3xs": "10px",
-        "8xs": "5px"
+        "8xs": "5px",
+        xl: "20px"
       },
       transitionDuration: {
         short: "0.15s ease",

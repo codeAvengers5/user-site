@@ -72,7 +72,7 @@ const Events = () => {
         arcu commodo sed in platea amet nec.Lorem ipsum dolor sit amet
         consectetur. Ut n
       </div>
-      <div className="rounded-10xs bg-lavenderblush absolute left-[40.5rem] top-[43.938rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[2.187rem]">
+      <div className="rounded-10xs absolute left-[40.5rem] top-[43.938rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[2.187rem] bg-lavenderblush">
         <img
           className="relative h-[6.25rem] w-[6.25rem] shrink-0 overflow-hidden"
           alt=""
@@ -80,7 +80,7 @@ const Events = () => {
         />
         <div className="relative">Wedding</div>
       </div>
-      <div className="rounded-10xs bg-lavenderblush absolute left-[40.5rem] top-[59.125rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[2.187rem]">
+      <div className="rounded-10xs absolute left-[40.5rem] top-[59.125rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[2.187rem] bg-lavenderblush">
         <img
           className="relative h-[6.25rem] w-[6.25rem] shrink-0 overflow-hidden"
           alt=""
@@ -88,7 +88,7 @@ const Events = () => {
         />
         <div className="relative">Wedding</div>
       </div>
-      <div className="rounded-10xs bg-lavenderblush absolute left-[57rem] top-[43.938rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.937rem]">
+      <div className="rounded-10xs absolute left-[57rem] top-[43.938rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.937rem] bg-lavenderblush">
         <img
           className="relative h-[6.25rem] w-[6.25rem] shrink-0 overflow-hidden"
           alt=""
@@ -96,7 +96,7 @@ const Events = () => {
         />
         <div className="relative">{`Birthday `}</div>
       </div>
-      <div className="rounded-10xs bg-lavenderblush absolute left-[57rem] top-[59.125rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.937rem]">
+      <div className="rounded-10xs absolute left-[57rem] top-[59.125rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.937rem] bg-lavenderblush">
         <img
           className="relative h-[6.25rem] w-[6.25rem] shrink-0 overflow-hidden"
           alt=""
@@ -104,7 +104,7 @@ const Events = () => {
         />
         <div className="relative">{`Birthday `}</div>
       </div>
-      <div className="rounded-10xs bg-lavenderblush absolute left-[73.438rem] top-[43.938rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.75rem]">
+      <div className="rounded-10xs absolute left-[73.438rem] top-[43.938rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.75rem] bg-lavenderblush">
         <img
           className="relative h-[6.25rem] w-[6.25rem] shrink-0 overflow-hidden"
           alt=""
@@ -112,7 +112,7 @@ const Events = () => {
         />
         <div className="relative">Teskar</div>
       </div>
-      <div className="rounded-10xs bg-lavenderblush absolute left-[73.438rem] top-[59.125rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.75rem]">
+      <div className="rounded-10xs absolute left-[73.438rem] top-[59.125rem] flex h-[13.625rem] w-[14.563rem] flex-col items-center justify-center gap-[1.75rem] bg-lavenderblush">
         <img
           className="relative h-[6.25rem] w-[6.25rem] shrink-0 overflow-hidden"
           alt=""
