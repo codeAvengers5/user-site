@@ -52,8 +52,10 @@ module.exports = {
       darksalmon: "#dc8f7b",
       lightgray: "#cbd4de",
       lightcoral: "rgba(243, 129, 129, 0.2)",
-      lavenderblush: "#ffebed",
       darkslateblue: "#354370",
+      darkslategray: "#2d3142",
+      crimson: "#e71d36",
+      snow: "#fdf8f8"
       meke: {
         100: "#F3797E",
         200: "#ED3405",
