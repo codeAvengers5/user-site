@@ -1,7 +1,7 @@
 import images from "@/components/images";
 import Slider from "@/components/slider";
 import React from "react";
-import Newscard from "@/components/newsCard";
+import Newscard from "@/components/card/newsCard";
 
 function page() {
   return (
@@ -35,7 +35,6 @@ function page() {
             <Slider images={images} width="600" />
           </div>
         </div>
-        {/* </div> */}
         <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
           <p className="text-2xl font-bold text-black">Recent News</p>
           <div className="flex flex-col items-start justify-start gap-10 md:flex-row">
