@@ -30,7 +30,6 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
       ...formData,
       [name]: value
     });
-    console.log(formData);
   };
 
   const handleDate = date => {
@@ -43,7 +42,6 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
       ...formData,
       date: dateOnly
     });
-    console.log(formData);
   };
 
   // form validation checks
@@ -212,14 +210,14 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                   <input
                     type="radio"
                     id="break"
-                    value="3:00am"
+                    value="Breakfast"
                     className="hidden"
                     name="time"
-                    checked={formData.time === "3:00am"}
+                    checked={formData.time === "Breakfast"}
                     onChange={e => handleChange(e)}
                   />
                   <label
-                    for="break"
+                    htmlFor="break"
                     className="rounded-8x flex w-[280px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)]">
                     <img
                       className="relative h-[50px] w-[50px] shrink-0 overflow-hidden"
@@ -241,14 +239,14 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                   <input
                     type="radio"
                     id="lunch"
-                    value="6:00pm"
+                    value="Lunch"
                     className="hidden"
                     name="time"
-                    checked={formData.time === "6:00pm"}
+                    checked={formData.time === "Lunch"}
                     onChange={e => handleChange(e)}
                   />
                   <label
-                    for="lunch"
+                    htmlFor="lunch"
                     className="rounded-8x flex w-[280px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch  bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)]">
                     <img
                       className="relative h-[50px] w-[50px] shrink-0 overflow-hidden"
@@ -270,14 +268,14 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                   <input
                     type="radio"
                     id="dinner"
-                    value="1:00pm"
+                    value="Dinner"
                     className="hidden"
                     name="time"
-                    checked={formData.time === "1:00pm"}
+                    checked={formData.time === "Dinner"}
                     onChange={e => handleChange(e)}
                   />
                   <label
-                    for="dinner"
+                    htmlFor="dinner"
                     className="rounded-8x flex w-[280px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch  bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)]">
                     <img
                       className="relative h-[50px] w-[50px] shrink-0 overflow-hidden"
