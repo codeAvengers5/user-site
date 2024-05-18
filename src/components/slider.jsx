@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import "./slider.css";
 
 export default function Slider({ images, width, preview = 1 }) {
-  console.log(width);
   return (
     <section className="p-2">
       <div className="container hidden w-full flex-wrap md:flex">
@@ -23,8 +22,8 @@ export default function Slider({ images, width, preview = 1 }) {
               <div
                 className={`flex h-full max-w-[${width}px] mx-[80px] items-center justify-center`}>
                 <img
-                  src={image.imgURL}
-                  alt={image.imgAlt}
+                  src={image.imgURL || image.url}
+                  alt={image.imgAlt || "news image"}
                   className="block h-full w-full object-contain"
                 />
               </div>
