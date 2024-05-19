@@ -77,7 +77,7 @@ const Header = () => {
                 className="relative h-[80px] w-[130px] rounded-[50%] object-cover md:h-[109px] md:w-[185px]"
                 loading="lazy"
                 alt=""
-                src="images/ellipse-10@2x.png"
+                src="/images/ellipse-10@2x.png"
               />
 
               <button

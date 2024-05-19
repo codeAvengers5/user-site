@@ -5,14 +5,15 @@ import LazyLoad from "react-lazyload";
 import "./style.scss";
 import FormEvent from "@/components/Forms/Step1/Step-1";
 import FormPersonal from "@/components/Forms/step2/Step-2";
-import FormPayment from "@/components/Forms/step3/Step-3";
+import FormInfo from "@/components/Forms/step3/Step-3";
+import FormPayment from "@/components/Forms/step4/Step-4";
 
 const AppointEvent = () => {
   const { FormStage } = useSelector(state => state.event);
 
   return (
     <div className="w-full max-w-[100vw]">
-      <section className="m-[40px] mt-[40px] min-h-[700px] max-w-full p-[20px] md:mx-[80px]">
+      <section className="mt-[-100px] max-w-full p-[20px] md:mx-[80px]">
         <section className="flex items-center justify-start">
           {/* When adding/removing components, update the progress bar below */}
           <LazyLoad once>
@@ -68,14 +69,23 @@ const AppointEvent = () => {
               // Completion Page
               <LazyLoad once>
                 <div className="wrap">
-                  <FormPayment
-                    pageTitle={"Payment Information"}
+                  <FormInfo
+                    pageTitle={"Event Information"}
                     submitButtonText={"Submit"}
                     previousButton={true} // form page stage title
                   />
                 </div>
               </LazyLoad>
             )}
+
+            {/* {FormStage === 4 && (
+              // Completion Page
+              <LazyLoad once>
+                <div className="wrap">
+                  <FormPayment/>
+                </div>
+              </LazyLoad>
+            )} */}
           </div>
         </section>
       </section>
