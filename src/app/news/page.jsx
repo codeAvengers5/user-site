@@ -44,7 +44,7 @@ function page() {
   }, [searchItem]);
   const handleInputChange = e => {
     const searchTerm = e.target.value;
-    setSearchItem(searchTerm)
+    setSearchItem(searchTerm);
   };
   const handleClick = async id => {
     router.push(`/news/${id}`);
@@ -68,12 +68,10 @@ function page() {
             </div>
           </div>
         </div>
-        {isSearching &&
-          Array.isArray(searchResults) &&
-          searchItem ? (
+        {isSearching && Array.isArray(searchResults) && searchItem ? (
           searchResults.length > 0 ? (
             <div className="m-10 flex flex-shrink-0 flex-row items-center justify-center gap-10">
-              {searchResults.map((news) => (
+              {searchResults.map(news => (
                 <Newscard
                   key={news._id}
                   imageUrl={news.images[0]?.url}
@@ -85,8 +83,10 @@ function page() {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center min-h-[400px]">
-              <p className="text-3xl font-primary font-bold text-red-500">No News found</p>
+            <div className="flex min-h-[400px] items-center justify-center">
+              <p className="text-red-500 font-primary text-3xl font-bold">
+                No News found
+              </p>
             </div>
           )
         ) : (
