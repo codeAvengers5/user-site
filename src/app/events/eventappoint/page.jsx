@@ -20,13 +20,13 @@ const AppointEvent = () => {
             <div className="progressbar">
               <div
                 className={
-                  FormStage === 1 || FormStage === 2 || FormStage === 3 
+                  FormStage === 1 || FormStage === 2 || FormStage === 3
                     ? "progress-step progress-step-active"
                     : "progress-step"
                 }></div>
               <div
                 className={
-                  FormStage === 2 || FormStage === 3 
+                  FormStage === 2 || FormStage === 3
                     ? "progress-step progress-step-active"
                     : "progress-step"
                 }></div>

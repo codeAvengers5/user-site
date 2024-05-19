@@ -1,4 +1,8 @@
-import { createEvent, deleteEvent, updateEventId } from "@/services/event.serivce";
+import {
+  createEvent,
+  deleteEvent,
+  updateEventId
+} from "@/services/event.serivce";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const createEventappoint = createAsyncThunk(
@@ -49,7 +53,6 @@ const eventSlice = createSlice({
     error: null,
     success: false,
     eventData: {}
-
   },
   reducers: {
     formStage: (state, action) => {
@@ -103,10 +106,11 @@ const eventSlice = createSlice({
       .addCase(deleteExistingEvent.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
+      });
   }
 });
 
 // Actions
-export const { formStage, formEvent, formPersonal, formPayment, formInfo } = eventSlice.actions;
+export const { formStage, formEvent, formPersonal, formPayment, formInfo } =
+  eventSlice.actions;
 export default eventSlice.reducer;

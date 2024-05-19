@@ -42,7 +42,7 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
   // onsubmit
   const handleSubmit = e => {
     e.preventDefault();
-    setIsSubmitted(true); 
+    setIsSubmitted(true);
   };
 
   useEffect(() => {
