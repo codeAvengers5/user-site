@@ -1,10 +1,12 @@
 const images = [
   {
-    imgURL: "https://mekedoniahomes.org/wp-content/uploads/2023/02/DSC00470-scaled.jpg",
+    imgURL:
+      "https://mekedoniahomes.org/wp-content/uploads/2023/02/DSC00470-scaled.jpg",
     imgAlt: "img-1"
   },
   {
-    imgURL: "https://mekedoniahomes.org/wp-content/uploads/2023/02/DSC00412-scaled.jpg",
+    imgURL:
+      "https://mekedoniahomes.org/wp-content/uploads/2023/02/DSC00412-scaled.jpg",
     imgAlt: "img-2"
   },
   {
@@ -13,7 +15,8 @@ const images = [
     imgAlt: "img-3"
   },
   {
-    imgURL:"https://mekedoniahomes.org/wp-content/uploads/2023/02/DSC00416-1024x683.jpg",
+    imgURL:
+      "https://mekedoniahomes.org/wp-content/uploads/2023/02/DSC00416-1024x683.jpg",
     imgAlt: "img-4"
   },
   {

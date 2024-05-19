@@ -41,9 +41,8 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
   const [isSubmitted, setIsSubmitted] = useState(false); // state for sent status
   // onsubmit
   const handleSubmit = e => {
-    e.preventDefault(); // stop form submission
-    // setErrors(validate(formData)) // check errors
-    setIsSubmitted(true); // update submit status
+    e.preventDefault();
+    setIsSubmitted(true);
   };
 
   useEffect(() => {
@@ -72,7 +71,7 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
         name="form-personal"
         id="form-personal"
         className="mt-[80px]"
-        onSubmit={handleSubmit}>
+        onSubmit={e => handleSubmit(e)}>
         <div className="mq675:gap-[20px] flex w-[990px] max-w-full flex-col items-end justify-start gap-[41px] text-center font-roboto text-29xl text-black">
           <div className="flex h-[417px] w-[556px] max-w-full flex-col items-start justify-start text-base text-black">
             <div className="rounded-12xs relative box-border flex max-w-full flex-col items-center justify-start gap-[59.8px] self-stretch bg-mistyrose px-5 py-[60px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] mq450:gap-[30px]">

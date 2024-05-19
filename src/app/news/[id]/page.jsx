@@ -51,11 +51,12 @@ function page() {
             </div>
           </div>
           <div className="min-h-[200px] md:h-[700px] md:w-[700px]">
-          {news.images && news.images.length > 0 ? (
+            {news.images && news.images.length > 0 ? (
               <Slider images={news.images} width="600" />
             ) : (
               <p>No images available</p>
-            )}          </div>
+            )}{" "}
+          </div>
         </div>
         <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
           <p className="text-2xl font-bold text-black">Recent News</p>
