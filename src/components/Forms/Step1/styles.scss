@@ -140,3 +140,17 @@ article div {
 .date-picker .react-datepicker__day.non-selected-month {
   color: #ccc;
 }
+
+@media screen and (max-width: 450px) {
+  .date-picker .react-datepicker__day {
+    margin: 0.1rem;
+  }
+
+  .date-picker .react-datepicker__month-container {
+    margin-right: 10px;
+  }
+
+  .date-picker .react-datepicker__header {
+    padding: 5px 0;
+  }
+}

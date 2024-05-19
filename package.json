@@ -76,6 +76,8 @@
 
     "react-time-picker": "^7.0.0",
 
+    "react-toastify": "^10.0.5",
+
     "redux-toolkit": "^1.1.2",
 
     "swiper": "^11.1.1"

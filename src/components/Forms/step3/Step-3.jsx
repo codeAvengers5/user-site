@@ -83,23 +83,25 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
         <FormPayment with_cash={cash} eventId={eventId} price={price} />
       ) : (
         <div>
-          <h2 className="text-center text-[48px] font-[500]">{pageTitle}</h2>
+          <h2 className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
+            {pageTitle}
+          </h2>
           <form
             name="form-info"
             id="form-info"
-            className="mt-[80px] w-[990px] items-end"
+            className="mt-[40px]"
             onSubmit={e => handleSubmit(e)}>
             {/* Form Fields */}
-            <div className="mq675:gap-[20px] flex w-[990px] max-w-full flex-col items-end justify-start font-roboto text-29xl text-black">
-              <div className="rounded-12xs flex w-[556px] max-w-full flex-col items-start justify-start gap-[71.7px] bg-mistyrose px-[53.5px] py-[60px] text-center text-base text-black shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] mq450:gap-[18px]">
-                {/* Number of People */}
-                <div className="mb-[20px] flex flex-col items-start justify-start gap-[7.3px] self-stretch">
-                  <div className="relative inline-block">
-                    Number of People (Minimum of 200)
-                  </div>
-                  <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+            <div className="flex w-full flex-col items-center font-secondary text-black">
+              <div className="flex min-h-[480px] w-[250px] max-w-full flex-col items-center justify-center text-base text-black sm:w-[350px] md:w-[550px]">
+                <div className="rounded-12xs relative box-border flex max-w-full flex-col gap-[40px] self-stretch bg-mistyrose  px-[20px] py-[40px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] md:p-[40px] mq450:gap-[30px]">
+                  {/* Number of People */}
+                  <div className="mb-[10px] flex w-full flex-col items-start justify-start gap-[5px]">
+                    <label htmlFor="people" className="relative inline-block">
+                      Number of People (Minimum of 200)
+                    </label>
                     <input
-                      className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-inter text-sm text-black [border:none] [outline:none]"
+                      className="text-gray-900 w-full border border-darksalmon bg-whitesmoke px-3 py-3 text-sm focus:border-darksalmon focus:ring-darksalmon"
                       placeholder="100"
                       type="number"
                       name="people"
@@ -107,62 +109,62 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
                       onChange={handleChange}
                     />
                   </div>
-                </div>
-                {/* Food Type */}
-                <div className="mb-[10px] flex flex-col items-start justify-start gap-[7.3px] self-stretch">
-                  <label htmlFor="content" className="relative inline-block">
-                    Fasting or Non-fasting
-                  </label>
-                  <select
-                    id="content"
-                    name="foodType"
-                    value={formData.foodType}
-                    onChange={handleChange}
-                    className="text-gray-900 w-full border border-darksalmon bg-whitesmoke px-3 py-3 text-sm focus:border-darksalmon focus:ring-darksalmon">
-                    <option defaultValue>select</option>
-                    <option value={false}>Non-fasting</option>
-                    <option value={true}>Fasting</option>
-                  </select>
-                </div>
-                {/* Payment Method */}
-                <div className="box-border flex w-full flex-row items-start justify-end self-stretch px-1 py-0">
-                  <div className="flex w-full flex-col items-start justify-start gap-[21.4px]">
-                    <div className="relative inline-block">
-                      With Cash or Food
-                    </div>
-                    <div className="text-mini box-border flex max-w-full flex-row items-start justify-start self-stretch py-0 pl-[7px] pr-0 text-left">
-                      <div className="box-border flex w-full flex-row flex-wrap items-start justify-between gap-[20px]">
-                        <div className="flex items-center">
-                          <input
-                            id="inline-radio"
-                            type="radio"
-                            value={true}
-                            name="pay"
-                            onChange={handleChange}
-                            checked={formData.pay === "true"}
-                            className="text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 h-4 w-4 focus:ring-2"
-                          />
-                          <label
-                            htmlFor="inline-radio"
-                            className="text-gray-900 ms-2 text-sm font-medium">
-                            Cash
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="inline-2-radio"
-                            type="radio"
-                            value={false}
-                            name="pay"
-                            onChange={handleChange}
-                            checked={formData.pay === "false"}
-                            className="text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 h-4 w-4 focus:ring-2"
-                          />
-                          <label
-                            htmlFor="inline-2-radio"
-                            className="text-gray-900 ms-2 text-sm font-medium">
-                            Food
-                          </label>
+                  {/* Food Type */}
+                  <div className="mb-[10px] flex flex-col items-start justify-start gap-[5px]">
+                    <label htmlFor="content" className="relative inline-block">
+                      Fasting or Non-fasting
+                    </label>
+                    <select
+                      id="content"
+                      name="foodType"
+                      value={formData.foodType}
+                      onChange={handleChange}
+                      className="text-gray-900 w-full border border-darksalmon bg-whitesmoke px-3 py-3 text-sm focus:border-darksalmon focus:ring-darksalmon">
+                      <option defaultValue>select</option>
+                      <option value={false}>Non-fasting</option>
+                      <option value={true}>Fasting</option>
+                    </select>
+                  </div>
+                  {/* Payment Method */}
+                  <div className="box-border flex w-full flex-row items-start justify-end self-stretch px-1 py-0">
+                    <div className="flex w-full flex-col items-start justify-start gap-[21.4px]">
+                      <div className="relative inline-block">
+                        With Cash or Food
+                      </div>
+                      <div className="text-mini box-border flex max-w-full flex-row items-start justify-start self-stretch py-0 pl-[7px] pr-0 text-left">
+                        <div className="box-border flex w-full flex-row flex-wrap items-start justify-between gap-[20px]">
+                          <div className="flex items-center">
+                            <input
+                              id="inline-radio"
+                              type="radio"
+                              value={true}
+                              name="pay"
+                              onChange={handleChange}
+                              checked={formData.pay === "true"}
+                              className="text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 h-4 w-4 focus:ring-2"
+                            />
+                            <label
+                              htmlFor="inline-radio"
+                              className="text-gray-900 ms-2 text-sm font-medium">
+                              Cash
+                            </label>
+                          </div>
+                          <div className="flex items-center">
+                            <input
+                              id="inline-2-radio"
+                              type="radio"
+                              value={false}
+                              name="pay"
+                              onChange={handleChange}
+                              checked={formData.pay === "false"}
+                              className="text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 h-4 w-4 focus:ring-2"
+                            />
+                            <label
+                              htmlFor="inline-2-radio"
+                              className="text-gray-900 ms-2 text-sm font-medium">
+                              Food
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -171,7 +173,7 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
               </div>
             </div>
             {/* Submit Buttons */}
-            <div className="btn-array flex pt-[30px]">
+            <div className="btn-array mt-[5px]">
               {previousButton && (
                 <p>
                   <input

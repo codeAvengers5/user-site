@@ -13,9 +13,8 @@ const AppointEvent = () => {
 
   return (
     <div className="w-full max-w-[100vw]">
-      <section className="mt-[-100px] max-w-full p-[20px] md:mx-[80px]">
-        <section className="flex items-center justify-start">
-          {/* When adding/removing components, update the progress bar below */}
+      <section className="mx-[40px] mt-[20px] max-w-full md:mx-[80px]">
+        <section className="flex items-start justify-start">
           <LazyLoad once>
             <div className="progressbar">
               <div
@@ -38,7 +37,7 @@ const AppointEvent = () => {
                 }></div>
             </div>
           </LazyLoad>
-          <div className="ml-[200px] w-full">
+          <div className="ml-[5px] w-full sm:ml-[80px] md:ml-[200px]">
             {FormStage === 1 && (
               // Signup Page
               <LazyLoad once>

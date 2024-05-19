@@ -3,9 +3,6 @@
 
 .btn-array {
   display: flex;
-  //justify-content: space-between;
-  // justify-content:space-evenly;
-  // justify-content: space-around;
   margin: 0;
   justify-content: flex-end;
   gap: 50px;
@@ -20,6 +17,7 @@
       padding: $spacing-vsmall $spacing-xlarge;
       font-weight: $font-weight-heavy;
       text-align: center;
+      font-family: "Open Sans, sans-serif";
       border: none;
       border-radius: $border-radius-small;
       color: $third-color; // not working!
