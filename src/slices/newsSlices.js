@@ -34,7 +34,7 @@ const newsSlice = createSlice({
     setNews: (state, action) => {
       return action.payload;
     }
-  },
+  }
   // extraReducers: builder => {
   //   builder
   //     .addCase(searchNews.fulfilled, (state, { payload }) => {
