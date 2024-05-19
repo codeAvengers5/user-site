@@ -39,7 +39,7 @@ const Registration = () => {
   };
 
   return (
-    <div className="font-Roboto relative h-[1025px] w-full overflow-hidden bg-white text-left text-xl text-darkslategray">
+    <div className="font-Roboto relative h-[1025px] w-full overflow-hidden border-2 border-meke-200 bg-white text-left text-xl text-darkslategray">
       <b className="absolute left-[827px] top-[233px] text-29xl">
         Create your account
       </b>

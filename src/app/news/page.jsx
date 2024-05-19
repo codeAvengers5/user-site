@@ -1,10 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
-// import { search } from "../../../public/icons/inde
 import { IoMdSearch } from "react-icons/io";
 import Slider from "@/components/slider";
 import images from "@/components/images";
-import Newscard from "@/components/newsCard";
+import Newscard from "@/components/card/newsCard";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchNews } from "@/slices/news";
 
@@ -17,9 +16,9 @@ function page() {
   // }, [dispatch]);
   return (
     <div className="w-full max-w-[100vw] ">
-      <section className="m-[40px] mt-[40px] flex h-full min-h-[700px]  max-w-full flex-col justify-start bg-white text-left font-roboto text-xl text-white md:mx-[80px]">
+      <section className="m-[40px] mt-[40px] flex h-full min-h-[700px]  max-w-full flex-col justify-start bg-white text-left font-roboto text-xl md:mx-[80px]">
         <div className="flex flex-col justify-between md:flex-row ">
-          <h1 className="text-6xl font-bold leading-[50px] text-black mq800:text-6xl mq450:text-3xl">
+          <h1 className="font-primary text-heading_2 font-bold uppercase md:text-heading_1">
             News
           </h1>
           <div className="relative m-[30px] flex items-center">
@@ -38,7 +37,7 @@ function page() {
             <Slider images={images} width={700} />
           </div>
           <div className="flex w-full flex-col items-center justify-center p-[5px] md:p-[20px]">
-            <p className="text-4xl font-bold text-black mq800:text-4xl mq450:text-3xl">
+            <p className="font-primary text-medium font-bold uppercase md:text-heading_2">
               Trending News
             </p>
             <Newscard
@@ -51,7 +50,9 @@ function page() {
         </div>
 
         <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
-          <p className="text-4xl font-bold text-black">Latest News</p>
+          <p className="font-primary text-medium font-bold uppercase md:text-heading_2">
+            Latest News
+          </p>
           <div className="flex flex-col items-start justify-start gap-10 md:flex-row">
             <Newscard
               imageUrl="images/rectangle-46@2x.png"

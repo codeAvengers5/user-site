@@ -4,6 +4,8 @@ import { FaPhone } from "react-icons/fa6";
 import { BiSolidEnvelope } from "react-icons/bi";
 import { TbMenu2 } from "react-icons/tb";
 import { IoCloseOutline } from "react-icons/io5";
+import Link from "../../node_modules/next/link";
+import { usePathname } from "../../node_modules/next/navigation";
 
 const Header = () => {
   const [nav, setNav] = useState(true);
@@ -12,6 +14,8 @@ const Header = () => {
     setNav(!nav);
     console.log("clicked", nav);
   };
+
+  const pathname = usePathname();
 
   return (
     <div className="sticky start-0 top-0 z-20 w-full">
@@ -94,33 +98,37 @@ const Header = () => {
               </button>
 
               <div
-                className={`${nav ? "hidden" : "fixed right-0 top-0 z-0 flex flex-col md:relative md:flex-row"} h-[100vh] w-[200px] max-w-full items-center justify-center gap-[20px] self-stretch  bg-white px-0 py-[14.5px] pb-7 pt-0 shadow-2xl md:flex md:h-auto md:w-0 md:justify-end`}>
-                <div className="flex flex-row items-start justify-start">
-                  <div className=" min-w-[54px]">
-                    <a href="#">Home</a>
-                  </div>
-                </div>
-                <div className="flex flex-row items-start justify-start">
-                  <div className="relative inline-block min-w-[54px]">
-                    <a href="#">About</a>
-                  </div>
-                </div>
-                <div className="flex flex-row items-start justify-start py-0 pl-0 pr-[3px]">
-                  <div className="relative inline-block min-w-[51px]">News</div>
-                </div>
-                <div className="flex flex-row items-start justify-start">
-                  <div className="relative inline-block min-w-[60px]">
-                    Events
-                  </div>
-                </div>
-                <div className="flex flex-row items-start justify-start">
-                  <div className="relative inline-block min-w-[45px]">Jobs</div>
-                </div>
-                <div className="flex flex-row items-start justify-start">
-                  <div className="relative inline-block min-w-[94px]">
-                    ContactUs
-                  </div>
-                </div>
+                className={`${nav ? "hidden" : "fixed right-0 top-0 z-0 flex flex-col md:relative md:flex-1 md:flex-row"} h-[100vh] w-[200px] max-w-full items-center justify-center gap-[20px] self-stretch bg-white  px-0 py-[14.5px] pb-7 pt-0 font-[600] shadow-2xl md:flex md:h-auto md:w-0 md:flex-1 md:justify-end md:shadow-none`}>
+                <Link
+                  className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/" ? "text-red-400" : ""}`}
+                  href="/">
+                  Home
+                </Link>
+                <Link
+                  className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/about" ? "text-red-400" : ""}`}
+                  href="/about">
+                  About
+                </Link>
+                <Link
+                  className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/news" ? "text-red-400" : ""}`}
+                  href="/news">
+                  News
+                </Link>
+                <Link
+                  className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/events" ? "text-red-400" : ""}`}
+                  href="/events">
+                  Events
+                </Link>
+                <Link
+                  className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/jobs" ? "text-red-400" : ""}`}
+                  href="/jobs">
+                  Jobs
+                </Link>
+                <Link
+                  className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/contact us" ? "text-red-400" : ""}`}
+                  href="/contact">
+                  Contact us
+                </Link>
               </div>
             </div>
           </div>

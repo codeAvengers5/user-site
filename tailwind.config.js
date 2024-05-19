@@ -100,20 +100,22 @@ module.exports = {
       red: {
         100: "#ff2626",
         200: "#ff0000",
-        300: "rgba(255, 38, 38, 0.09)"
+        300: "rgba(255, 38, 38, 0.09)",
+        400: "#E71D36"
       }
     },
     extend: {
       fontFamily: {
-        primary: ["Montserrat", "sans-serif"],
-        secondary: ["Nunito", "sans-serfi"],
+        primary: ["Cormorant Upright, serif"],
+        secondary: ["Open Sans, sans-serif"],
+        PlayfairDisplay: ['Playfair Display', 'serif'],
         inter: "Inter",
         roboto: "Roboto"
       },
       fontSize: {
-        heading_1: "48px",
+        heading_1: "64px",
         heading_2: "35px",
-        medium: "20px",
+        medium: "24px",
         base: "16px",
         small: "14px",
         xl: "20px",
@@ -140,6 +142,10 @@ module.exports = {
         small: "0.5rem",
         large: "2rem"
       },
+      lineHeight: {
+        'tight': '28px',
+        'lose': '10px',
+      },
       borderRadius: {
         small: "0.25rem",
         medium: "0.5rem",
@@ -159,5 +165,5 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [],
 };

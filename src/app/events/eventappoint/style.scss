@@ -1,0 +1,11 @@
+@use "../../../assets/scss/variables" as *; // * removes need to call namespace
+@use "../../../assets/scss/mixin" as *; // * removes need to call namespace
+@use "../../../assets/scss/progress-bar" as *; // * removes need to call namespace
+
+// page content wrapper
+main {
+  padding-top: $spacing-vsmall;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

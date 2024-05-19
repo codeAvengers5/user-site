@@ -1,0 +1,142 @@
+@use '../../../assets/scss/variables.scss' as *; // * removes need to call namespace
+@use '../../../assets/scss/buttons' as *; // * removes need to call namespace
+
+form#form-signup {
+
+  p {
+    margin: $spacing-medium 0;
+    display: block;
+  }
+
+
+
+  label {
+    font-size: $font-size-standard;
+    margin-right: $spacing-vsmall;
+    font-weight: $font-weight-heavy;
+  }
+
+  input:not([type="submit"]){ // target all inputs except submit button
+    width: 100%;
+    margin-top: $spacing-vsmall; // remove??
+    flex: 1;
+    padding: $spacing-vsmall;
+    border: $border-width-large solid $primary-color;
+
+    &::placeholder {
+      color: $secondary-color;
+    }
+
+    &:hover {
+      background-color: $primary-color-highlight;
+    }
+
+  }
+
+  .required-asterix {
+    color: $primary-color;
+    padding-left: $spacing-vsmall;
+  }
+
+  .disclaimer-text {
+    font-size: $font-size-standard;
+  }
+  
+  // for validation error text
+  .error-message {
+    color: $color-alert;
+  }   
+
+}
+
+article {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  margin: 5px;
+  float: left;
+  box-sizing: border-box;
+  background-color: #FFECEC;
+  border-radius: 3px;
+}
+
+article div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 25px;
+  transition: .5s ease;
+}
+  article input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 230px;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  input:checked ~ div {
+    background-color: #ffb0b0;
+  }
+
+  .time{
+
+   input:checked ~ label{
+    background-color: #ffb0b0;
+  }
+  }
+  /* Change the background color of the calendar */
+.date-picker .react-datepicker {
+  background-color: #ffffff;
+}
+
+/* Change the border width of the calendar */
+.date-picker .react-datepicker,
+.date-picker .react-datepicker__header {
+  border: none;
+}
+
+/* Increase the gap between the numbers */
+.date-picker .react-datepicker__day {
+  margin: 0.3rem;
+}
+
+.date-picker .react-datepicker__month-container {
+  margin-right: 20px;
+}
+
+.date-picker .react-datepicker__month-container:last-child {
+  margin-right: 0;
+}
+
+/* Change color of selected date */
+.date-picker .react-datepicker__day--selected {
+  background-color: #FD0101;
+  color: #fff;
+}
+
+.date-picker .react-datepicker__day--selected:hover {
+  background-color: #ffb0b0;
+}
+
+/* Change the background color of the header */
+.date-picker .react-datepicker__header {
+  background-color: #ffffff;
+  color: #ccc;
+  padding: 10px 0;
+}
+
+/* Change the color of the month and year */
+.date-picker .react-datepicker__current-month,
+.date-picker .react-datepicker-year-header {
+  color: #ccc;
+}
+
+.date-picker .react-datepicker__day.non-selected-month {
+  color: #ccc;
+}
