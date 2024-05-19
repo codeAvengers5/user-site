@@ -79,9 +79,9 @@ const Header = () => {
       </section>
 
       {/* the nav bar */}
-      <div className="box-border flex max-w-full flex-row items-center  self-stretch bg-white text-black  mq1325:box-border  mq1125:box-border mq450:box-border">
+      <div className="box-border flex max-w-full flex-row items-center  self-stretch bg-white bg-opacity-[40%] backdrop-filter backdrop-blur-lg shadow-lg text-black  mq1325:box-border  mq1125:box-border mq450:box-border">
         <div className="mx-[20px] flex max-w-full flex-1 flex-col items-start justify-start gap-[34px] mq800:gap-[17px_34px]">
-          <div className="box-border flex h-[181.8px] max-w-full flex-row items-start justify-start self-stretch text-xl ">
+          <div className="box-border flex h-[120px] max-w-full flex-row items-start justify-start self-stretch text-xl ">
             <div className="flex w-full flex-row items-center justify-between gap-[20px] self-stretch">
               <img
                 className="relative h-[80px] w-[130px] rounded-[50%] object-cover md:h-[109px] md:w-[185px]"
@@ -108,7 +108,7 @@ const Header = () => {
               </button>
 
               <div
-                className={`${nav ? "hidden" : "fixed right-0 top-0 z-0 flex flex-col md:relative md:flex-1 md:flex-row"} h-[100vh] w-[200px] max-w-full items-center justify-center gap-[20px] self-stretch bg-white  px-0 py-[14.5px] pb-7 pt-0 font-[600] shadow-2xl md:flex md:h-auto md:w-0 md:flex-1 md:justify-end md:shadow-none`}>
+                className={`${nav ? "hidden" : "fixed right-0 top-0 z-0 flex flex-col md:relative md:flex-1 md:flex-row"} h-[100vh] w-[200px] max-w-full items-center justify-center gap-[20px] self-stretch bg-white bg-opacity-[0%] backdrop-filter backdrop-blur-lg shadow-lg px-0 py-[14.5px] pb-7 pt-0 font-[600]  md:flex md:h-auto md:w-0 md:flex-1 md:justify-end md:shadow-none`}>
                 <Link
                   className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/" ? "text-red-400" : ""}`}
                   href="/">
@@ -139,6 +139,15 @@ const Header = () => {
                   href="/contact">
                   Contact us
                 </Link>
+                <div className="flex cursor-pointer flex-row items-start justify-start rounded-8xs text-white font-bold bg-[#E71D36] px-[20px] py-[4px] [border:none] hover:bg-[#e71d35bb] md:px-[34.5px] md:py-[6.5px]">
+                  <Link
+                    // className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/contact us" ? "text-red-400" : ""}`}
+                    href="/login">
+
+                    Login
+
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
