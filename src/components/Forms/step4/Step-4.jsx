@@ -30,9 +30,9 @@ function FormPayment({ with_cash, eventId, price }) {
           className="object-top"
         />
       </div>
-      <div className="mt-[-20px] flex h-full w-[500px] flex-col items-center justify-center rounded bg-[#fcf9f9] px-6 py-16 shadow-lg">
-        <p className="pb-4 text-4xl font-medium">Success</p>
-        <p className="text-6x1 pb-20 font-[600]">
+      <div className="mt-[-20px] flex h-full max-w-full flex-col items-center justify-center rounded bg-[#fcf9f9] px-6 py-16 shadow-lg md:w-[500px]">
+        <p className="pb-4 font-primary text-heading_1 font-medium">Success</p>
+        <p className="pb-20 font-secondary text-base font-medium">
           Your Event has been Appointed Successfully
         </p>
         {with_cash === true ? (
@@ -57,7 +57,7 @@ function FormPayment({ with_cash, eventId, price }) {
             <Link
               href="/"
               className="flex cursor-pointer flex-row items-start justify-start rounded-8xs border-none bg-[#E71D36] px-[20px] py-[4px] hover:bg-[#e71d35bb] md:py-[6.5px]">
-              <div className="relative inline-block text-left font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
+              <div className="relative inline-block text-center font-secondary text-base font-semibold text-white  md:text-medium">
                 Back To Home
               </div>
             </Link>

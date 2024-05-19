@@ -65,23 +65,25 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
 
   return (
     <>
-      <h2 className="text-center text-[48px] font-[500]">{pageTitle}</h2>
+      <h2 className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
+        {pageTitle}
+      </h2>
 
       <form
         name="form-personal"
         id="form-personal"
-        className="mt-[80px]"
+        className="mt-[40px]"
         onSubmit={e => handleSubmit(e)}>
-        <div className="mq675:gap-[20px] flex w-[990px] max-w-full flex-col items-end justify-start gap-[41px] text-center font-roboto text-29xl text-black">
-          <div className="flex h-[417px] w-[556px] max-w-full flex-col items-start justify-start text-base text-black">
-            <div className="rounded-12xs relative box-border flex max-w-full flex-col items-center justify-start gap-[59.8px] self-stretch bg-mistyrose px-5 py-[60px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] mq450:gap-[30px]">
-              <div className="flex w-[393px] max-w-full flex-col items-start justify-start gap-[7px]">
-                <div className="relative inline-block w-[76px] min-w-[76px]">
+        <div className="flex flex-col items-center gap-[5px] text-center font-secondary text-black">
+          <div className="flex h-[417px] w-[250px] max-w-full flex-col items-start justify-start text-base text-black sm:w-[400px] md:w-[550px]">
+            <div className="rounded-12xs relative box-border flex max-w-full flex-col justify-start gap-[59.8px] self-stretch bg-mistyrose px-10 py-[40px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] mq450:gap-[30px]">
+              <div className="flex w-full flex-col items-start justify-start gap-[5px]">
+                <p className="relative inline-block w-full text-left font-secondary">
                   Full Name
-                </div>
+                </p>
                 <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
                   <input
-                    className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-inter text-sm text-black [border:none] [outline:none]"
+                    className="relative inline-block h-[17px] w-full bg-[transparent] text-left font-inter text-sm text-black [border:none] [outline:none]"
                     placeholder="name"
                     type="text"
                     name="fullName"
@@ -90,28 +92,26 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
                   />
                 </div>
               </div>
-              <div className="flex w-[393.8px] max-w-full flex-col items-start justify-start gap-[11.2px]">
-                <div className="relative inline-block w-[115px] min-w-[115px]">
+              <div className="flex w-full flex-col items-start justify-start gap-[5px]">
+                <p className="relative inline-block w-full text-left font-secondary">
                   Phone Number
-                </div>
-                <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch py-0 pl-[1.8px] pr-0">
-                  <div className="rounded-6xs box-border flex max-w-full flex-1 flex-row items-start justify-start border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-5">
-                    <input
-                      className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-inter text-sm text-black [border:none] [outline:none]"
-                      placeholder="P.no"
-                      type="text"
-                      name="phoneNumber"
-                      value={formData.phoneNumber}
-                      onChange={handleChange}
-                    />
-                  </div>
+                </p>
+                <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+                  <input
+                    className="relative inline-block h-[17px] w-full bg-[transparent] text-left font-inter text-sm text-black [border:none] [outline:none]"
+                    placeholder="Phone no."
+                    type="text"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="btn-array flex">
+        <div className="btn-array">
           {previousButton && (
             <p>
               <input

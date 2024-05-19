@@ -49,8 +49,6 @@ const Page = () => {
     getRecentJobPost();
   }, []);
 
-  console.log("bb", Rjob);
-
   useEffect(() => {
     async function fetchJobPosts() {
       try {
@@ -68,7 +66,6 @@ const Page = () => {
     { title: "Title", key: "title" },
     { title: "Description", key: "description" },
     { title: "Date", key: "closingDate" },
-    { title: "Type", key: "type" },
     {
       title: "Status",
       key: "status",
@@ -91,7 +88,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-24">
+    <div className="flex flex-col gap-16 md:gap-24">
       <div className="relative h-[300px] w-full">
         <Image src={jobbanner} alt="banner" layout="fill" objectFit="cover" />
         <div className="absolute bottom-0 left-0 p-4">
@@ -99,7 +96,7 @@ const Page = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="focus:border-blue-500 w-[500px] appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404033] focus:outline-none"
+              className="focus:border-blue-500 max-w-[400px] appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404081] shadow-lg focus:outline-none md:w-[500px]"
             />
             <div className="pointer-events-none absolute bottom-0 right-0 mr-4 flex h-full items-center">
               <FaSearch className="text-gray-500" />
@@ -107,25 +104,29 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="text-center font-roboto text-[40px] font-bold">
+      <div className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
         Jobs Category
       </div>
-      <div className="flex flex-col justify-between px-40 py-5 md:flex-row">
+      <div className="flex flex-wrap justify-evenly gap-[20px] md:flex-row">
         <div className="flex h-[150px]  w-[180px] flex-shrink-0  flex-col items-center justify-center gap-[25px] bg-[#FFF2F2] shadow-md">
           <FaBullhorn size="1.6em" fill="#ED3405" />
-          <div className="font-roboto text-[25px] font-[300px]">Marketing</div>
+          <div className="font-secondary text-[25px] font-[300px]">
+            Marketing
+          </div>
         </div>
         <div className="flex h-[150px] w-[180px]  flex-shrink-0  flex-col items-center justify-center gap-[25px] bg-[#FFF2F2] shadow-md">
           <FaReceipt size="1.6em" fill="#ED3405" />
-          <div className="font-roboto text-[25px] font-[300px]">Finance</div>
+          <div className="font-secondary  text-[25px] font-[300px]">
+            Finance
+          </div>
         </div>
         <div className="flex h-[150px] w-[180px] flex-shrink-0  flex-col items-center justify-center gap-[25px] bg-[#FFF2F2] shadow-md">
           <FaHeart size="1.6em" fill="#ED3405" />
-          <div className="font-roboto text-[25px] font-[300px]">Health</div>
+          <div className="font-secondary  text-[25px] font-[300px]">Health</div>
         </div>
         <div className="flex h-[150px] w-[180px]  flex-shrink-0  flex-col items-center justify-center gap-[25px] bg-[#FFF2F2] shadow-md">
           <FaPhoneAlt size="1.6em" fill="#ED3405" />
-          <div className="font-roboto text-[25px] font-[300px]">
+          <div className="font-secondary  text-[25px] font-[300px]">
             Call center
           </div>
         </div>
@@ -133,13 +134,13 @@ const Page = () => {
 
       <div className="flex flex-row justify-between">
         <div className="container mx-auto px-4">
-          <div className="p-2 font-roboto text-[40px] font-bold">
+          <div className="p-2 font-primary text-heading_2 font-bold md:text-heading_1">
             Jobs Listing
           </div>
-          <div className="flex flex-col  justify-between md:flex-row">
+          <div className="flex flex-col justify-between xl:flex-row">
             <div>
               <div className="overflow-x-auto">
-                <table className="w-[900px] table-auto border-separate border-spacing-x-0 text-small font-regular text-black md:text-base">
+                <table className="w-[900px] max-w-full table-auto border-separate border-spacing-x-0 font-secondary text-small  font-regular text-black md:text-base">
                   <colgroup>
                     {columns.map((_, index) => (
                       <col key={`col-${index}`} className="w-auto" />
@@ -150,7 +151,7 @@ const Page = () => {
                       {columns.map((column, index) => (
                         <th
                           key={`headCell-${index}`}
-                          className="!z-0 bg-black px-2 py-[15px] text-left font-regular text-white">
+                          className="!z-0 bg-black px-2 py-[15px] text-left font-secondary font-regular text-white">
                           {column.title}
                         </th>
                       ))}
@@ -161,7 +162,7 @@ const Page = () => {
                       <tr>
                         <td
                           colSpan={columns.length}
-                          className="text-bt_tertiary">
+                          className="font-secondary text-bt_tertiary">
                           No jobs found
                         </td>
                       </tr>
@@ -191,7 +192,9 @@ const Page = () => {
             </div>
             <div>
               <div className="flex flex-col gap-2">
-                <div className="text-[20px] font-medium">Recent Jobs</div>
+                <div className="font-secondary text-[20px] font-medium">
+                  Recent Jobs
+                </div>
                 <div className="m-4 flex min-h-[230px] w-[250px]  flex-shrink-0 flex-col items-center justify-center gap-[15px] bg-[#FFF2F2] p-4 shadow-md">
                   <div className="flex flex-col items-center justify-center">
                     <svg
@@ -205,14 +208,14 @@ const Page = () => {
                         fill="#ED3405"
                       />
                     </svg>
-                    <div className="font-roboto text-[25px] font-[300px]">
+                    <div className="font-secondary text-[25px] font-[300px]">
                       {Rjob.title}
                     </div>
                   </div>
-                  <div className="p-2">{Rjob.description}</div>
+                  <div className="p-2 font-secondary">{Rjob.description}</div>
                   <Link href={`/jobs/jobDescription/${Rjob.id}`}>
                     <button className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[10px] py-[3px] shadow-lg [border:none] hover:border-2  md:py-[6.5px]">
-                      <div className="relative inline-block w-[100px] text-left font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
+                      <div className="relative inline-block text-left  font-secondary text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
                         Apply Now
                       </div>
                     </button>

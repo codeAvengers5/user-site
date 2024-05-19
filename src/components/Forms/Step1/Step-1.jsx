@@ -101,10 +101,18 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
 
   return (
     <>
-      <h2 className="text-center text-[48px] font-[500]">{pageTitle}</h2>
+      <h2 className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
+        {pageTitle}
+      </h2>
 
-      <form name="form-event" id="form-event" onSubmit={e => handleSubmit(e)}>
-        <label htmlFor="event" className="text-[34px] font-[500]">
+      <form
+        name="form-event"
+        id="form-event"
+        className="m-[5px]"
+        onSubmit={e => handleSubmit(e)}>
+        <label
+          htmlFor="event"
+          className="font-secondary text-base font-medium md:text-heading_2">
           Select Events<span className="required-asterix">*</span>
         </label>
         <div className="mb-[50px] flex flex-wrap gap-[10px]">
@@ -123,7 +131,7 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                 alt=""
                 src="/images/wpfweddingcake.svg"
               />
-              <p className="relative mt-2">Wedding</p>
+              <p className="relative mt-2 font-secondary">Wedding</p>
             </div>
           </article>
           <article className="card2">
@@ -141,7 +149,7 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                 alt=""
                 src="/images/twemojibirthdaycake.svg"
               />
-              <p className="relative  mt-2">Birthday</p>
+              <p className="relative  mt-2 font-secondary">Birthday</p>
             </div>
           </article>
           <article className="card3">
@@ -159,7 +167,7 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                 alt=""
                 src="/images/gameiconsdeadlystrike.svg"
               />
-              <p className="relative  mt-2">Teskar</p>
+              <p className="relative  mt-2 font-secondary">Teskar</p>
             </div>
           </article>
           <article className="card4">
@@ -177,18 +185,20 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                 alt=""
                 src="/images/graduation-cap-svgrepo-com 1.png"
               />
-              <p className="relative  mt-2">Graduation</p>
+              <p className="relative  mt-2 font-secondary">Graduation</p>
             </div>
           </article>
         </div>
         {errors.event && <span className="error-message">{errors.event}</span>}
 
         <div>
-          <label htmlFor="time" className="text-[34px] font-[500]">
+          <label
+            htmlFor="time"
+            className=" font-secondary text-base font-medium md:text-heading_2">
             Select Time<span className="required-asterix">*</span>
           </label>
-          <div className="flex w-full gap-[80px]">
-            <div className="date-picker  border-2 border-meke-550 p-4">
+          <div className="flex w-full flex-col-reverse gap-[80px] md:flex-row">
+            <div className="date-picker  border-2 border-meke-550 p-1 sm:p-4">
               <DatePicker
                 name="date"
                 selected={formData.date}
@@ -218,7 +228,7 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                   />
                   <label
                     htmlFor="break"
-                    className="rounded-8x flex w-[280px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)]">
+                    className="rounded-8x flex w-[240px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)] md:min-w-[280px]">
                     <img
                       className="relative h-[50px] w-[50px] shrink-0 overflow-hidden"
                       loading="lazy"
@@ -226,10 +236,10 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                       src="/images/fluentmdl2breakfast.svg"
                     />
                     <div className="flex flex-col items-start justify-start gap-[0.187rem]">
-                      <h1 className="relative m-0 inline-block min-w-[6.75rem] font-secondary text-base font-normal mq450:text-[1.188rem]">
+                      <h1 className="relative m-0 inline-block  font-secondary text-base font-normal">
                         Breakfast
                       </h1>
-                      <p className="relative inline-block min-w-[5.063rem] whitespace-nowrap font-secondary mq450:text-[1rem]">
+                      <p className="relative inline-block  whitespace-nowrap font-secondary">
                         3:00 AM
                       </p>
                     </div>
@@ -247,7 +257,7 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                   />
                   <label
                     htmlFor="lunch"
-                    className="rounded-8x flex w-[280px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch  bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)]">
+                    className="rounded-8x flex w-[240px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch bg-pink  px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)] md:w-[280px]">
                     <img
                       className="relative h-[50px] w-[50px] shrink-0 overflow-hidden"
                       loading="lazy"
@@ -255,10 +265,10 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                       src="/images/materialsymbolslunchdiningoutline.svg"
                     />
                     <div className="flex flex-col items-start justify-start gap-[0.187rem]">
-                      <h1 className="relative m-0 inline-block min-w-[6.75rem] font-secondary text-base font-normal mq450:text-[1.188rem]">
+                      <h1 className="relative m-0 inline-block min-w-[6.75rem] font-secondary text-base font-normal ">
                         Lunch
                       </h1>
-                      <p className="relative inline-block min-w-[5.063rem] whitespace-nowrap font-secondary mq450:text-[1rem]">
+                      <p className="relative inline-block min-w-[5.063rem] whitespace-nowrap font-secondary">
                         6:00 PM
                       </p>
                     </div>
@@ -276,7 +286,7 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                   />
                   <label
                     htmlFor="dinner"
-                    className="rounded-8x flex w-[280px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch  bg-pink px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)]">
+                    className="rounded-8x flex w-[240px] cursor-pointer flex-row items-start justify-start gap-[50px] self-stretch bg-pink  px-[10px] py-[7px] shadow-[0px_10px_40px_rgba(0,_0,_0,_0.19)] md:w-[280px]">
                     <img
                       className="relative h-[50px] w-[50px] shrink-0 overflow-hidden"
                       loading="lazy"
@@ -284,10 +294,10 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
                       src="/images/mdidinner.svg"
                     />
                     <div className="flex flex-col items-start justify-start gap-[0.187rem]">
-                      <h1 className="relative m-0 inline-block min-w-[6.75rem] font-secondary text-base font-normal mq450:text-[1.188rem]">
+                      <h1 className="relative m-0 inline-block min-w-[6.75rem] font-secondary text-base font-normal">
                         Dinner
                       </h1>
-                      <p className="relative inline-block min-w-[5.063rem] whitespace-nowrap font-secondary mq450:text-[1rem]">
+                      <p className="relative inline-block min-w-[5.063rem] whitespace-nowrap font-secondary">
                         1:00 PM
                       </p>
                     </div>

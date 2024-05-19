@@ -9,15 +9,15 @@ const Events = () => {
           <img
             className="z-1 relative left-[0px] right-[0px] !m-[0] h-[422px] w-full shrink-0 object-cover"
             alt=""
-            src="images/rectangle-97@2x.png"
+            src="/images/rectangle-97@2x.png"
           />
         </div>
-        <div className="text-center font-roboto text-[3rem] font-medium">
+        <div className="text-center font-primary text-heading_1 font-bold">
           Events
         </div>
 
         <div className="mt-[25px] flex flex-col-reverse justify-around gap-[20px] xl:flex-row">
-          <div className="inline-block w-[520px] text-base">
+          <div className="inline-block w-[520px] font-secondary text-base">
             Lorem ipsum dolor sit amet consectetur. Ut non vitae arcu commodo
             sed in platea amet nec.Lorem ipsum dolor sit amet consectetur. Ut
             non vitae arcu commodo sed in platea amet nec.Lorem ipsum dolor sit
@@ -32,39 +32,39 @@ const Events = () => {
               <img
                 className="relative h-[100px] w-[100px] shrink-0"
                 alt=""
-                src="images/wpfweddingcake.svg"
+                src="/images/wpfweddingcake.svg"
               />
-              <p className="relative">Wedding</p>
+              <p className="relative font-secondary">Wedding</p>
             </div>
             <div className="flex h-[230px] w-[230px] flex-col items-center justify-center gap-[35px] rounded-[3px] bg-[#FFECEC]">
               <img
                 className="relative h-[100px] w-[100px] shrink-0"
                 alt=""
-                src="images/twemojibirthdaycake.svg"
+                src="/images/twemojibirthdaycake.svg"
               />
-              <p className="relative">Birthday</p>
+              <p className="relative font-secondary">Birthday</p>
             </div>
             <div className="flex h-[230px] w-[230px] flex-col items-center justify-center gap-[35px] rounded-[3px] bg-[#FFECEC]">
               <img
                 className="relative h-[100px] w-[100px] shrink-0"
                 alt=""
-                src="images/gameiconsdeadlystrike.svg"
+                src="/images/gameiconsdeadlystrike.svg"
               />
-              <p className="relative">Teskar</p>
+              <p className="relative font-secondary">Teskar</p>
             </div>
             <div className="flex h-[230px] w-[230px] flex-col items-center justify-center gap-[35px] rounded-[3px] bg-[#FFECEC]">
               <img
                 className="relative h-[100px] w-[100px] shrink-0"
                 alt=""
-                src="images/graduation-cap-svgrepo-com 1.png"
+                src="/images/graduation-cap-svgrepo-com 1.png"
               />
-              <p className="relative">Graduation</p>
+              <p className="relative font-secondary">Graduation</p>
             </div>
           </div>
         </div>
         <Link href={"/events/eventappoint"}>
           <button className="flex cursor-pointer flex-row items-start justify-start rounded-[10px] bg-crimson-200 px-[3.156rem] py-[1.093rem] [border:none]">
-            <div className="relative  text-[24px] font-semibold text-white mq450:text-base">
+            <div className="relative  font-secondary text-medium font-bold text-white">
               Appoint your Event
             </div>
           </button>

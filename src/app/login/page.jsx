@@ -3,6 +3,9 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../slices/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const [users, setUsers] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
@@ -11,8 +14,10 @@ const Login = () => {
   useEffect(() => {
     if (error) {
       console.log(error);
+      toast.error("Login Failed!");
     } else if (success) {
       console.log(success);
+      toast.success("Login successful!");
     }
   }, [error, success]);
   const handleSubmit = async e => {
@@ -30,56 +35,82 @@ const Login = () => {
   };
 
   return (
-    <div className="font-Roboto relative h-[1025px] w-full overflow-hidden bg-white text-left text-xl text-darkslategray">
-      <b className="absolute left-[824px] top-[259px] text-[48px]">
-        LOGIN ACCOUNT
-      </b>
-      <div className="absolute left-[826.5px] top-[381px] font-medium">
-        Username
+    <div className="mx-[40px] my-[10px] flex max-h-[70vh] max-w-full flex-col items-center md:mx-[80px] md:my-[20px] ">
+      <div className="mb-[50px]">
+        <p className="font-primary text-heading_1 font-medium text-meke-200 md:text-heading_2">
+          Hello Again!
+        </p>
+        <p className="font-secondary text-sm font-light text-black md:text-base">
+          Please sign in to your account
+        </p>
       </div>
-      <div className="absolute left-[826.5px] top-[546px] font-medium">
-        Password
+      <div className="flex h-[400px] w-[500px] max-w-full flex-col-reverse gap-x-[100px] rounded-md bg-pink p-8 shadow-xl md:flex-row">
+        <form
+          className="mx-auto flex w-[400px] max-w-full flex-col justify-center gap-y-[20px]"
+          onSubmit={handleSubmit}>
+          <div>
+            {" "}
+            <p className="mb-[5px] font-secondary font-light">Email</p>
+            <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+              <input
+                className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary  text-sm text-black [border:none] [outline:none]"
+                type="text"
+                placeholder="Enter your email"
+                name="email"
+                value={users.email}
+                onChange={onInputChange}
+              />
+              {/* <CustomErrorViewer
+              isShow={errors.email !== ""}
+              text={errors.email}
+            /> */}
+            </div>
+          </div>
+          <div>
+            {" "}
+            <p className="mb-[5px] font-secondary font-light">Password</p>
+            <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+              <input
+                className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary text-sm text-black [border:none] [outline:none]"
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                value={users.password}
+                onChange={onInputChange}
+              />
+              {!users.password ? (
+                ""
+              ) : (
+                <PasswordChecklist
+                  className="text-sm"
+                  rules={["capital", "specialChar", "minLength", "number"]}
+                  minLength={8}
+                  value={users.password}
+                />
+              )}
+            </div>
+          </div>
+          <div className="w-full text-right  font-secondary sm:max-w-md">
+            <Link href="/forgotpassword" className="text-sm text-meke-100">
+              Forgot Password?
+            </Link>
+          </div>
+          <button className="box-border flex h-[50px] flex-row items-center justify-center rounded-[10px] bg-[#E71D36] p-2.5 font-secondary text-base text-white md:text-[24px]">
+            Login
+          </button>
+          <div className="text-center font-secondary  text-sm font-light">
+            Don't have an account?
+            <Link href="/register" className="font-semibold text-meke-100">
+              {" "}
+              Signup
+            </Link>
+          </div>
+        </form>
       </div>
-      <div className="absolute left-[826.5px] top-[440px] h-[70px] w-[488px] shadow-[0px_1px_4px_rgba(0,_0,_0,_0.25)]">
-        <input
-          type="text"
-          placeholder="UserName or Email"
-          name="email"
-          value={users.email}
-          onChange={onInputChange}
-          className="absolute left-0 top-0 h-[70px] w-[488px] rounded bg-snow px-2 py-1.5"
-        />
-      </div>
-      <div className="absolute left-[826.5px] top-[605px] h-[70px] w-[488px] shadow-[0px_1px_4px_rgba(0,_0,_0,_0.25)]">
-        <input
-          type="password"
-          name="password"
-          value={users.password}
-          onChange={onInputChange}
-          className="absolute left-0 top-0 h-[70px] w-[488px] rounded bg-snow px-2 py-1.5"
-        />
-      </div>
-      <div className="absolute left-[827px] top-[720px] flex flex-row justify-between">
-        <button
-          onClick={handleSubmit}
-          className="box-border  flex h-[50px] w-[100px] flex-row items-center justify-center rounded-[10px] bg-[#E71D36] p-2.5 text-[24px] text-white">
-          <div className="relative font-medium">Login</div>
-        </button>
-        <div className=" pl-[190px] font-medium">
-          <Link href="/">Already a member?</Link>
-        </div>
-      </div>
-      <img
-        className="absolute left-[37px] top-[36px] h-[146px] w-[247px] rounded-[50%] object-cover"
-        alt=""
-        src="/images/ellipse-10@2x.png"
-      />
-      <div className="absolute left-[-1808px] top-[2201px] h-[171px] w-[366px] bg-lightsteelblue" />
-      <div className="absolute left-[169px] top-[1986px] h-[269px] w-[880px]" />
-      <img
-        className="absolute left-[0px] top-[148px] h-[877px] w-[695px] object-cover"
-        alt=""
-        src="images/mobilelogin-1@2x.png"
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        className="absolute right-0 top-0 mt-20 w-[40px] max-w-sm p-4"
       />
     </div>
   );

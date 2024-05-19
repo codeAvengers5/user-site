@@ -40,9 +40,9 @@ export default function ForgotPassword() {
   }, [success]);
 
   return (
-    <div className="mx-auto flex h-screen min-h-screen items-center justify-center px-6 py-8 lg:py-0">
+    <div className="mx-auto mt-[200px] flex items-center justify-center px-6 py-8 lg:py-0">
       <div className="w-full rounded-md bg-white p-6 shadow-lg sm:max-w-md">
-        <h1 className="mb-6 text-center text-2xl font-bold text-bt_primary">
+        <h1 className="mb-6 text-center text-2xl font-bold text-meke-200">
           Forgot Password
         </h1>
         <form className="flex flex-col" onSubmit={handleSubmit}>
@@ -61,8 +61,8 @@ export default function ForgotPassword() {
               onChange={e => setEmail(e.target.value)}
             />
           </div>
-          <button className="flex w-[100px] cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[10px] py-[3px] shadow-lg [border:none]  hover:border-2 md:py-[6.5px]">
-            <div className="relative inline-block w-[100px] text-center font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
+          <button className="flex w-full cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[10px] py-[3px] shadow-lg [border:none]  hover:border-2 md:py-[6.5px]">
+            <div className="relative inline-block w-full text-center font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
               send
             </div>
           </button>

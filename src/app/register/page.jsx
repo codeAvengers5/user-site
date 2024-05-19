@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../slices/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const initialState = {
   username: "",
   email: "",
@@ -23,9 +25,9 @@ const Registration = () => {
 
   useEffect(() => {
     if (error) {
-      console.log("e", error);
+      toast.error("Registration Failed!");
     } else if (success) {
-      console.log("s", success);
+      toast.success("Registered successful!");
     }
   }, [error, success]);
   const handleSubmit = async e => {
@@ -39,78 +41,93 @@ const Registration = () => {
   };
 
   return (
-    <div className="font-Roboto relative h-[1025px] w-full overflow-hidden border-2 border-meke-200 bg-white text-left text-xl text-darkslategray">
-      <b className="absolute left-[827px] top-[233px] text-29xl">
-        Create your account
-      </b>
-      <div className="absolute left-[831px] top-[359px] font-medium">Name</div>
-      <div className="absolute left-[831px] top-[497px] font-medium">Email</div>
-      <div className="absolute left-[831px] top-[643px] font-medium">
-        Password
+    <div className="mx-[40px] my-[10px] flex max-h-[70vh] max-w-full flex-col items-center md:mx-[80px] md:my-[20px] ">
+      <div className="mb-[50px]">
+        <p className="font-primary text-heading_1 font-medium text-meke-200 md:text-heading_2">
+          Create your account
+        </p>
       </div>
-
-      <div className="absolute left-[831px] top-[398px] h-[70px] w-[488px] shadow-[0px_1px_4px_rgba(0,_0,_0,_0.25)]">
-        <input
-          type="text"
-          placeholder="UserName"
-          name="username"
-          value={users.username}
-          onChange={onInputChange}
-          className="absolute left-[0px] top-[0px] h-[70px] w-[488px] bg-snow"
-        />
-      </div>
-      <div className="absolute left-[831px] top-[543px] h-[70px] w-[488px] shadow-[0px_1px_4px_rgba(0,_0,_0,_0.25)]">
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={users.email}
-          onChange={onInputChange}
-          className="absolute left-[0px] top-[0px] h-[70px] w-[488px] bg-snow"
-        />
-      </div>
-      <div className="absolute left-[831px] top-[686px] h-[70px] w-[488px] shadow-[0px_1px_4px_rgba(0,_0,_0,_0.25)]">
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={users.password}
-          onChange={onInputChange}
-          className="absolute left-[0px] top-[0px] h-[70px] w-[488px] bg-snow"
-        />
-      </div>
-      <button
-        onClick={handleSubmit}
-        className="bg-crimson absolute left-[831px] top-[826px] box-border flex h-[76px] w-[492px] flex-row items-center justify-center rounded-[25px] p-2.5 text-5xl text-red-200">
-        <div className="relative font-medium">Sign up</div>
-      </button>
-      <div className="absolute left-[1142px] top-[98px] font-medium">
-        Already a member?
-      </div>
-      <img
-        className="absolute left-[37px] top-[36px] h-[146px] w-[247px] rounded-[50%] object-cover"
-        alt=""
-        src="images/ellipse-10@2x.png"
-      />
-      <div className="absolute left-[-1808px] top-[2201px] h-[171px] w-[366px] bg-lightsteelblue" />
-      <div className="absolute left-[169px] top-[1986px] h-[269px] w-[880px]" />
-      <img
-        className="absolute left-[0px] top-[148px] h-[877px] w-[695px] object-cover"
-        alt=""
-        src="images/mobilelogin-1@2x.png"
-      />
-      <div className="text-crimson absolute left-[1222px] top-[136px] h-6 w-[79px]">
-        <Link href="/login">
-          <div className="absolute left-[29px] top-[0px] font-medium">
-            Login
+      <div className="flex h-[500px] w-[500px] max-w-full flex-col-reverse gap-x-[100px] rounded-md bg-pink bg-opacity-[10%] p-8 shadow-xl md:flex-row">
+        <form
+          className="mx-auto flex w-[400px] max-w-full flex-col justify-center gap-y-[20px]"
+          onSubmit={handleSubmit}>
+          <div>
+            {" "}
+            <p className="mb-[5px] font-secondary font-light">Username</p>
+            <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+              <input
+                className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary text-sm text-black [border:none] [outline:none]"
+                type="text"
+                placeholder="Enter your email"
+                name="email"
+                value={users.username}
+                onChange={onInputChange}
+              />
+              {/* <CustomErrorViewer
+              isShow={errors.email !== ""}
+              text={errors.email}
+            /> */}
+            </div>
           </div>
-          <img
-            className="absolute left-[0px] top-[0px] h-6 w-6 overflow-hidden"
-            alt=""
-            src="images/mdi_password.svg"
-          />
-        </Link>
+          <div>
+            {" "}
+            <p className="mb-[5px] font-secondary font-light">Email</p>
+            <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+              <input
+                className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary  text-sm text-black [border:none] [outline:none]"
+                type="text"
+                placeholder="Enter your email"
+                name="email"
+                value={users.email}
+                onChange={onInputChange}
+              />
+              {/* <CustomErrorViewer
+              isShow={errors.email !== ""}
+              text={errors.email}
+            /> */}
+            </div>
+          </div>
+          <div>
+            {" "}
+            <p className="mb-[5px] font-secondary font-light">Password</p>
+            <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
+              <input
+                className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary text-sm text-black [border:none] [outline:none]"
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                value={users.password}
+                onChange={onInputChange}
+              />
+              {!users.password ? (
+                ""
+              ) : (
+                <PasswordChecklist
+                  className="text-sm"
+                  rules={["capital", "specialChar", "minLength", "number"]}
+                  minLength={8}
+                  value={users.password}
+                />
+              )}
+            </div>
+          </div>
+          <button className="box-border flex h-[50px] flex-row items-center justify-center rounded-[10px] bg-[#E71D36] p-2.5 font-secondary text-base text-white md:text-[24px]">
+            Signup
+          </button>
+          <div className="text-center font-secondary text-sm font-light">
+            Already have an account?
+            <Link href="/login" className="font-semibold text-meke-100">
+              {" "}
+              Login
+            </Link>
+          </div>
+        </form>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        className="absolute right-0 top-0 mt-20 w-[40px] max-w-sm p-4"
+      />
     </div>
   );
 };
