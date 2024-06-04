@@ -5,6 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../slices/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import dynamic from "../../../node_modules/next/dynamic";
+import { useRouter } from "../../../node_modules/next/navigation";
+const PasswordChecklist = dynamic(() => import("react-password-checklist"), {
+  ssr: false
+});
 const initialState = {
   username: "",
   email: "",
@@ -12,6 +17,7 @@ const initialState = {
 };
 
 const Registration = () => {
+  const router = useRouter();
   const [users, setUser] = useState(initialState);
   const dispatch = useDispatch();
   const onInputChange = e => {
@@ -39,6 +45,10 @@ const Registration = () => {
       console.log(error);
     }
   };
+  if (success) {
+    console.log("success");
+    router.push("/confirmemail");
+  }
 
   return (
     <div className="mx-[40px] my-[10px] flex max-h-[70vh] max-w-full flex-col items-center md:mx-[80px] md:my-[20px] ">
@@ -59,7 +69,7 @@ const Registration = () => {
                 className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary text-sm text-black [border:none] [outline:none]"
                 type="text"
                 placeholder="Enter your email"
-                name="email"
+                name="username"
                 value={users.username}
                 onChange={onInputChange}
               />

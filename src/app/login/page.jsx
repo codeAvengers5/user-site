@@ -1,10 +1,14 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../slices/auth";
-import { ToastContainer, toast } from "react-toastify";
+const PasswordChecklist = dynamic(() => import("react-password-checklist"), {
+  ssr: false
+});
 import "react-toastify/dist/ReactToastify.css";
+import dynamic from "../../../node_modules/next/dynamic";
 
 const Login = () => {
   const [users, setUsers] = useState({ email: "", password: "" });

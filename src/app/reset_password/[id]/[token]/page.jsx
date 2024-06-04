@@ -67,6 +67,10 @@ export default function ResetPassword() {
     }
   }, [msg]);
 
+  if (successful) {
+    router.push("/login");
+  }
+
   useEffect(() => {
     return () => {
       dispatch(resetState());

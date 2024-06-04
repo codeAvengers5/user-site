@@ -126,10 +126,10 @@ const authSlice = createSlice({
         state.msg = payload.message;
         state.isLoggedIn = true;
         state.loading = false;
-        state.user = payload.userInfo;
-        // if (typeof window !== "undefined") {
-        //   localStorage.setItem("userInfo", JSON.stringify(state.user));
-        // }
+        state.user = payload.data.userInfo;
+        if (typeof window !== "undefined") {
+          localStorage.setItem("userInfo", JSON.stringify(state.user));
+        }
         state.error = null;
         state.success = true; // Clearing any previous errors on successful login
         state.msg = payload.message;
