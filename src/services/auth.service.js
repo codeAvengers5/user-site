@@ -48,13 +48,18 @@ const resetPassword = async data => {
       return response.data;
     });
 };
+export const logout = () => {
+  console.log("get");
+  localStorage.removeItem("userInfo");
+};
 
 const authService = {
   registerUser,
   resetPassword,
   forgotPassword,
   resetPassword,
-  loginUser
+  loginUser,
+  logout
 };
 
 export default authService;

@@ -2,6 +2,7 @@ import axios from "axios";
 const API_URI = "http://localhost:8000/";
 axios.defaults.withCredentials = true;
 export async function createEvent(formDataToSend) {
+  console.log(formDataToSend);
   try {
     const response = await axios.post(API_URI + `createEvent`, formDataToSend, {
       withCredentials: true

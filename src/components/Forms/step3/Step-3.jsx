@@ -60,7 +60,6 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
         };
 
         const response = await dispatch(createEventappoint(eventData));
-        console.log(response.payload);
         setEventId(response.payload._id);
         setCash(response.payload.with_cash);
         setShowFormPayment(true);

@@ -7,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "../../../node_modules/next/dynamic";
 import { useRouter } from "../../../node_modules/next/navigation";
+import { CustomErrorViewer } from "@/components/errorviewer";
+import { validate } from "@/utils/validate";
 const PasswordChecklist = dynamic(() => import("react-password-checklist"), {
   ssr: false
 });
@@ -19,10 +21,13 @@ const initialState = {
 const Registration = () => {
   const router = useRouter();
   const [users, setUser] = useState(initialState);
+  const [errors, setErrors] = useState("")
   const dispatch = useDispatch();
   const onInputChange = e => {
     const { name, value } = e.target;
     setUser({ ...users, [name]: value });
+    const validationErrors = validate(users);
+    setErrors(validationErrors);
   };
 
   const { user, success, valid, isLoggedIn, error, msg } = useSelector(
@@ -39,7 +44,7 @@ const Registration = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      console.log("user", users);
+      // console.log("user", users);
       dispatch(register(users));
     } catch (error) {
       console.log(error);
@@ -62,7 +67,6 @@ const Registration = () => {
           className="mx-auto flex w-[400px] max-w-full flex-col justify-center gap-y-[20px]"
           onSubmit={handleSubmit}>
           <div>
-            {" "}
             <p className="mb-[5px] font-secondary font-light">Username</p>
             <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
               <input
@@ -73,11 +77,11 @@ const Registration = () => {
                 value={users.username}
                 onChange={onInputChange}
               />
-              {/* <CustomErrorViewer
+             
+            </div> <CustomErrorViewer
               isShow={errors.email !== ""}
               text={errors.email}
-            /> */}
-            </div>
+            />
           </div>
           <div>
             {" "}
@@ -91,14 +95,13 @@ const Registration = () => {
                 value={users.email}
                 onChange={onInputChange}
               />
-              {/* <CustomErrorViewer
+             
+            </div> <CustomErrorViewer
               isShow={errors.email !== ""}
               text={errors.email}
-            /> */}
-            </div>
+            />
           </div>
           <div>
-            {" "}
             <p className="mb-[5px] font-secondary font-light">Password</p>
             <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
               <input
@@ -109,7 +112,8 @@ const Registration = () => {
                 value={users.password}
                 onChange={onInputChange}
               />
-              {!users.password ? (
+             
+            </div> {!users.password ? (
                 ""
               ) : (
                 <PasswordChecklist
@@ -119,7 +123,6 @@ const Registration = () => {
                   value={users.password}
                 />
               )}
-            </div>
           </div>
           <button className="box-border flex h-[50px] flex-row items-center justify-center rounded-[10px] bg-[#E71D36] p-2.5 font-secondary text-base text-white md:text-[24px]">
             Signup

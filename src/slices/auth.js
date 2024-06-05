@@ -81,7 +81,9 @@ export const resetPassword = createAsyncThunk(
 export const resetState = createAsyncThunk("auth/resetState", async () => {
   return {};
 });
-
+export const logout = createAsyncThunk("auth/logout", async () => {
+  authService.logout();
+});
 const initialState = {
   isLoggedIn: false,
   //   user:
@@ -116,7 +118,6 @@ const authSlice = createSlice({
         state.success = false;
       })
       .addCase(register.rejected, (state, { payload }) => {
-        console.log("rr", payload);
         state.isLoggedIn = false;
         state.loading = false;
         state.error = payload; // Setting the error message on registration failure
@@ -146,6 +147,11 @@ const authSlice = createSlice({
         state.error = payload;
         console.log("pl", payload);
         state.success = false; // Setting the error message on login failure
+      }) 
+      .addCase(logout.fulfilled, state => {
+        state.isLoggedIn = false;
+        state.user = null;
+        state.error = null;
       })
       .addCase(forgotPassword.pending, state => {
         state.loading = true;

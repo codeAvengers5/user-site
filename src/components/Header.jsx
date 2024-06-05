@@ -6,10 +6,12 @@ import { TbMenu2 } from "react-icons/tb";
 import { IoCloseOutline } from "react-icons/io5";
 import Link from "../../node_modules/next/link";
 import { usePathname } from "../../node_modules/next/navigation";
+import { useSelector } from "react-redux";
+import { logout } from "@/slices/auth";
 
 const Header = () => {
   const [nav, setNav] = useState(true);
-
+  const { isLoggedIn } = useSelector(state => state.auth)
   const handleNav = () => {
     setNav(!nav);
     console.log("clicked", nav);
@@ -140,11 +142,19 @@ const Header = () => {
                   Contact us
                 </Link>
                 <div className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] font-bold text-white [border:none] hover:bg-[#e71d35bb] md:px-[34.5px] md:py-[6.5px]">
+                  {isLoggedIn ? <> 
                   <Link
-                    // className={`mx-[8px] font-secondary text-base uppercase tracking-tighter hover:text-red-200 ${pathname === "/contact us" ? "text-red-400" : ""}`}
+                  href="/"
+                     onClick={() => {
+                      logout();
+                    }}>
+                    Logout
+                  </Link></> : <>
+                  <Link
                     href="/login">
                     Login
-                  </Link>
+                  </Link></>}
+
                 </div>
               </div>
             </div>

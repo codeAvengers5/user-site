@@ -35,17 +35,6 @@ const newsSlice = createSlice({
       return action.payload;
     }
   }
-  // extraReducers: builder => {
-  //   builder
-  //     .addCase(searchNews.fulfilled, (state, { payload }) => {
-  //       state.loading = false;
-  //       state.users = payload;
-  //     })
-  //     .addCase(searchNews.rejected, (state, action) => {
-  //       state.loading = false;
-  //       state.userErr = action.payload; // Setting the error message on data fetch failure
-  //     });
-  // }
 });
 
 export const { setNews } = newsSlice.actions;

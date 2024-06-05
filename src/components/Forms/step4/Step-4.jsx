@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "../../../../node_modules/next/link";
 
 function FormPayment({ with_cash, eventId, price }) {
+  console.log(with_cash,eventId,price);
   const handleChapa = e => {
     console.log("clicked chapa");
     e.preventDefault();

@@ -9,13 +9,21 @@ const PasswordChecklist = dynamic(() => import("react-password-checklist"), {
 });
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "../../../node_modules/next/dynamic";
+import { validate } from "@/utils/validate";
+import { CustomErrorViewer } from "@/components/errorviewer";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const [users, setUsers] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState("")
+  const [rememberMe, setRememberMe] = useState(false);
+  const [users, setUsers] = useState({ email: "", password: "", rememberMe: rememberMe });
+  const router = useRouter()
   const dispatch = useDispatch();
   const { success, error } = useSelector(state => state.auth);
 
   useEffect(() => {
+      const rememberMeValue = localStorage.getItem("rememberMe") === "true";
+      setRememberMe(rememberMeValue);
     if (error) {
       console.log(error);
       toast.error("Login Failed!");
@@ -28,7 +36,11 @@ const Login = () => {
     e.preventDefault();
     try {
       console.log("user", users);
-      dispatch(login(users));
+      dispatch(login(users)).then(
+        res => {
+          if(res) router.push("/")
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -36,10 +48,15 @@ const Login = () => {
   const onInputChange = e => {
     const { name, value } = e.target;
     setUsers({ ...users, [name]: value });
+    const validationErrors = validate(users);
+    setErrors(validationErrors);
   };
-
+  const handleRememberMe = (e) => {
+    setRememberMe(e.target.checked);
+    localStorage.setItem("rememberMe", e.target.checked);
+  };
   return (
-    <div className="mx-[40px] my-[10px] flex max-h-[70vh] max-w-full flex-col items-center md:mx-[80px] md:my-[20px] ">
+    <div className="mx-[40px] my-[10px] flex  max-h-[70vh] max-w-full flex-col items-center md:mx-[80px] md:my-[20px] ">
       <div className="mb-[50px]">
         <p className="font-primary text-heading_1 font-medium text-meke-200 md:text-heading_2">
           Hello Again!
@@ -53,7 +70,6 @@ const Login = () => {
           className="mx-auto flex w-[400px] max-w-full flex-col justify-center gap-y-[20px]"
           onSubmit={handleSubmit}>
           <div>
-            {" "}
             <p className="mb-[5px] font-secondary font-light">Email</p>
             <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
               <input
@@ -64,14 +80,13 @@ const Login = () => {
                 value={users.email}
                 onChange={onInputChange}
               />
-              {/* <CustomErrorViewer
+
+            </div><CustomErrorViewer
               isShow={errors.email !== ""}
               text={errors.email}
-            /> */}
-            </div>
+            />
           </div>
           <div>
-            {" "}
             <p className="mb-[5px] font-secondary font-light">Password</p>
             <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
               <input
@@ -82,7 +97,8 @@ const Login = () => {
                 value={users.password}
                 onChange={onInputChange}
               />
-              {!users.password ? (
+             
+            </div> {!users.password ? (
                 ""
               ) : (
                 <PasswordChecklist
@@ -92,9 +108,22 @@ const Login = () => {
                   value={users.password}
                 />
               )}
-            </div>
           </div>
-          <div className="w-full text-right  font-secondary sm:max-w-md">
+          {/* <div className="w-full text-right  font-secondary sm:max-w-md"> */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input
+                id="rememberMe"
+                name="rememberMe"
+                type="checkbox"
+                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                checked={rememberMe}
+                onChange={handleRememberMe}
+              />
+              <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-900">
+                Remember me
+              </label>
+            </div>
             <Link href="/forgotpassword" className="text-sm text-meke-100">
               Forgot Password?
             </Link>

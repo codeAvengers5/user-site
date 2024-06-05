@@ -112,7 +112,7 @@ function page() {
               <p className="font-primary text-medium font-bold uppercase md:text-heading_2">
                 Latest News
               </p>
-              <div className="flex flex-col items-start justify-start gap-10 md:flex-row">
+              <div className="flex flex-col flex-wrap items-start justify-start gap-10 md:flex-row">
                 {data.map(news => (
                   <Newscard
                     key={news._id}
