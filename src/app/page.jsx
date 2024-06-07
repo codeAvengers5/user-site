@@ -114,11 +114,6 @@ export default function Home() {
                 title={promo.title}
                 paragraph1={promo.description}
               />
-               <ProjectCard
-                imgsrc={promo.images[0].url}
-                title={promo.title}
-                paragraph1={promo.description}
-              />
             </div>
           ))}
 
