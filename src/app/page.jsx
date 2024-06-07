@@ -1,11 +1,18 @@
 "use client";
 import { ProjectCard } from "@/components/card/ProjectCard";
-import DataFlow from "@/components/data-flow";
-import ErrorHandler from "@/components/error-handler";
 import FrameComponent from "@/components/frame-component";
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPromoData } from "@/slices/promoSlice";
 export default function Home() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector(state => state.promo);
+  console.log(data);
+  useEffect(() => {
+    dispatch(fetchPromoData());
+  }, [dispatch]);
   return (
     <div className="w-full max-w-[100vw]">
       {/*************************************************************  Hero Section ******************************************************************/}
@@ -28,7 +35,11 @@ export default function Home() {
               <div className="flex w-full flex-row items-start justify-start self-stretch py-0 pr-0 text-xl">
                 <div className="flex w-full flex-row flex-wrap items-start justify-start gap-[20px]">
                   <div className="relative z-[2] w-full max-w-full font-secondary md:min-w-[263px] md:flex-1 mq450:text-base">{`Lorem ipsum dolor sit amet consectetur. Tellus velit ultrices bibendum `}</div>
-                  <button className="z-[2] flex w-[150px] cursor-pointer flex-row items-start justify-start rounded-3xs border-[4px] border-solid border-red-200 bg-[transparent] px-[19px] py-[9px] hover:box-border hover:border-[4px] hover:border-solid hover:border-red-100 hover:bg-red-300">
+                  <button
+                    onClick={() => {
+                      router.push("/about");
+                    }}
+                    className="z-[2] flex w-[150px] cursor-pointer flex-row items-start justify-start rounded-3xs border-[4px] border-solid border-red-200 bg-[transparent] px-[19px] py-[9px] hover:box-border hover:border-[4px] hover:border-solid hover:border-red-100 hover:bg-red-300">
                     About Us
                   </button>
                 </div>
@@ -96,15 +107,21 @@ export default function Home() {
               On Going Project
             </h1>
           </div>
-          <div className="flex  max-w-full flex-col items-center justify-center gap-[20px]">
-            <ProjectCard
-              imgsrc={"images/rectangle-50@2x.png"}
-              title={"Building Our New Home"}
-              paragraph1={
-                "Lorem ipsum dolor sit amet consectetur. Tellus velit ultrices bibendum mollis eu sit tempor eu pulvinar. In feugiat morbi integer penatibus consequat felis."
-              }
-            />
-          </div>
+          {data && data.map((promo) => (
+            <div key={promo._id} className="flex max-w-full flex-col items-center justify-center gap-[50px]">
+              <ProjectCard
+                imgsrc={promo.images[0].url}
+                title={promo.title}
+                paragraph1={promo.description}
+              />
+               <ProjectCard
+                imgsrc={promo.images[0].url}
+                title={promo.title}
+                paragraph1={promo.description}
+              />
+            </div>
+          ))}
+
         </div>
       </section>
 

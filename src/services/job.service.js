@@ -33,7 +33,14 @@ export async function getRecentJobPost() {
     throw error || "Failed to fetch job posts";
   }
 }
-
+export const searchJobs = async title => {
+  try {
+    const response = await axios.get(API_URI + `searchjobs?title=${title}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 export const getJobPostById = async id => {
   try {
     const response = await axios.get(API_URI + `getJobPostsId/${id}`, {
@@ -44,7 +51,16 @@ export const getJobPostById = async id => {
     throw error.response.data.error || "Failed to fetch job post by ID";
   }
 };
-
+export async function getUserJob () {
+  try {
+    const response = await axios.get(API_URI + `getjobuser/`, {
+      withCredentials: true
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data.error || "Failed to fetch job by ID";
+  }
+};
 export const job_apply = async (jobId, formData) => {
   const formDataToSend = new FormData();
   formDataToSend.append("full_name", formData.full_name);

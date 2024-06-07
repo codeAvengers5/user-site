@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPhone } from "react-icons/fa6";
 import { BiSolidEnvelope } from "react-icons/bi";
 import { TbMenu2 } from "react-icons/tb";
@@ -7,21 +7,34 @@ import { IoCloseOutline } from "react-icons/io5";
 import Link from "../../node_modules/next/link";
 import { usePathname } from "../../node_modules/next/navigation";
 import { useSelector } from "react-redux";
-import { logout } from "@/slices/auth";
-
+import { useRouter } from "next/navigation";
 const Header = () => {
   const [nav, setNav] = useState(true);
-  const { isLoggedIn } = useSelector(state => state.auth)
+  const pathname = usePathname();
+  const { user } = useSelector(state => state.auth)
+  const router = useRouter();
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+ 
+  const toggleModalVisibility = () => {
+    setModalVisible(!isModalVisible);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("siteuserInfo");
+    console.log("logging out...");
+    // router.push('/');
+    window.location.reload();
+
+  };
   const handleNav = () => {
     setNav(!nav);
-    console.log("clicked", nav);
   };
-
-  const pathname = usePathname();
-
   return (
     <div className="sticky start-0 top-0 z-20 w-full">
-      {/* this is the most top section */}
       <section className="box-border flex flex-col flex-wrap items-start justify-between gap-[20px] self-stretch bg-darkslategray py-[1.5px] pl-8 pr-[35px] text-[#ffffff] md:flex-row">
         <div className="flex  max-w-full flex-col flex-wrap items-start justify-start gap-[20px] sm:flex-row">
           <div className="box-border flex flex-col items-start justify-start px-0 pb-0 pt-[14.5px]">
@@ -41,7 +54,6 @@ const Header = () => {
           <div className="box-border flex w-[30px] flex-col items-start justify-start pb-0 pl-0 pr-[11px] pt-[15.5px] md:w-[62px]">
             <div className="relative self-stretch mq450:text-small">
               <a href="tel:8131" className="m-0">
-                {" "}
                 8131
               </a>
             </div>
@@ -68,9 +80,12 @@ const Header = () => {
 
         <div className="flex h-[51px] flex-col items-center justify-start px-0 pb-0  pt-[5px]">
           <button
+            target="_blank"
             onClick={() => {
-              window.location.href =
-                "https://www.gofundme.com/f/mekedonia-charity-help-build-home-for-the-homeless";
+              window.open(
+                "https://www.gofundme.com/f/mekedonia-charity-help-build-home-for-the-homeless",
+                "_blank"
+              );
             }}
             className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] [border:none] hover:bg-[#e71d35bb] md:px-[34.5px] md:py-[6.5px]">
             <div className="relative inline-block min-w-[70px] text-left font-inter text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
@@ -79,8 +94,6 @@ const Header = () => {
           </button>
         </div>
       </section>
-
-      {/* the nav bar */}
       <div className="box-border flex max-w-full flex-row items-center  self-stretch bg-white bg-opacity-[40%] text-black shadow-lg backdrop-blur-lg backdrop-filter  mq1325:box-border  mq1125:box-border mq450:box-border">
         <div className="mx-[20px] flex max-w-full flex-1 flex-col items-start justify-start gap-[34px] mq800:gap-[17px_34px]">
           <div className="box-border flex h-[120px] max-w-full flex-row items-start justify-start self-stretch text-xl ">
@@ -141,21 +154,44 @@ const Header = () => {
                   href="/contact">
                   Contact us
                 </Link>
-                <div className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] font-bold text-white [border:none] hover:bg-[#e71d35bb] md:px-[34.5px] md:py-[6.5px]">
-                  {isLoggedIn ? <> 
-                  <Link
-                  href="/"
-                     onClick={() => {
-                      logout();
-                    }}>
-                    Logout
-                  </Link></> : <>
-                  <Link
-                    href="/login">
-                    Login
-                  </Link></>}
-
+                <div className="">
+                  {isClient && user ? (
+                    <div
+                      className="relative cursor-pointer items-center"
+                      onClick={toggleModalVisibility}
+                    >
+                      <p
+                        className={`flex items-center justify-center bg-red-400 text-base font-extrabold uppercase text-tx_tertiary md:text-heading_2 rounded rounded-full ring-2 ring-br_secondary`}
+                        style={{ width: 45, height: 45 }}>
+                        {user?.username.substring(0,1)}
+                      </p>
+                    </div>)
+                    : (
+                      <div className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] font-bold text-white [border:none] hover:bg-[#e71d35bb] md:px-[34.5px] md:py-[6.5px]">
+                        <Link
+                          href="/login">
+                          Login
+                        </Link>
+                      </div>
+                    )}
                 </div>
+                {isModalVisible && (
+                  <div className="z-99999 fixed right-[10px] top-[60px] w-[150px] bg-white opacity-80">
+                    <div
+                      className="items-centemb-2 relative flex cursor-pointer p-[10px]"
+                      onClick={() => {
+                        router.push("/profile");
+                      }}>
+                      <p>Profile </p>
+                    </div>
+                    <div className="border-b-2 border-black px-8 opacity-50" />
+                    <div
+                      className="items-cente relative flex cursor-pointer p-[10px]"
+                      onClick={handleLogout}>
+                      <p>Logout</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

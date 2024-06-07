@@ -9,12 +9,10 @@ const PasswordChecklist = dynamic(() => import("react-password-checklist"), {
 });
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "../../../node_modules/next/dynamic";
-import { validate } from "@/utils/validate";
-import { CustomErrorViewer } from "@/components/errorviewer";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const [errors, setErrors] = useState("")
+  const [errors, setErrors] = useState({ error: null, email: "", password: "" })
   const [rememberMe, setRememberMe] = useState(false);
   const [users, setUsers] = useState({ email: "", password: "", rememberMe: rememberMe });
   const router = useRouter()
@@ -22,25 +20,55 @@ const Login = () => {
   const { success, error } = useSelector(state => state.auth);
 
   useEffect(() => {
-      const rememberMeValue = localStorage.getItem("rememberMe") === "true";
-      setRememberMe(rememberMeValue);
+    const rememberMeValue = localStorage.getItem("rememberMe") === "true";
+    setRememberMe(rememberMeValue);
     if (error) {
-      console.log(error);
-      toast.error("Login Failed!");
-    } else if (success) {
-      console.log(success);
-      toast.success("Login successful!");
+      setErrors({ error: error })
+      toast.error(errors.error)
+      return;
+    }
+    if(success){
+      // toast.success("Login Succefully")
+      router.push("/")
     }
   }, [error, success]);
   const handleSubmit = async e => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!users.email) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter your email.",
+      }));
+      return;
+    } else if (!emailRegex.test(users.email)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email.",
+      }));
+      return;
+    }
+    else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+    if (!users.password) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: "Please enter your password.",
+      }));
+      return;
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: "",
+      }));
+    }
     try {
-      console.log("user", users);
-      dispatch(login(users)).then(
-        res => {
-          if(res) router.push("/")
-        }
-      );
+      dispatch(login(users));
+     
     } catch (error) {
       console.log(error);
     }
@@ -48,8 +76,6 @@ const Login = () => {
   const onInputChange = e => {
     const { name, value } = e.target;
     setUsers({ ...users, [name]: value });
-    const validationErrors = validate(users);
-    setErrors(validationErrors);
   };
   const handleRememberMe = (e) => {
     setRememberMe(e.target.checked);
@@ -71,6 +97,8 @@ const Login = () => {
           onSubmit={handleSubmit}>
           <div>
             <p className="mb-[5px] font-secondary font-light">Email</p>
+            {errors.email && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errors.email}</div>}
             <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
               <input
                 className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary  text-sm text-black [border:none] [outline:none]"
@@ -81,13 +109,12 @@ const Login = () => {
                 onChange={onInputChange}
               />
 
-            </div><CustomErrorViewer
-              isShow={errors.email !== ""}
-              text={errors.email}
-            />
+            </div>
           </div>
           <div>
             <p className="mb-[5px] font-secondary font-light">Password</p>
+            {errors.password && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errors.password}</div>}
             <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
               <input
                 className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary text-sm text-black [border:none] [outline:none]"
@@ -97,17 +124,8 @@ const Login = () => {
                 value={users.password}
                 onChange={onInputChange}
               />
-             
-            </div> {!users.password ? (
-                ""
-              ) : (
-                <PasswordChecklist
-                  className="text-sm"
-                  rules={["capital", "specialChar", "minLength", "number"]}
-                  minLength={8}
-                  value={users.password}
-                />
-              )}
+
+            </div>
           </div>
           {/* <div className="w-full text-right  font-secondary sm:max-w-md"> */}
           <div className="flex items-center justify-between">
@@ -134,7 +152,6 @@ const Login = () => {
           <div className="text-center font-secondary  text-sm font-light">
             Don't have an account?
             <Link href="/register" className="font-semibold text-meke-100">
-              {" "}
               Signup
             </Link>
           </div>

@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Link from "../../../node_modules/next/link";
-
+import { useSelector } from "react-redux";
 const Events = () => {
+  const { user } = useSelector(state => state.auth)
   return (
     <div className="w-full max-w-[100vw]">
       <div className="m-[40px] mt-[40px] max-w-full p-[20px] md:mx-[80px]">
@@ -62,7 +64,7 @@ const Events = () => {
             </div>
           </div>
         </div>
-        <Link href={"/events/eventappoint"}>
+        <Link href={user ? `/events/eventappoint` : `/login`}>
           <button className="flex cursor-pointer flex-row items-start justify-start rounded-[10px] bg-crimson-200 px-[3.156rem] py-[1.093rem] [border:none]">
             <div className="relative  font-secondary text-medium font-bold text-white">
               Appoint your Event

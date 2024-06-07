@@ -25,7 +25,6 @@ export const login = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const response = await authService.loginUser(email, password);
-      console.log("res", response);
       thunkAPI.dispatch(setMessage(response.message));
       return response; // Assuming the response structure is { userInfo: {...} }
     } catch (error) {
@@ -86,12 +85,11 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 });
 const initialState = {
   isLoggedIn: false,
-  //   user:
-  //   typeof window !== "undefined" && localStorage.getItem("userInfo")
-  //     ? JSON.parse(localStorage.getItem("userInfo"))
-  //     : null,
   loading: false,
-  data: null,
+  user:
+  typeof window !== "undefined" && localStorage.getItem("siteuserInfo")
+    ? JSON.parse(localStorage.getItem("siteuserInfo"))
+    : null,
   error: null,
   status: null,
   success: false,
@@ -107,7 +105,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoggedIn = true;
         state.loading = false;
-        state.data = payload.userInfo;
+        state.user = payload.userInfo;
         state.error = null;
         state.success = true; // Clearing any previous errors on successful registration
         state.msg = payload.message;
@@ -127,9 +125,9 @@ const authSlice = createSlice({
         state.msg = payload.message;
         state.isLoggedIn = true;
         state.loading = false;
-        state.user = payload.data.userInfo;
+        state.user = payload.data.siteuserInfo;
         if (typeof window !== "undefined") {
-          localStorage.setItem("userInfo", JSON.stringify(state.user));
+          localStorage.setItem("siteuserInfo", JSON.stringify(state.user));
         }
         state.error = null;
         state.success = true; // Clearing any previous errors on successful login

@@ -49,6 +49,10 @@ function page() {
   const handleClick = async id => {
     router.push(`/news/${id}`);
   };
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  }
   return (
     <div className="w-full max-w-[100vw] ">
       <section className="m-[40px] mt-[40px] flex h-full min-h-[700px]  max-w-full flex-col justify-start bg-white text-left font-roboto text-xl md:mx-[80px]">
@@ -119,7 +123,7 @@ function page() {
                     imageUrl={news.images[0].url}
                     header={news.title}
                     place={news.description.slice(0, 100) + "..."}
-                    date={new Date(news.createdAt).toLocaleString()}
+                    date={formatDate(news.createdAt)}
                     handleClick={() => handleClick(news._id)}
                   />
                 ))}

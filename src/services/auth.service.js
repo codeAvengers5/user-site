@@ -12,7 +12,6 @@ const loginUser = async (email, password) => {
     const response = await axios.post(API_URI + "loginuser", data, {
       withCredentials: true
     });
-    console.log("rere", response);
     return response;
   } catch (error) {
     throw error.response.data.message;

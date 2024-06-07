@@ -4,44 +4,79 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { createContactus } from "@/slices/contactusSlice";
-import { validate } from "@/utils/validate";
-import { CustomErrorViewer } from "@/components/errorviewer";
 const ContactUs = () => {
-    const [users, setUsers] = useState({ full_name: "", email: "", message: "" });
-    const [errors, setErrors] = useState("")
+    const [users, setUsers] = useState({full_name: "", email: "", message: "" });
+    const [errors, setErrors] = useState({full_name: "", email: "", message: "" })
     const dispatch = useDispatch();
     const { success, error } = useSelector(state => state.contactus);
     const router = useRouter()
 
     useEffect(() => {
         if (error) {
-            console.log(error,errors);
-            toast.error("Failed to send");
+            console.log(error);
+            toast.error(error);
         } else if (success) {
             toast.success("Thank you for your message");
-            //   router.push('/');
+            router.push('/');
         }
     }, [error, success]);
     const handleSubmit = async e => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         e.preventDefault();
-        if (errors) {
-            console.log(errors);
-            toast.error("Failed to send");
-        }
-        else{
-           try {
+        if (!users.full_name.trim()) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              full_name: "Please enter your name.",
+            }));
+            return;
+          } else {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              full_name: "",
+            }));
+          }
+          
+          if (!users.email.trim()) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "Please enter your email.",
+            }));
+            return;
+          } else if (!emailRegex.test(users.email)) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "Please enter a valid email.",
+            }));
+            return;
+          } else {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "",
+            }));
+          }
+          
+          if (!users.message.trim()) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              message: "Please enter your message.",
+            }));
+            return;
+          } else {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              message: "",
+            }));
+          }
+        try {
             dispatch(createContactus(users));
         } catch (error) {
             console.log(error);
-        }  
         }
-       
+
     };
     const onInputChange = e => {
         const { name, value } = e.target;
         setUsers({ ...users, [name]: value });
-        const validationErrors = validate(users);
-        setErrors(validationErrors);
     };
 
     return (
@@ -60,6 +95,8 @@ const ContactUs = () => {
                     onSubmit={handleSubmit}>
                     <div>
                         <p className="mb-[5px] font-secondary font-light">Full Name</p>
+                        {errors.full_name && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+                            {errors.full_name}</div>}
                         <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
                             <input
                                 className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary  text-sm text-black [border:none] [outline:none]"
@@ -70,13 +107,12 @@ const ContactUs = () => {
                                 onChange={onInputChange}
                             />
 
-                        </div>  <CustomErrorViewer
-                            isShow={errors.full_name !== ""}
-                            text={errors.full_name}
-                        />
+                        </div>
                     </div>
                     <div>
                         <p className="mb-[5px] font-secondary font-light">Email</p>
+                        {errors.email && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+                            {errors.email}</div>}
                         <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
                             <input
                                 className="relative inline-block h-[17px] w-full bg-[transparent] p-0 text-left font-secondary  text-sm text-black [border:none] [outline:none]"
@@ -87,14 +123,12 @@ const ContactUs = () => {
                                 onChange={onInputChange}
                             />
 
-                        </div> 
-                        <CustomErrorViewer
-                            isShow={errors.email !== ""}
-                            text={errors.email}
-                        />
+                        </div>
                     </div>
                     <div>
                         <p className="mb-[5px] font-secondary font-light">Message</p>
+                        {errors.message && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+                            {errors.message}</div>}
                         <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
                             <textarea
                                 className="relative inline-block h-[100px] w-full bg-[transparent] p-0 text-left font-secondary text-sm text-black [border:none] [outline:none]"
@@ -105,12 +139,7 @@ const ContactUs = () => {
                                 onChange={onInputChange}
                             />
                         </div>
-                        <CustomErrorViewer
-                            isShow={errors.message !== ""}
-                            text={errors.message}
-                        />
                     </div>
-
                     <button className="box-border flex h-[50px] flex-row items-center justify-center rounded-[10px] bg-[#E71D36] p-2.5 font-secondary text-base text-white md:text-[24px]">
                         Send
                     </button>

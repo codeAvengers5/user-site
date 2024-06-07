@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import group from "../../../../../public/images/Group.png";
 import logo from "../../../../../public/images/logo.png";
@@ -11,10 +11,10 @@ import { useRouter } from "../../../../../node_modules/next/navigation";
 
 const page = () => {
   const dispatch = useDispatch();
-  // const {success} = useSelector(state => state.jobs);
+  const { user } = useSelector(state => state.auth)
+  const [errorMessage, setErrorMessage] = useState("")
   const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
+    full_name:"",
     phone_no: "",
     cv: null
   });
@@ -22,8 +22,7 @@ const page = () => {
   const { id } = useParams();
   const router = useRouter();
 
-  const { loading, success, error } = useSelector(state => state.jobApply);
-
+  const { success, error } = useSelector(state => state.jobApply);
   const handleInputChange = e => {
     setFormData({
       ...formData,
@@ -31,22 +30,58 @@ const page = () => {
     });
   };
 
-  const handleFileChange = e => {
-    setFormData({
-      ...formData,
-      cv: e.target.files[0]
-    });
+  const [selectedFileName, setSelectedFileName] = useState('');
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file.type === 'application/pdf') {
+      setFormData({
+        ...formData,
+        cv: file
+      });
+      setSelectedFileName(file.name);
+    } else {
+      setErrorMessage("Please upload a PDF file only.");
+
+    }
+    setSelectedFileName(file.name);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("sbmited");
+    if(!formData.full_name){
+      setErrorMessage("Feild can not be empty");
+      return;
+    }
+    const phoneRegex = /^(09|\\+251)\d{8}$/;
+    if (!phoneRegex.test(formData.phone_no)) {
+      setErrorMessage("Please enter a valid phone number");
+      return;
+    }
+
+    if (!formData.cv) {
+      setErrorMessage("Please upload a CV.");
+      return;
+    }
+    if (!user) {
+      setErrorMessage("You need to be logged in to apply for this job.");
+      return;
+    }
+
+
     dispatch(applyToJob({ jobId: id, formData }));
+
   };
-  if (success) {
-    console.log("success");
-    router.push("/jobs/jobSuccess");
-  }
+  useEffect(() => {
+    if (error) {
+      setErrorMessage(error);
+      return;
+    }
+
+    if (success) {
+      router.push('/jobs/jobSuccess');
+    }
+  }, [error, success, router]);
 
   return (
     <div className="mx-[40px] md:mx-[80px]">
@@ -85,7 +120,15 @@ const page = () => {
         <div className="w-[550px] rounded bg-[#fcf9f9] p-4 shadow-lg md:p-10">
           <form onSubmit={handleSubmit}>
             <div>
-              <div className="mb-4">
+              {errorMessage && (
+                <div
+                  className={`text-[#E71D36] font-bold mb-2 mt-2
+                    }`}
+                >
+                  {errorMessage}
+                </div>
+              )}
+               <div className="mb-4">
                 <label
                   htmlFor="name"
                   className="mb-1 block font-secondary font-semibold">
@@ -97,22 +140,6 @@ const page = () => {
                   name="full_name"
                   value={formData.full_name}
                   onChange={handleInputChange}
-                  className="focus:border-blue-500 w-full rounded border border-[#DC8E7B] px-3 py-2 font-secondary placeholder-[#e2404033] focus:outline-none"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="mb-1 block font-secondary font-semibold">
-                  Email:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  onChange={handleInputChange}
-                  value={formData.email}
                   className="focus:border-blue-500 w-full rounded border border-[#DC8E7B] px-3 py-2 font-secondary placeholder-[#e2404033] focus:outline-none"
                   required
                 />
@@ -134,11 +161,11 @@ const page = () => {
                 />
               </div>
 
-              <div class="flex w-full items-center justify-center ">
+              <div className="flex w-full items-center justify-center ">
                 <label
                   htmlFor="dropzone-file"
-                  class="bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 flex h-40 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-[#DC8E7B]">
-                  <div class="flex flex-row items-center justify-center gap-3 border-2 border-dashed border-[#DC8E7B] px-5 pt-1">
+                  className="bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 flex h-40 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border-2 border-[#DC8E7B]">
+                  <div className="flex flex-row items-center justify-center gap-3 border-2 border-dashed border-[#DC8E7B] px-5 pt-1">
                     <svg
                       className="text-gray-500 dark:text-gray-400 mb-4 h-8 w-8"
                       aria-hidden="true"
@@ -147,9 +174,9 @@ const page = () => {
                       viewBox="0 0 20 16">
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                       />
                     </svg>
@@ -168,7 +195,9 @@ const page = () => {
                   />
                 </label>
               </div>
-
+              {selectedFileName && (
+                <p>{selectedFileName}</p>
+              )}
               <button className="mt-4 flex w-full cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] [border:none]  hover:bg-[#e71d35bb] md:py-[6.5px]">
                 <div className="w-full text-center font-secondary text-xl font-semibold leading-[28px] text-white mq450:text-base mq450:leading-[22px]">
                   Submit

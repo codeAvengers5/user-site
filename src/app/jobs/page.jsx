@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Head from "next/head";
 import Link from "next/link";
 import {
   FaSearch,
@@ -10,11 +9,14 @@ import {
   FaBullhorn,
   FaReceipt
 } from "react-icons/fa";
-import { getAllJobPosts } from "@/services/job.service";
+import { getAllJobPosts,searchJobs } from "@/services/job.service";
 import jobbanner from "../../../public/images/jobbanner.png";
 
 const Page = () => {
   const [jobPosts, setJobPosts] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
   const [Rjob, setRjob] = useState({
     title: "",
     id: "",
@@ -25,26 +27,29 @@ const Page = () => {
   });
   useEffect(() => {
     const getRecentJobPost = async () => {
-      fetch("http://localhost:8000/joblist")
-        .then(response => response.json())
-        .then(data => {
-          const sortedJobPosts = data.sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-          );
-          const mostRecentJob = sortedJobPosts[0];
-          console.log("Recent", mostRecentJob);
+      try {
+        const response = await fetch("http://localhost:8000/joblist");
+        const data = await response.json();
+        const sortedJobPosts = data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        const openedJobPost = sortedJobPosts.find((job) => job.currentStatus === 'open');
+    console.log(sortedJobPosts);
+        if (openedJobPost) {
           setRjob({
-            id: mostRecentJob.id,
-            title: mostRecentJob.title,
-            description: mostRecentJob.description,
-            requirement: mostRecentJob.requirement,
-            responsibility: mostRecentJob.responsibility,
-            salary: mostRecentJob.salary
+            id: openedJobPost.id,
+            title: openedJobPost.title,
+            description: openedJobPost.description,
+            requirement: openedJobPost.requirement,
+            responsibility: openedJobPost.responsibility,
+            salary: openedJobPost.salary
           });
-        })
-        .catch(error => {
-          console.error("Error fetching job posts:", error);
-        });
+        } else {
+          console.log('No recently opened job posts found.');
+        }
+      } catch (error) {
+        console.error('Error fetching job posts:', error);
+      }
     };
     getRecentJobPost();
   }, []);
@@ -58,14 +63,37 @@ const Page = () => {
         console.error("Error fetching job posts:", error);
       }
     }
-
+    async function searchingJobs() {
+      try {
+        if (searchItem) {
+          setIsSearching(true);
+          const results = await searchJobs(searchItem);
+          setSearchResults(results.jobs);
+        } else {
+          setIsSearching(false);
+          setSearchResults([]);
+        }
+      } catch (error) {
+        console.error("Error searching jobs:", error);
+        setIsSearching(false);
+      }
+    }
+    searchingJobs();
     fetchJobPosts();
-  }, []);
+  }, [searchItem]);
 
   const columns = [
     { title: "Title", key: "title" },
     { title: "Description", key: "description" },
-    { title: "Date", key: "closingDate" },
+    {
+      title: "Date",
+      key: "closingDate",
+      render: (column, row) => {
+        const closingDate = new Date(row.closingDate);
+        const formattedDate = `${closingDate.getMonth() + 1}/${closingDate.getDate()}/${closingDate.getFullYear()}`;
+        return formattedDate;
+      }
+    },
     {
       title: "Status",
       key: "status",
@@ -86,7 +114,10 @@ const Page = () => {
       }
     }
   ];
-
+  const handleInputChange = e => {
+    const searchTerm = e.target.value;
+    setSearchItem(searchTerm);
+  };
   return (
     <div className="flex flex-col gap-16 md:gap-24">
       <div className="relative h-[300px] w-full">
@@ -97,6 +128,8 @@ const Page = () => {
               type="text"
               placeholder="Search..."
               className="focus:border-blue-500 max-w-[400px] appearance-none rounded-lg bg-[#FFEEEA] px-4 py-2 leading-normal placeholder-[#e2404081] shadow-lg focus:outline-none md:w-[500px]"
+              value={searchItem}
+              onChange={handleInputChange}
             />
             <div className="pointer-events-none absolute bottom-0 right-0 mr-4 flex h-full items-center">
               <FaSearch className="text-gray-500" />
@@ -104,7 +137,73 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
+
+      {isSearching && Array.isArray(searchResults) && searchItem ? (
+        searchResults.length > 0 ? (
+          <div className="m-10 flex flex-shrink-0 flex-row items-center justify-center gap-10">
+            {
+              <div className="overflow-x-auto">
+                <table className="w-[900px] max-w-full table-auto border-separate border-spacing-x-0 font-secondary text-small  font-regular text-black md:text-base">
+                  <colgroup>
+                    {columns.map((_, index) => (
+                      <col key={`col-${index}`} className="w-auto" />
+                    ))}
+                  </colgroup>
+                  <thead className="bg-meke-500">
+                    <tr>
+                      {columns.map((column, index) => (
+                        <th
+                          key={`headCell-${index}`}
+                          className="!z-0 bg-black px-2 py-[15px] text-left font-secondary font-regular text-white">
+                          {column.title}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {!searchResults.length ? (
+                      <tr>
+                        <td
+                          colSpan={columns.length}
+                          className="font-secondary text-bt_tertiary">
+                          No jobs found
+                        </td>
+                      </tr>
+                    ) : (
+                      searchResults.map((row, index) => (
+                        <tr
+                          key={`row-${index}`}
+                          className="bg-[#FFF2F2] hover:opacity-[70%]">
+                          {columns.map((column, index2) => {
+                            const value = column.render
+                              ? column.render(column, row)
+                              : row[column.key];
+                            return (
+                              <td
+                                key={`cell-${index2}`}
+                                className={`px-2 py-[15px]`}>
+                                {value}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            }
+          </div>
+        ) : (
+          <div className="flex min-h-[400px] items-center justify-center">
+            <p className="text-red-500 font-primary text-3xl font-bold">
+              No Job found
+            </p>
+          </div>
+        )
+      ) : (
+        <>
+        <div className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
         Jobs Category
       </div>
       <div className="flex flex-wrap justify-evenly gap-[20px] md:flex-row">
@@ -131,7 +230,6 @@ const Page = () => {
           </div>
         </div>
       </div>
-
       <div className="flex flex-row justify-between">
         <div className="container mx-auto px-4">
           <div className="p-2 font-primary text-heading_2 font-bold md:text-heading_1">
@@ -226,7 +324,10 @@ const Page = () => {
           </div>
         </div>
       </div>
+      </>
+       )}
     </div>
+
   );
 };
 

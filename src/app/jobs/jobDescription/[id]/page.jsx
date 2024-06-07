@@ -7,6 +7,7 @@ import logo from "../../../../../public/images/logo.png";
 import { getJobPostById } from "@/services/job.service";
 import { useEffect, useState } from "react";
 import { useParams } from "../../../../../node_modules/next/navigation";
+import { useSelector } from "react-redux";
 const page = () => {
   const [job, setJob] = useState({
     title: "",
@@ -16,7 +17,7 @@ const page = () => {
     salary: ""
   });
   const { id } = useParams();
-
+  const { user } = useSelector(state => state.auth)
   useEffect(() => {
     if (id) {
       const fetchJobPost = async () => {
@@ -97,7 +98,7 @@ const page = () => {
             </div>
           </button>
         </Link>
-        <Link href={`/jobs/jobApply/${id}`}>
+        <Link href={user?`/jobs/jobApply/${id}`: `/login`}>
           <button className="flex cursor-pointer flex-row items-start justify-start rounded-8xs bg-[#E71D36] px-[20px] py-[4px] [border:none] hover:bg-[#e71d35bb]  md:py-[6.5px]">
             <div className="relative inline-block text-center font-secondary text-base  font-semibold text-white  md:w-[70px]  mq450:leading-[22px]">
               Next

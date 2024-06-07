@@ -17,27 +17,28 @@ export const getEventId = async id => {
     const response = await axios.get(API_URI + `getEvent/${id}`, {
       withCredentials: true
     });
-    return response;
+    return response.data;
   } catch (error) {
     throw error.response.data.error || "Failed to fetch Event by ID";
   }
 };
-export const getUserEventId = async id => {
+export async function getUserEventId() {
   try {
-    const response = await axios.get(API_URI + `getuserEvent/${id}`, {
+    const response = await axios.get(API_URI + `getuserEvent`, {
       withCredentials: true
     });
-    return response;
+    return response.data; // Return only the data, not the entire response object
   } catch (error) {
     throw error.response.data.error || "Failed to fetch Event by ID";
   }
-};
-export const updateEventId = async eventData => {
+}
+export const updateEventId = async( event) => {
   try {
-    const { id, ...data } = eventData;
-    const response = await axios.put(API_URI + `updateEvent/${id}`, data, {
+    const { updateventId, ...eventData } = event;
+    const response = await axios.put(API_URI + `updateEvent/${updateventId}`, eventData, {
       withCredentials: true
     });
+    console.log(response.data)
     return response.data;
   } catch (error) {
     throw error.response.data.error || "Failed to update Event";

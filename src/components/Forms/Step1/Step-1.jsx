@@ -9,8 +9,12 @@ import "react-datepicker/dist/react-datepicker.css";
 function FormEvent({ pageTitle, submitButtonText, previousButton }) {
   // redux
   const dispatch = useDispatch();
-
-  // get Redux store values for formUserSignup
+  const [errors, setErrors] = useState({
+    event: "",
+    time: "",
+    date: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false); // state for sent status
   const currentStage = useSelector(state => state.event.FormStage); // for previous button
   const formstageEvent = useSelector(state => state.event.FormEvent.event);
   const formstageTime = useSelector(state => state.event.FormEvent.time);
@@ -22,8 +26,6 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
     time: formstageTime || "",
     date: formstageDate || ""
   });
-
-  // form values onchange
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData({
@@ -31,7 +33,6 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
       [name]: value
     });
   };
-
   const handleDate = date => {
     const dateOnly = new Date(
       date.getFullYear(),
@@ -43,61 +44,72 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
       date: dateOnly
     });
   };
-
-  // form validation checks
-  const [errors, setErrors] = useState({});
-  // const validate = (formData) => {
-
-  //   let formErrors = {} // set form errors to none at start
-
-  //   // name
-  //   // if (!formData.name) {
-  //   //   formErrors.name = "Name required";
-  //   // }
-
-  //   // email
-  //   const emailRegex = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-  //   if (!formData.email || !emailRegex.test(formData.email)) {
-  //     formErrors.email = 'Valid Email required';
-  //   }
-
-  //   // password
-  //   const passwordRegex = new RegExp('(?=.*[a-z])+(?=.*[A-Z])+(?=.*[0-9])+(?=.{10,})')
-  //   if (!formData.password || !passwordRegex.test(formData.password)) {
-  //     formErrors.password = 'The minimum password length is 10 characters and must contain at least 1 lowercase letter, 1 uppercase letter and 1 number)';
-  //     //console.log(formData.password.length)
-  //   }
-
-  //   return formErrors
-  // }
-
-  const [isSubmitted, setIsSubmitted] = useState(false); // state for sent status
-  // onsubmit
   const handleSubmit = e => {
-    e.preventDefault(); // stop form submission
-    // setErrors(validate(formData)) // check errors
-    setIsSubmitted(true); // update submit status
+    e.preventDefault();
+    if (!formData.event) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        event: "Please select an event.",
+      }));
+      return;
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        event: "",
+      }));
+    }
+    // Validate time selection
+    if (!formData.time) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        time: "Please select a time.",
+      }));
+      return;
+    }
+    else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        time: "",
+      }));
+    }
+
+    // Validate date selection
+    if (!formData.date) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        date: "Please select a date.",
+      }));
+      return;
+    } else if (formData.date < new Date()) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        date: "Please select a future date.",
+      }));
+      return;
+
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        date: "",
+      }));
+    }
+    setIsSubmitted(true);
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitted) {
-      // check if any form errors
-
-      // update Redux Slice
+    if (isSubmitted) {
       dispatch(
-        formStage(2) // update formStage
+        formStage(2)
       );
       dispatch(
         formEvent({
-          // update formSignup
           event: formData.event,
           time: formData.time,
           date: formData.date
         })
       );
     }
-  }, [formData, isSubmitted, dispatch, errors]);
-  // console.log(errors, formData)
+  }, [formData, isSubmitted, dispatch]);
 
   return (
     <>
@@ -115,6 +127,9 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
           className="font-secondary text-base font-medium md:text-heading_2">
           Select Events<span className="required-asterix">*</span>
         </label>
+        {errors.event && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
+          {errors.event}
+        </div>}
         <div className="mb-[50px] flex flex-wrap gap-[10px]">
           <article className="card1">
             <input
@@ -189,16 +204,18 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
             </div>
           </article>
         </div>
-        {errors.event && <span className="error-message">{errors.event}</span>}
-
         <div>
           <label
             htmlFor="time"
             className=" font-secondary text-base font-medium md:text-heading_2">
-            Select Time<span className="required-asterix">*</span>
+            Select Time and Date<span className="required-asterix">*</span>
           </label>
           <div className="flex w-full flex-col-reverse gap-[80px] md:flex-row">
+            {errors.date && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
+              {errors.date}
+            </div>}
             <div className="date-picker  border-2 border-meke-550 p-1 sm:p-4">
+
               <DatePicker
                 name="date"
                 selected={formData.date}
@@ -213,6 +230,9 @@ function FormEvent({ pageTitle, submitButtonText, previousButton }) {
               />
             </div>
             <div className="max-w-[400px]">
+              {errors.time && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
+                {errors.time}
+              </div>}
               <ul
                 id="time"
                 className="flex flex-col items-start justify-start gap-[20px]">

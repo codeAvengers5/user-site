@@ -1,6 +1,8 @@
 import {
   createEvent,
   deleteEvent,
+  getEventId,
+  getUserEventId,
   updateEventId
 } from "@/services/event.serivce";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
@@ -10,7 +12,6 @@ export const createEventappoint = createAsyncThunk(
   async (eventData, thunkAPI) => {
     try {
       const response = await createEvent(eventData);
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -21,10 +22,12 @@ export const createEventappoint = createAsyncThunk(
 
 export const updateExistingEvent = createAsyncThunk(
   "event/updateevent",
-  async (eventData, thunkAPI) => {
+  async (event, thunkAPI) => {
+    console.log(event);
     try {
-      const response = await updateEventId(eventData);
-      return response.data;
+      const response = await updateEventId(event);
+      console.log(response);
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -41,18 +44,50 @@ export const deleteExistingEvent = createAsyncThunk(
     }
   }
 );
+export const fetchEvent = createAsyncThunk(
+  "event/fetchevent",
+  async (_, thunkAPI) => {
+    try {
+      const eventData = await getUserEventId();
+      return eventData;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getEventById = createAsyncThunk(
+  "event/getEvent",
+  async (id, thunkAPI) => {
+    try {
+      const eventData = await getEventId(id);
+      console.log(eventData);
+      return eventData;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 const eventSlice = createSlice({
   name: "event",
   initialState: {
+    updateventId: "",
     FormStage: 1,
-    FormEvent: "",
-    FormPersonal: "",
-    FormInfo: "",
-    FormPayment: "",
+    FormEvent: {
+      event: "", time: "", date: ""
+    },
+    FormPersonal: {
+      fullName: "",
+      phoneNumber: ""
+    },
+    FormInfo: {
+      people: "",
+      foodType: "",
+      pay: ""
+    },
     loading: false,
     error: null,
     success: false,
-    eventData: {}
+    eventData: []
   },
   reducers: {
     formStage: (state, action) => {
@@ -86,6 +121,43 @@ const eventSlice = createSlice({
           ? action.payload.message
           : "Failed to create event";
       })
+      .addCase(fetchEvent.pending, state => {
+        state.loading = true;
+      })
+      .addCase(fetchEvent.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.eventData = action.payload
+
+      })
+      .addCase(fetchEvent.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+          ? action.payload.message
+          : "Failed to create event";
+      })
+      .addCase(getEventById.pending, state => {
+        state.loading = true;
+      })
+      .addCase(getEventById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.updateventId = action.payload._id;
+        state.FormEvent.event = action.payload.event_type;
+        state.FormEvent.date = action.payload.date_of_event;
+        state.FormEvent.time = action.payload.food_time;
+        state.FormPersonal.fullName = action.payload.full_name;
+        state.FormPersonal.phoneNumber = action.payload.phone_no;
+        state.FormInfo.people = action.payload.no_of_ppl;
+        state.FormInfo.foodType = action.payload.fasting;
+        state.FormInfo.pay = action.payload.with_cash;
+      })
+      .addCase(getEventById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+          ? action.payload.message
+          : "Failed to create event";
+      })
       .addCase(updateExistingEvent.pending, state => {
         state.loading = true;
       })
@@ -102,6 +174,7 @@ const eventSlice = createSlice({
       .addCase(deleteExistingEvent.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.error = null;
+        state.success = true
       })
       .addCase(deleteExistingEvent.rejected, (state, action) => {
         state.loading = false;
