@@ -2,8 +2,8 @@ import React from "react";
 
 const Card1 = ({ imageUrl, header, place }) => {
   const imageStyle = {
-    width: "426px",
-    height: "426px",
+    width: "400px",
+    height: "400px",
     objectFit: "cover"
   };
 
