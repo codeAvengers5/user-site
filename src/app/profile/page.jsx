@@ -89,7 +89,7 @@ export default function page() {
         { title: "Num_of_ppl", key: "no_of_ppl" },
         { title: "Time", key: "food_time" },
         {
-            title: "Date",
+            title: "Event Date",
             key: "date_of_event",
             render: (column, row) => {
                 const closingDate = new Date(row.date_of_event);
