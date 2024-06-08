@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URI = "http://localhost:8000/";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 export const contactus = async (data) => {
     try {
       const response = await axios.post(
