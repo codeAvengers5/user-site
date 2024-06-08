@@ -118,7 +118,7 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoggedIn = false;
         state.loading = false;
-        state.error = payload.error; // Setting the error message on registration failure
+        state.error = payload; // Setting the error message on registration failure
         state.success = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
@@ -164,7 +164,8 @@ const authSlice = createSlice({
       .addCase(forgotPassword.rejected, (state, action) => {
         state.loading = false;
         state.success = null;
-        state.error = action.error.message;
+        state.error = action.payload.error;
+        console.log(action.payload);
       })
       .addCase(resetState.fulfilled, state => {
         return initialState;
