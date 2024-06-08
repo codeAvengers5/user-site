@@ -23,6 +23,9 @@ export default function ResetPassword() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log("here1");
+    if (!password) {
+      setErrorMessage("Passwords can not be empty");
+    }
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;

@@ -12,6 +12,9 @@ const ConfirmEmail = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (!confirmationCode) {
+      setMessage("Please enter confirmation Code")
+    }
     try {
       const res = await fetch(API_URI + "confirmemail", {
         method: "POST",
@@ -39,7 +42,7 @@ const ConfirmEmail = () => {
           Confirm Your Email
         </h1>
         <form onSubmit={handleSubmit}>
-        {message && <p className={`text-[#E71D36] mb-2 mt-2}`}>{message}</p>}
+          {message && <p className={`text-[#E71D36] mb-2 mt-2}`}>{message}</p>}
 
           <label
             htmlFor="confirmationCode"

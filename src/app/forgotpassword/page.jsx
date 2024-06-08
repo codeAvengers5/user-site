@@ -8,20 +8,19 @@ export default function ForgotPassword() {
   const [successful, setSuccessful] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-
   const { loading, success, error } = useSelector(state => state.auth);
   const [errors, setErrors] = useState({ error: null, email: "" })
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!users.email) {
+    if (!email) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter your email.",
       }));
       return;
-    } else if (!emailRegex.test(users.email)) {
+    } else if (!emailRegex.test(email)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         email: "Please enter a valid email.",
