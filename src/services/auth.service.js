@@ -10,13 +10,8 @@ const loginUser = async (email, password) => {
     };
     const response = await axios.post(API_URI + "loginuser", data, {
       withCredentials: true
-    })  .then(response => {
-      if (response.data.siteuserInfo) {
-        const token = JSON.stringify(response.data);
-        // setTokenCookie(token);
-      }
-      return response.data;
     });
+    return response;
 };
 
 const registerUser = async credentials => {
