@@ -4,6 +4,7 @@ const API_URI = process.env.NEXT_PUBLIC_API_URI
 axios.defaults.withCredentials = true;
 
 const loginUser = async (email, password) => {
+  try {
     const data = {
       email: email,
       password: password
@@ -12,6 +13,9 @@ const loginUser = async (email, password) => {
       withCredentials: true
     });
     return response;
+  } catch (error) {
+    throw error.response.data.message;
+  }
 };
 
 const registerUser = async credentials => {
