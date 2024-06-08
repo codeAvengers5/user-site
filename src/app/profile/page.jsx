@@ -8,6 +8,7 @@ import { MdDelete } from "react-icons/md";
 import DeleteConfirmationModal from '@/components/deleteconfirm';
 import { fetchJob } from '@/slices/jobSlice';
 import { useRouter } from '../../../node_modules/next/navigation';
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 
 export default function page() {
     const [jobPosts, setJobPosts] = useState([{
@@ -30,7 +31,7 @@ export default function page() {
     const handleChapa = (e, eventId) => {
         e.preventDefault();
         axios
-            .post("http://localhost:8000/payment", { eventId })
+            .post(API_URI + "payment", { eventId })
             .then(res => {
                 setTimeout(() => {
                     window.location.href = res.data.paymentUrl;
