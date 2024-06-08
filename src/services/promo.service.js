@@ -4,7 +4,7 @@ axios.defaults.withCredentials = true;
 const API_URI = process.env.NEXT_PUBLIC_API_URI
 
 const fetchPromo = async () => {
-  const response = await axios.get(API_URI + "/getAllPromotions", {
+  const response = await axios.get(API_URI + "getAllPromotions", {
     credentials: "include"
   });
   return response.data;
