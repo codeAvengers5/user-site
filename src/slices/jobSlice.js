@@ -64,6 +64,7 @@ const jobApplySlice = createSlice({
         state.error = action.payload
           ? action.payload.message
           : "Failed to create job post";
+          console.log(action.payload);
       })
       .addCase(fetchJob.pending, state => {
         state.loading = true;

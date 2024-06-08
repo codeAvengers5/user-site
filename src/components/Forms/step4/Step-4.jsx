@@ -3,12 +3,13 @@ import Image from "next/image";
 import logo from "../../../../public/images/Group72.png";
 import axios from "axios";
 import Link from "../../../../node_modules/next/link";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 
 function FormPayment({ with_cash, eventId, price }) {
   const handleChapa = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/payment", { eventId })
+      .post(API_URI + 'payment', { eventId })
       .then(res => {
         setTimeout(() => {
           window.location.href = res.data.paymentUrl;

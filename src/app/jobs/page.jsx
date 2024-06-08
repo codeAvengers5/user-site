@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 import {
   FaSearch,
   FaHeart,
@@ -28,7 +29,7 @@ const Page = () => {
   useEffect(() => {
     const getRecentJobPost = async () => {
       try {
-        const response = await fetch("http://localhost:8000/joblist");
+        const response = await fetch(API_URI + "joblist");
         const data = await response.json();
         const sortedJobPosts = data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
