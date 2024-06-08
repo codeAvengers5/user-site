@@ -10,12 +10,29 @@ export default function ForgotPassword() {
   const router = useRouter();
 
   const { loading, success, error } = useSelector(state => state.auth);
+  const [errors, setErrors] = useState({ error: null, email: "" })
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!email) {
+    if (!users.email) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter your email.",
+      }));
       return;
+    } else if (!emailRegex.test(users.email)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email.",
+      }));
+      return;
+    }
+    else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
     }
 
     dispatch(forgotPassword({ email: email }))
@@ -28,6 +45,10 @@ export default function ForgotPassword() {
   };
 
   useEffect(() => {
+    if (error) {
+      setErrors({ error: error })
+      return;
+    }
     return () => {
       dispatch(resetState());
     };
@@ -47,11 +68,15 @@ export default function ForgotPassword() {
         </h1>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="mb-4">
+          {errors.error && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errors.error}</div>}
             <label
               className="text-gray-700 mb-2  block  text-base"
               htmlFor="email">
               Email
             </label>
+            {errors.email && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errors.email}</div>}
             <input
               className="border-gray-300 focus:border-blue-500 w-full rounded-md border px-3 py-2 focus:outline-none"
               id="email"

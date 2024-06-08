@@ -87,6 +87,8 @@ export default function ResetPassword() {
           className="mt-4 flex flex-col space-y-4 md:space-y-5 lg:mt-5"
           onSubmit={handleSubmit}>
           <div>
+          {errorMessage && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errorMessage}</div>}
             <label htmlFor="password" className="sr-only">
               Password
             </label>

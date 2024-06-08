@@ -8,6 +8,7 @@ const ConfirmEmail = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
+  // const [errors, setErrors] = useState({ error: null, email: "" })
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -22,7 +23,6 @@ const ConfirmEmail = () => {
       const data = await res.json();
       if (data.success) {
         setMessage("Email confirmed successfully!");
-        // Redirect to login or home page
         router.push("/login");
       } else {
         setMessage(data.message || "Invalid confirmation code.");
@@ -39,6 +39,8 @@ const ConfirmEmail = () => {
           Confirm Your Email
         </h1>
         <form onSubmit={handleSubmit}>
+        {message && <p className={`text-[#E71D36] mb-2 mt-2}`}>{message}</p>}
+
           <label
             htmlFor="confirmationCode"
             className="text-gray-700 mb-2 block">
@@ -58,7 +60,6 @@ const ConfirmEmail = () => {
             Confirm
           </button>
         </form>
-        {message && <p className="text-red-500 mt-4 text-center">{message}</p>}
       </div>
     </div>
   );
