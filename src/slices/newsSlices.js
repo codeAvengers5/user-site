@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URI = "http://localhost:8000/";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 import { createSlice } from "@reduxjs/toolkit";
 export async function getAllNews() {
   try {

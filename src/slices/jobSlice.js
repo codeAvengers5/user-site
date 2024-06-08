@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getUserJob, job_apply } from "@/services/job.service";
 import axios from "axios";
-const API_URI = "http://localhost:8000/";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 axios.defaults.withCredentials = true;
 
 export const applyToJob = createAsyncThunk(
