@@ -31,7 +31,9 @@ export default function page() {
     const handleChapa = (e, eventId) => {
         e.preventDefault();
         axios
-            .post(API_URI + "payment", { eventId })
+            .post(API_URI + "payment", { eventId }, {
+                withCredentials: true
+            })
             .then(res => {
                 setTimeout(() => {
                     window.location.href = res.data.paymentUrl;
