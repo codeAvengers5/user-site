@@ -4,30 +4,27 @@ const API_URI = process.env.NEXT_PUBLIC_API_URI
 axios.defaults.withCredentials = true;
 
 const loginUser = async (email, password) => {
-  try {
     const data = {
       email: email,
       password: password
     };
     const response = await axios.post(API_URI + "loginuser", data, {
       withCredentials: true
+    })  .then(response => {
+      if (response.data.siteuserInfo) {
+        const token = JSON.stringify(response.data);
+        // setTokenCookie(token);
+      }
+      return response.data;
     });
-    return response;
-  } catch (error) {
-    throw error.response.data.message;
-  }
 };
 
 const registerUser = async credentials => {
-  try {
-    const response = await axios.post(API_URI + "registeruser", credentials, {
+    return await axios.post(API_URI + "registeruser", credentials, {
       withCredentials: true
     });
-    return response;
-  } catch (error) {
-    return error.response.data;
   }
-};
+
 const forgotPassword = async email => {
   const response =  axios.post(API_URI + "forgot-password", email, { withCredentials: true })
     return response;

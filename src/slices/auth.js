@@ -7,7 +7,7 @@ export const register = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await authService.registerUser(formData);
-      return response;
+      return response.data;
     } catch (error) {
       const message =
         (error.message && error.message) ||
@@ -116,8 +116,9 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoggedIn = false;
         state.loading = false;
-        state.error = payload; // Setting the error message on registration failure
+        state.error = payload.error; // Setting the error message on registration failure
         state.success = false;
+        console.log(payload);
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         state.msg = payload.message;
