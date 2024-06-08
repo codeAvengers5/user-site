@@ -71,25 +71,21 @@ export default function Home() {
               <div className="relative flex  shrink-0 items-center self-stretch leading-[28px] mq450:leading-[22px] mq450:text-[lgi]">
                 <span className="tracking-base font-secondary text-base font-light md:text-medium">
                   <p className="m-0">
-                    Lorem ipsum dolor sit amet consectetur. Tellus velit
-                    ultrices bibendum mollis eu sit tempor eu pulvinar. In
-                    feugiat morbi integer penatibus consequat felis. Et gravida
-                    tellus orci imperdiet lectus ultrices quam lorem arcu.
-                    Accumsan pharetra aliquet malesuada massa cursus iaculis
-                    tempor sapien cras.
+                    Our Home is
+                    dedicated to improving the lives of individuals facing various challenges such as the elderly, those with mental disabilities,
+                    physical impairments, visual impairments, and individuals who are bedridden. We strive to provide comprehensive support by 
+                    offering basic services including food, clothing, shelter, hygiene facilities, medical care, education, and more to our 
+                    residents living in our center. Our aim is to ensure that each resident has access to the resources they need to live a 
+                    fulfilling and comfortable life.
                   </p>
                   <p className="m-0">
-                    Lorem ipsum dolor sit amet consectetur. Tellus velit
-                    ultrices bibendum mollis eu sit tempor eu pulvinar. In
-                    feugiat morbi integer penatibus consequat felis. Et gravida
-                    tellus orci imperdiet lectus ultrices quam lorem arcu.
-                    Accumsan pharetra aliquet malesuada massa cursus iaculis
-                    tempor sapien cras.Lorem ipsum dolor sit amet consectetur.
-                    Tellus velit ultrices bibendum mollis eu sit tempor eu
-                    pulvinar. In feugiat morbi integer penatibus consequat
-                    felis. Et gravida tellus orci imperdiet lectus ultrices quam
-                    lorem arcu. Accumsan pharetra aliquet malesuada massa cursus
-                    iaculis tempor sapien cras.
+                  Our organization is a locally-based, non-governmental, non-profit, and independent charity founded in January 2010. 
+                  Our primary focus is to provide support for the elderly and individuals with mental disabilities who lack the necessary means for survival.
+                  </p>
+                  <p className="m-0">
+                  At Mekedonia Homes, we firmly believe in providing comprehensive care and support to those in need. 
+                  We strive to provide a safe and welcoming home environment where our residents can receive shelter, clothing, 
+                  food, medical care, and other basic services that they require to live fulfilling lives.
                   </p>
                 </span>
               </div>

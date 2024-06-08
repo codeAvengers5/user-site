@@ -37,6 +37,12 @@ export default function AboutUs() {
               & Shelter and Improving public awareness to help others. Founder
               Of Mekedonia.
             </p>
+            <p className="font-roboto text-base  leading-7 text-black">
+            We are proud to be an Ethiopian resident charity with our headquarters located in Addis Ababa, Ethiopia. In addition to Addis Ababa, 
+            Mekedonia Homes has several branches located in other regions throughout Ethiopia, including Harar, Gore, Dire Dawa, Dessie, Adama, Gambella, Shashemane, Beke, and Adwa.
+            We are proud of the work that we do, and we are committed to continuing to expand our services to reach even more individuals in need. 
+            We invite you to join us in our mission to make a positive impact in our community. Whether you are interested in volunteering, making a donation, or simply learning more about our organization, we welcome you to reach out to us.
+            </p>
           </div>
           <Card imageUrl="https://pbs.twimg.com/media/Dti_P0qW4AEY0Xa?format=jpg&name=4096x4096" />
         </div>
