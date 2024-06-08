@@ -80,13 +80,13 @@ const Registration = () => {
       else if (!passRegex.test(users.password)) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          email: "Please enter a valid password.",
+          password: "Please enter a valid password.",
         }));
         return;
     } else {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        phoneNumber: "",
+        password: "",
       }));
     }
     try {

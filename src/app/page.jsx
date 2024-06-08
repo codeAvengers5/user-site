@@ -70,7 +70,7 @@ export default function Home() {
             <div className="box-border flex  max-w-full flex-1 flex-col items-center justify-start px-0 pb-0 pt-3 mq800:min-w-full">
               <div className="relative flex  shrink-0 items-center self-stretch leading-[28px] mq450:leading-[22px] mq450:text-[lgi]">
                 <span className="tracking-base font-secondary text-base font-light md:text-medium">
-                  <p className="m-0">
+                  <p className="m-0 mt-10">
                     Our Home is
                     dedicated to improving the lives of individuals facing various challenges such as the elderly, those with mental disabilities,
                     physical impairments, visual impairments, and individuals who are bedridden. We strive to provide comprehensive support by 
@@ -81,11 +81,6 @@ export default function Home() {
                   <p className="m-0">
                   Our organization is a locally-based, non-governmental, non-profit, and independent charity founded in January 2010. 
                   Our primary focus is to provide support for the elderly and individuals with mental disabilities who lack the necessary means for survival.
-                  </p>
-                  <p className="m-0">
-                  At Mekedonia Homes, we firmly believe in providing comprehensive care and support to those in need. 
-                  We strive to provide a safe and welcoming home environment where our residents can receive shelter, clothing, 
-                  food, medical care, and other basic services that they require to live fulfilling lives.
                   </p>
                 </span>
               </div>
