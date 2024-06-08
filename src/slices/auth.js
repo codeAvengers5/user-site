@@ -50,7 +50,7 @@ export const forgotPassword = createAsyncThunk(
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
-        error.message ||
+        error.message || error.response.data.error ||
         error.toString();
       thunkAPI.dispatch(setMessage(message));
       return thunkAPI.rejectWithValue();
@@ -87,9 +87,9 @@ const initialState = {
   isLoggedIn: false,
   loading: false,
   user:
-  typeof window !== "undefined" && localStorage.getItem("siteuserInfo")
-    ? JSON.parse(localStorage.getItem("siteuserInfo"))
-    : null,
+    typeof window !== "undefined" && localStorage.getItem("siteuserInfo")
+      ? JSON.parse(localStorage.getItem("siteuserInfo"))
+      : null,
   error: null,
   status: null,
   success: false,
@@ -145,7 +145,7 @@ const authSlice = createSlice({
         state.error = payload;
         console.log("pl", payload);
         state.success = false; // Setting the error message on login failure
-      }) 
+      })
       .addCase(logout.fulfilled, state => {
         state.isLoggedIn = false;
         state.user = null;

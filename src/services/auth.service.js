@@ -12,7 +12,7 @@ const loginUser = async (email, password) => {
     const response = await axios.post(API_URI + "loginuser", data, {
       withCredentials: true
     });
-    return response;
+    return response.data;
   } catch (error) {
     throw error.response.data.message;
   }
@@ -29,13 +29,13 @@ const registerUser = async credentials => {
   }
 };
 const forgotPassword = async email => {
-  return axios.post(API_URI + "forgot-password", email, { withCredentials: true }).then(response => {
-    return response;
-  });
+  const response =  axios.post(API_URI + "forgot-password", email, { withCredentials: true })
+    return response.data;
+
 };
 
 const resetPassword = async data => {
-  return axios
+  const response = axios
     .post(
       API_URI + `reset_password/${data.id}/${data.token}`,
       {
@@ -43,9 +43,8 @@ const resetPassword = async data => {
       },
       { withCredentials: true }
     )
-    .then(response => {
-      return response.data;
-    });
+    return response.data;
+
 };
 export const logout = () => {
   console.log("get");
