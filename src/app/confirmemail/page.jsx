@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "../../../node_modules/next/navigation";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
+import axios from "axios";
 
 const ConfirmEmail = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
@@ -10,7 +12,7 @@ const ConfirmEmail = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8000/confirmemail", {
+      const res = await fetch(API_URI + "confirmemail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
