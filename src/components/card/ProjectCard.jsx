@@ -2,7 +2,6 @@ import React from "react";
 import DataFlow from "../data-flow";
 
 export const ProjectCard = ({ key, imgsrc, title, paragraph1 }) => {
-  console.log(key,title);
   return (
     <div key={key} className="box-border flex w-full flex-col items-start justify-start gap-[40px] bg-snow px-[20px] pb-[30px] pt-5 shadow-[1px_2px_10px_1px_rgba(255,_0,_0,_0.1)] md:w-[70%] xl:flex-row xl:gap-[100px] mq800:box-border mq800:pb-5">
       <img

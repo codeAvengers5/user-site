@@ -35,7 +35,9 @@ export async function getRecentJobPost() {
 }
 export const searchJobs = async title => {
   try {
-    const response = await axios.get(API_URI + `searchjobs?title=${title}`);
+    const response = await axios.get(API_URI + `searchjobs?title=${title}`,{
+      withCredentials: true
+    });
     return response.data;
   } catch (error) {
     throw error;

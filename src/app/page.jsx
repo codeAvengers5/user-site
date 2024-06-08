@@ -9,7 +9,6 @@ export default function Home() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector(state => state.promo);
-  console.log(data);
   useEffect(() => {
     dispatch(fetchPromoData());
   }, [dispatch]);

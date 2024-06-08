@@ -29,7 +29,7 @@ const registerUser = async credentials => {
   }
 };
 const forgotPassword = async email => {
-  return axios.post(API_URI + "forgot-password", email).then(response => {
+  return axios.post(API_URI + "forgot-password", email, { withCredentials: true }).then(response => {
     return response;
   });
 };
