@@ -118,7 +118,7 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoggedIn = false;
         state.loading = false;
-        state.error = payload; // Setting the error message on registration failure
+        state.error = payload.error; // Setting the error message on registration failure
         state.success = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
