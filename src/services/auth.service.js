@@ -25,7 +25,7 @@ const registerUser = async credentials => {
     });
     return response;
   } catch (error) {
-    throw error.response.data.message;
+    return error.response.data;
   }
 };
 const forgotPassword = async email => {

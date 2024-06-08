@@ -9,13 +9,11 @@ export const register = createAsyncThunk(
       const response = await authService.registerUser(formData);
       return response;
     } catch (error) {
-      console.log(error);
       const message =
-        (error.response && error.response.message) ||
-        error.message ||
+        (error.message && error.message) ||
         error.toString();
 
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
