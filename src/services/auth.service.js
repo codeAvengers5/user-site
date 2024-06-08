@@ -1,6 +1,6 @@
 // userService.js
 import axios from "axios";
-const API_URI = "http://localhost:8000/";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 axios.defaults.withCredentials = true;
 
 const loginUser = async (email, password) => {
