@@ -42,6 +42,8 @@ const Registration = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
     if (!users.username) {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -74,6 +76,13 @@ const Registration = () => {
         password: "Please enter your password.",
       }));
       return;
+    }
+      else if (!passRegex.test(users.password)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Please enter a valid password.",
+        }));
+        return;
     } else {
       setErrors((prevErrors) => ({
         ...prevErrors,
