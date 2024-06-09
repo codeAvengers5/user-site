@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "../../../node_modules/next/navigation";
+import { useRouter } from "next/navigation";
 const API_URI = process.env.NEXT_PUBLIC_API_URI
-import axios from "axios";
 
 const ConfirmEmail = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
@@ -24,7 +23,9 @@ const ConfirmEmail = () => {
         body: JSON.stringify({ confirmationCode })
       });
       const data = await res.json();
-      if (data.success) {
+      console.log(data.success);
+      if (data && data.success === true) {
+        console.log("login");
         setMessage("Email confirmed successfully!");
         router.push("/login");
       } else {

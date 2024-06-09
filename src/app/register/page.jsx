@@ -7,8 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "../../../node_modules/next/dynamic";
 import { useRouter } from "../../../node_modules/next/navigation";
-import { CustomErrorViewer } from "@/components/errorviewer";
-import { validate } from "@/utils/validate";
 const PasswordChecklist = dynamic(() => import("react-password-checklist"), {
   ssr: false
 });
@@ -28,15 +26,17 @@ const Registration = () => {
     setUser({ ...users, [name]: value });
   };
 
-  const { user, success, valid, isLoggedIn, error, msg } = useSelector(
+  const { success, error } = useSelector(
     state => state.auth
   );
 
   useEffect(() => {
     if (error) {
       setErrors({ error: error })
-      toast.error(errors.error)
       return;
+    }
+    if (success === true) {
+      router.push("/confirmemail");
     }
   }, [error, success]);
   const handleSubmit = async e => {
@@ -95,10 +95,7 @@ const Registration = () => {
       console.log(error);
     }
   };
-  if (success) {
-    // console.log("success");
-    router.push("/confirmemail");
-  }
+ 
 
   return (
     <div className="mx-[40px] my-[10px] flex max-h-[70vh] max-w-full flex-col items-center md:mx-[80px] md:my-[20px] ">
@@ -112,6 +109,8 @@ const Registration = () => {
           className="mx-auto flex w-[400px] max-w-full flex-col justify-center gap-y-[20px]"
           onSubmit={handleSubmit}>
           <div>
+          {errors.error && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errors.error}</div>}
             <p className="mb-[5px] font-secondary font-light">Username</p>
             {errors.username && <div className={`text-[#E71D36] mb-2 mt-2}`}>
               {errors.username}</div>}
@@ -158,6 +157,7 @@ const Registration = () => {
               />
 
             </div>
+            <p className="text-[15px] font-secondary font-light text-">8+ characters, 1 number, 1 uppercase, 1 lowercase, 1 special</p>
           </div>
           <button className="box-border flex h-[50px] flex-row items-center justify-center rounded-[10px] bg-[#E71D36] p-2.5 font-secondary text-base text-white md:text-[24px]">
             Signup

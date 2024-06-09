@@ -12,6 +12,7 @@ const loginUser = async (email, password) => {
     const response = await axios.post(API_URI + "loginuser", data, {
       withCredentials: true
     });
+  
     return response;
   } catch (error) {
     throw error.response.data.message;
@@ -19,10 +20,16 @@ const loginUser = async (email, password) => {
 };
 
 const registerUser = async credentials => {
-    return await axios.post(API_URI + "registeruser", credentials, {
+  try {
+    const response = await axios.post(API_URI + "registeruser", credentials, {
       withCredentials: true
     });
+    console.log(response);
+    return response;
+  } catch (error) {
+    throw error.response.data.error;
   }
+};
 
 const forgotPassword = async email => {
   const response =  axios.post(API_URI + "forgot-password", email, { withCredentials: true })

@@ -24,10 +24,10 @@ const Login = () => {
     setRememberMe(rememberMeValue);
     if (error) {
       setErrors({ error: error })
-      toast.error(errors.error)
+      // toast.error(errors.error)
       return;
     }
-    if(success){
+    if (success) {
       router.push("/")
     }
   }, [error, success]);
@@ -67,7 +67,7 @@ const Login = () => {
     }
     try {
       dispatch(login(users));
-     
+
     } catch (error) {
       console.log(error);
     }
@@ -95,6 +95,8 @@ const Login = () => {
           className="mx-auto flex w-[400px] max-w-full flex-col justify-center gap-y-[20px]"
           onSubmit={handleSubmit}>
           <div>
+            {errors.error && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errors.error}</div>}
             <p className="mb-[5px] font-secondary font-light">Email</p>
             {errors.email && <div className={`text-[#E71D36] mb-2 mt-2}`}>
               {errors.email}</div>}
