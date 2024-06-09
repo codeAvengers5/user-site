@@ -46,6 +46,7 @@ export default function page() {
     const handleDelete = eventId => {
         setSelectedId(eventId);
         setShowConfirmationModal(true);
+        window.location.reload();
     };
     const handleEdit = eventId => {
         dispatch(getEventById(eventId));

@@ -173,9 +173,9 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
             className="mt-[40px]"
             onSubmit={e => handleSubmit(e)}>
             {/* Form Fields */}
-            {errors.error && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
+            {/* {errors.error && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
               {errors.error}
-            </div>}
+            </div>} */}
             <div className="flex w-full flex-col items-center font-secondary text-black">
               <div className="flex min-h-[480px] w-[250px] max-w-full flex-col items-center justify-center text-base text-black sm:w-[350px] md:w-[550px]">
                 <div className="rounded-12xs relative box-border flex max-w-full flex-col gap-[40px] self-stretch bg-mistyrose  px-[20px] py-[40px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] md:p-[40px] mq450:gap-[30px]">
