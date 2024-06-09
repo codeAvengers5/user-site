@@ -153,9 +153,9 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
   let price;
   if (formData.pay) {
     if (formData.foodType) {
-      price = formData.people * 45;
-    } else {
       price = formData.people * 75;
+    } else {
+      price = formData.people * 45;
     }
   }
   return (
@@ -211,8 +211,8 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
                       onChange={handleChange}
                       className="text-gray-900 w-full border border-darksalmon bg-whitesmoke px-3 py-3 text-sm focus:border-darksalmon focus:ring-darksalmon">
                       <option defaultValue>select</option>
-                      <option value={false}>Non-fasting(ETB 45/person)</option>
-                      <option value={true}>Fasting(ETB 75/person)</option>
+                      <option value={false}>Non-fasting(ETB 75/person)</option>
+                      <option value={true}>Fasting(ETB 45/person)</option>
                     </select>
                   </div>
                   {/* Payment Method */}

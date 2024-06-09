@@ -75,9 +75,11 @@ export default function page() {
             title: "Closing Date",
             key: "closingDate",
             render: (column, row) => {
+                if(closingDate){
                 const closingDate = new Date(row.closingDate);
                 const formattedDate = `${closingDate.getMonth() + 1}/${closingDate.getDate()}/${closingDate.getFullYear()}`;
                 return formattedDate;
+                }
             }
         },
         {
@@ -93,9 +95,11 @@ export default function page() {
             title: "Event Date",
             key: "date_of_event",
             render: (column, row) => {
+                if(closingDate){
                 const closingDate = new Date(row.date_of_event);
                 const formattedDate = `${closingDate.getMonth() + 1}/${closingDate.getDate()}/${closingDate.getFullYear()}`;
                 return formattedDate;
+                }
             }
         },
         {
