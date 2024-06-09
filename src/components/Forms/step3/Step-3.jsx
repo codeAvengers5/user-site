@@ -171,7 +171,7 @@ function FormInfo({ pageTitle, previousButton, submitButtonText }) {
             name="form-info"
             id="form-info"
             className="mt-[40px]"
-            onSubmit={e => handleSubmit(e)}>
+            onSubmit={handleSubmit}>
             {/* Form Fields */}
             {/* {errors.error && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
               {errors.error}
