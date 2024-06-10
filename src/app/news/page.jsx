@@ -99,7 +99,7 @@ function page() {
               <div className="min-h-[200px] md:h-[700px] md:w-[900px]">
                 <Slider images={images} width={700} />
               </div>
-              <div className="flex w-full flex-col items-center justify-center p-[5px] md:p-[20px]">
+              {/* <div className="flex w-full flex-col items-center justify-center p-[5px] md:p-[20px]">
                 <p className="font-primary text-medium font-bold uppercase md:text-heading_2">
                   Trending News
                 </p>
@@ -109,7 +109,7 @@ function page() {
                   place="Lorem ipsum dolor sit amet consectetur. Ut non vitae arcu commodo sed in platea amet nec."
                   date="21/04/2024"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
