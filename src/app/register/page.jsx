@@ -26,19 +26,19 @@ const Registration = () => {
     setUser({ ...users, [name]: value });
   };
 
-  const { success, error } = useSelector(
+  const { regsuccess, regerror } = useSelector(
     state => state.auth
   );
 
   useEffect(() => {
-    if (error) {
-      setErrors({ error: error })
+    if (regerror) {
+      setErrors({ error: regerror })
       return;
     }
-    if (success === true) {
+    if (regsuccess === true) {
       router.push("/confirmemail");
     }
-  }, [error, success]);
+  }, [regerror, regsuccess]);
   const handleSubmit = async e => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

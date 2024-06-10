@@ -25,9 +25,10 @@ const ConfirmEmail = () => {
       const data = await res.json();
       console.log(data.success);
       if (data && data.success === true) {
+        router.push("/login");
         console.log("login");
         setMessage("Email confirmed successfully!");
-        router.push("/login");
+     
       } else {
         setMessage(data.message || "Invalid confirmation code.");
       }

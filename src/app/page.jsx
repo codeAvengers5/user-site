@@ -94,7 +94,7 @@ export default function Home() {
         <div className="flex w-full flex-col  gap-[37px] mq800:gap-[18px_37px]">
           <div className="box-border flex max-w-full flex-row items-start justify-center self-stretch mq800:box-border">
             <h1 className="relative m-0 flex max-w-full shrink-0  items-center font-primary text-heading_1 font-bold uppercase mq800:text-heading_2 mq450:text-medium">
-              On Going Project
+             IN Mekedonia Homes
             </h1>
           </div>
           {data && data.map((promo) => (

@@ -5,7 +5,7 @@ import group from "../../../../../public/images/Group.png";
 import logo from "../../../../../public/images/logo.png";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { applyToJob } from "@/slices/jobSlice";
+import { applyToJob, clearStatus } from "@/slices/jobSlice";
 import { useParams } from "../../../../../node_modules/next/navigation";
 import { useRouter } from "../../../../../node_modules/next/navigation";
 
@@ -80,6 +80,8 @@ const page = () => {
 
     if (success) {
       router.push('/jobs/jobSuccess');
+        dispatch(clearStatus());
+      
     }
   }, [error, success, router]);
 

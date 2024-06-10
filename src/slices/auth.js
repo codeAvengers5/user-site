@@ -92,7 +92,9 @@ const initialState = {
   error: null,
   status: null,
   success: false,
-  msg: null
+  msg: null,
+  regsuccess:false,
+  regerror:null,
 };
 
 const authSlice = createSlice({
@@ -105,8 +107,8 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.loading = false;
         state.user = payload.userInfo;
-        state.error = null;
-        state.success = true; // Clearing any previous errors on successful registration
+        state.regerror = null;
+        state.regsuccess = true; // Clearing any previous errors on successful registration
         state.msg = payload.message;
       })
       .addCase(register.pending, state => {
