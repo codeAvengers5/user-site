@@ -63,7 +63,7 @@ export default function AboutUs() {
 
       <div className="mx-[40px] mt-[40px] min-h-[600px] max-w-full p-[20px] md:mx-[80px]">
         <div className="mt-[70px] flex w-full items-center justify-center font-primary text-heading_2 font-bold uppercase md:text-heading_1">
-          Our Team Members
+          Our Staff Members
         </div>
         <div className="flex w-full flex-col flex-wrap items-center justify-center md:mb-[10px] md:mt-[85px] md:flex-row md:gap-[80px]">
           <Card1
