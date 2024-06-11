@@ -1,6 +1,6 @@
 // userService.js
 import axios from "axios";
-const API_URI = "http://localhost:8000/";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 axios.defaults.withCredentials = true;
 
 const loginUser = async (email, password) => {
@@ -12,7 +12,7 @@ const loginUser = async (email, password) => {
     const response = await axios.post(API_URI + "loginuser", data, {
       withCredentials: true
     });
-    console.log("rere", response);
+  
     return response;
   } catch (error) {
     throw error.response.data.message;
@@ -24,19 +24,21 @@ const registerUser = async credentials => {
     const response = await axios.post(API_URI + "registeruser", credentials, {
       withCredentials: true
     });
-    return response.data;
+    console.log(response);
+    return response;
   } catch (error) {
-    throw error.response.data.message;
+    throw error.response.data.error;
   }
 };
+
 const forgotPassword = async email => {
-  return axios.post(API_URI + "forgot-password", email).then(response => {
+  const response =  axios.post(API_URI + "forgot-password", email, { withCredentials: true })
     return response;
-  });
+
 };
 
 const resetPassword = async data => {
-  return axios
+  const response = axios
     .post(
       API_URI + `reset_password/${data.id}/${data.token}`,
       {
@@ -44,9 +46,12 @@ const resetPassword = async data => {
       },
       { withCredentials: true }
     )
-    .then(response => {
-      return response.data;
-    });
+    return response.data;
+
+};
+export const logout = () => {
+  console.log("get");
+  localStorage.removeItem("userInfo");
 };
 
 const authService = {
@@ -54,7 +59,8 @@ const authService = {
   resetPassword,
   forgotPassword,
   resetPassword,
-  loginUser
+  loginUser,
+  logout
 };
 
 export default authService;

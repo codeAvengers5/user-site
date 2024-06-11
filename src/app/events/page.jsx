@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Link from "../../../node_modules/next/link";
-
+import { useSelector } from "react-redux";
 const Events = () => {
+  const { user } = useSelector(state => state.auth)
   return (
     <div className="w-full max-w-[100vw]">
       <div className="m-[40px] mt-[40px] max-w-full p-[20px] md:mx-[80px]">
@@ -18,14 +20,10 @@ const Events = () => {
 
         <div className="mt-[25px] flex flex-col-reverse justify-around gap-[20px] xl:flex-row">
           <div className="inline-block w-[520px] font-secondary text-base">
-            Lorem ipsum dolor sit amet consectetur. Ut non vitae arcu commodo
-            sed in platea amet nec.Lorem ipsum dolor sit amet consectetur. Ut
-            non vitae arcu commodo sed in platea amet nec.Lorem ipsum dolor sit
-            amet consectetur. Ut non vitae arcu commodo sed in platea amet
-            nec.Lorem ipsum dolor sit amet consectetur. Ut non vitae arcu
-            commodo sed in platea amet nec.Lorem ipsum dolor sit amet
-            consectetur. Ut non vitae arcu commodo sed in platea amet nec.Lorem
-            ipsum dolor sit amet consectetur. Ut n
+          Are you looking for a unique and meaningful venue for your next special event? Mekedonia Homes offers the perfect place to celebrate weddings, birthdays, graduations, and more, providing a beautiful backdrop while making a positive impact on the lives of our residents, including the elderly and individuals with various disabilities.
+          By hosting your event with us, you'll not only create unforgettable memories but also contribute to a noble cause. 
+          Our experienced team ensures every detail is perfect, from catering to decorations, and you'll engage with our residents, experiencing the joy and gratitude that comes from sharing your celebrations with those in need.
+           This offers a unique opportunity for donors and participants to see firsthand the difference their support makes, ensuring a memorable and fulfilling experience.
           </div>
           <div className="grid gap-[30px] md:grid-cols-3">
             <div className="flex h-[230px] w-[230px] flex-col items-center justify-center gap-[35px] rounded-[3px] bg-[#FFECEC]">
@@ -62,7 +60,7 @@ const Events = () => {
             </div>
           </div>
         </div>
-        <Link href={"/events/eventappoint"}>
+        <Link href={user ? `/events/eventappoint` : `/login`}>
           <button className="flex cursor-pointer flex-row items-start justify-start rounded-[10px] bg-crimson-200 px-[3.156rem] py-[1.093rem] [border:none]">
             <div className="relative  font-secondary text-medium font-bold text-white">
               Appoint your Event

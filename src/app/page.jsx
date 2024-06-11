@@ -1,11 +1,17 @@
 "use client";
 import { ProjectCard } from "@/components/card/ProjectCard";
-import DataFlow from "@/components/data-flow";
-import ErrorHandler from "@/components/error-handler";
 import FrameComponent from "@/components/frame-component";
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPromoData } from "@/slices/promoSlice";
 export default function Home() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector(state => state.promo);
+  useEffect(() => {
+    dispatch(fetchPromoData());
+  }, [dispatch]);
   return (
     <div className="w-full max-w-[100vw]">
       {/*************************************************************  Hero Section ******************************************************************/}
@@ -28,7 +34,11 @@ export default function Home() {
               <div className="flex w-full flex-row items-start justify-start self-stretch py-0 pr-0 text-xl">
                 <div className="flex w-full flex-row flex-wrap items-start justify-start gap-[20px]">
                   <div className="relative z-[2] w-full max-w-full font-secondary md:min-w-[263px] md:flex-1 mq450:text-base">{`Lorem ipsum dolor sit amet consectetur. Tellus velit ultrices bibendum `}</div>
-                  <button className="z-[2] flex w-[150px] cursor-pointer flex-row items-start justify-start rounded-3xs border-[4px] border-solid border-red-200 bg-[transparent] px-[19px] py-[9px] hover:box-border hover:border-[4px] hover:border-solid hover:border-red-100 hover:bg-red-300">
+                  <button
+                    onClick={() => {
+                      router.push("/about");
+                    }}
+                    className="z-[2] flex w-[150px] cursor-pointer flex-row items-start justify-start rounded-3xs border-[4px] border-solid border-red-200 bg-[transparent] px-[19px] py-[9px] hover:box-border hover:border-[4px] hover:border-solid hover:border-red-100 hover:bg-red-300">
                     About Us
                   </button>
                 </div>
@@ -60,26 +70,17 @@ export default function Home() {
             <div className="box-border flex  max-w-full flex-1 flex-col items-center justify-start px-0 pb-0 pt-3 mq800:min-w-full">
               <div className="relative flex  shrink-0 items-center self-stretch leading-[28px] mq450:leading-[22px] mq450:text-[lgi]">
                 <span className="tracking-base font-secondary text-base font-light md:text-medium">
-                  <p className="m-0">
-                    Lorem ipsum dolor sit amet consectetur. Tellus velit
-                    ultrices bibendum mollis eu sit tempor eu pulvinar. In
-                    feugiat morbi integer penatibus consequat felis. Et gravida
-                    tellus orci imperdiet lectus ultrices quam lorem arcu.
-                    Accumsan pharetra aliquet malesuada massa cursus iaculis
-                    tempor sapien cras.
+                  <p className="m-0 mt-10">
+                    Our Home is
+                    dedicated to improving the lives of individuals facing various challenges such as the elderly, those with mental disabilities,
+                    physical impairments, visual impairments, and individuals who are bedridden. We strive to provide comprehensive support by 
+                    offering basic services including food, clothing, shelter, hygiene facilities, medical care, education, and more to our 
+                    residents living in our center. Our aim is to ensure that each resident has access to the resources they need to live a 
+                    fulfilling and comfortable life.
                   </p>
                   <p className="m-0">
-                    Lorem ipsum dolor sit amet consectetur. Tellus velit
-                    ultrices bibendum mollis eu sit tempor eu pulvinar. In
-                    feugiat morbi integer penatibus consequat felis. Et gravida
-                    tellus orci imperdiet lectus ultrices quam lorem arcu.
-                    Accumsan pharetra aliquet malesuada massa cursus iaculis
-                    tempor sapien cras.Lorem ipsum dolor sit amet consectetur.
-                    Tellus velit ultrices bibendum mollis eu sit tempor eu
-                    pulvinar. In feugiat morbi integer penatibus consequat
-                    felis. Et gravida tellus orci imperdiet lectus ultrices quam
-                    lorem arcu. Accumsan pharetra aliquet malesuada massa cursus
-                    iaculis tempor sapien cras.
+                  Our organization is a locally-based, non-governmental, non-profit, and independent charity founded in January 2010. 
+                  Our primary focus is to provide support for the elderly and individuals with mental disabilities who lack the necessary means for survival.
                   </p>
                 </span>
               </div>
@@ -93,18 +94,19 @@ export default function Home() {
         <div className="flex w-full flex-col  gap-[37px] mq800:gap-[18px_37px]">
           <div className="box-border flex max-w-full flex-row items-start justify-center self-stretch mq800:box-border">
             <h1 className="relative m-0 flex max-w-full shrink-0  items-center font-primary text-heading_1 font-bold uppercase mq800:text-heading_2 mq450:text-medium">
-              On Going Project
+             IN Mekedonia Homes
             </h1>
           </div>
-          <div className="flex  max-w-full flex-col items-center justify-center gap-[20px]">
-            <ProjectCard
-              imgsrc={"images/rectangle-50@2x.png"}
-              title={"Building Our New Home"}
-              paragraph1={
-                "Lorem ipsum dolor sit amet consectetur. Tellus velit ultrices bibendum mollis eu sit tempor eu pulvinar. In feugiat morbi integer penatibus consequat felis."
-              }
-            />
-          </div>
+          {data && data.map((promo) => (
+            <div key={promo._id} className="flex max-w-full flex-col items-center justify-center gap-[50px]">
+              <ProjectCard
+                imgsrc={promo.images[0].url}
+                title={promo.title}
+                paragraph1={promo.description}
+              />
+            </div>
+          ))}
+
         </div>
       </section>
 

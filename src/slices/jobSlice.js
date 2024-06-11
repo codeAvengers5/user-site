@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { job_apply } from "@/services/job.service";
+import { getUserJob, job_apply } from "@/services/job.service";
+import axios from "axios";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
+axios.defaults.withCredentials = true;
 
-// Create a new job post
 export const applyToJob = createAsyncThunk(
   "jobApply/applyToJob",
   async ({ jobId, formData }, thunkAPI) => {
-    console.log("metoal", jobId, formData);
     try {
       const response = await job_apply(jobId, formData);
       return response.data;
@@ -14,16 +15,35 @@ export const applyToJob = createAsyncThunk(
     }
   }
 );
-
+export const fetchJob = createAsyncThunk(
+  "jobApply/fetchjob",
+  async (_, thunkAPI) => {
+    try {
+      const data = await getUserJob();
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 const jobApplySlice = createSlice({
   name: "jobApply",
   initialState: {
     loading: false,
     error: null,
     success: false,
-    jobApply: [] // Store job posts fetched from API
+    jobApply: [
+      {
+        title: "",
+        closingDate: "",
+        status: "",
+      }
+    ]
   },
   reducers: {
+    setJobs: (state, action) => {
+      return action.payload;
+    },
     clearStatus: state => {
       state.loading = false;
       state.error = null;
@@ -44,10 +64,29 @@ const jobApplySlice = createSlice({
         state.error = action.payload
           ? action.payload.message
           : "Failed to create job post";
+          console.log(action.payload);
+      })
+      .addCase(fetchJob.pending, state => {
+        state.loading = true;
+      })
+      .addCase(fetchJob.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.jobApply = action.payload.map((item) => ({
+          title: item.job.title,
+          closingDate: item.job.closingDate,
+          status: item.jobVacancy.status,
+        }));
+      })
+      .addCase(fetchJob.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+          ? action.payload.message
+          : "Failed to create job post";
       });
   }
 });
 
-export const { clearStatus } = jobApplySlice.actions;
+export const { clearStatus, setJobs } = jobApplySlice.actions;
 
 export default jobApplySlice.reducer;

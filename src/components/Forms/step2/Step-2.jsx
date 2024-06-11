@@ -18,9 +18,6 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
   );
 
   const state = useSelector(state => state);
-  //console.log(stateOutput) // output to console.log
-
-  // form values initial state
   const [formData, setFormData] = useState({
     fullName: formstagefullName || "",
     phoneNumber: formstagephoneNumber || ""
@@ -36,20 +33,57 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
   };
 
   // form validation checks
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    fullName: "",
+    phoneNumber: "",
+  });
 
-  const [isSubmitted, setIsSubmitted] = useState(false); // state for sent status
-  // onsubmit
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const handleSubmit = e => {
     e.preventDefault();
+    if (!formData.fullName) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        fullName: "Please enter your name.",
+      }));
+      return;
+    } else if (formData.fullName.trim().length < 3) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        fullName: "Name must be at least 3 characters long.",
+      }));
+      return;
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        fullName: "",
+      }));
+    }
+    const phoneRegex = /^(09|\\+251)\d{8}$/;
+    if (!formData.phoneNumber) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: "Please enter your phone number.",
+      }));
+      return;
+    } else if (!phoneRegex.test(formData.phoneNumber)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: "Please enter a valid 10-digit phone number.",
+      }));
+      return;
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phoneNumber: "",
+      }));
+    }
+
     setIsSubmitted(true);
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitted) {
-      // check if any form errors
-
-      // update Redux Slice
+    if (isSubmitted) {
       dispatch(
         formStage(3) // update formStage
       );
@@ -61,8 +95,7 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
         })
       );
     }
-  }, [formData, isSubmitted, dispatch, errors]);
-
+  }, [formData, isSubmitted, dispatch]);
   return (
     <>
       <h2 className="text-center font-primary text-heading_2 font-bold md:text-heading_1">
@@ -81,6 +114,9 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
                 <p className="relative inline-block w-full text-left font-secondary">
                   Full Name
                 </p>
+                {errors.fullName && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
+                  {errors.fullName}
+                </div>}
                 <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
                   <input
                     className="relative inline-block h-[17px] w-full bg-[transparent] text-left font-inter text-sm text-black [border:none] [outline:none]"
@@ -96,11 +132,14 @@ function FormPersonal({ pageTitle, submitButtonText, previousButton }) {
                 <p className="relative inline-block w-full text-left font-secondary">
                   Phone Number
                 </p>
+                {errors.phoneNumber && <div className={`text-[#E71D36] font-bold mb-2 mt-2}`}>
+                  {errors.phoneNumber}
+                </div>}
                 <div className="rounded-6xs flex flex-row items-start justify-start self-stretch border-[1px] border-solid border-darksalmon bg-whitesmoke px-2.5 py-[15px]">
                   <input
                     className="relative inline-block h-[17px] w-full bg-[transparent] text-left font-inter text-sm text-black [border:none] [outline:none]"
                     placeholder="Phone no."
-                    type="text"
+                    type="tel"
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}

@@ -5,7 +5,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-
 
 /** @type {import('next').NextConfig} */
+const dotenv = require('dotenv');
 
+dotenv.config();
 module.exports = {
   eslint: {
     ignoreDuringBuilds: false,

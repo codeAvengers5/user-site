@@ -23,6 +23,9 @@ export default function ResetPassword() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log("here1");
+    if (!password) {
+      setErrorMessage("Passwords can not be empty");
+    }
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;
@@ -67,6 +70,10 @@ export default function ResetPassword() {
     }
   }, [msg]);
 
+  if (successful) {
+    router.push("/login");
+  }
+
   useEffect(() => {
     return () => {
       dispatch(resetState());
@@ -83,6 +90,8 @@ export default function ResetPassword() {
           className="mt-4 flex flex-col space-y-4 md:space-y-5 lg:mt-5"
           onSubmit={handleSubmit}>
           <div>
+          {errorMessage && <div className={`text-[#E71D36] mb-2 mt-2}`}>
+              {errorMessage}</div>}
             <label htmlFor="password" className="sr-only">
               Password
             </label>

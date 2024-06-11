@@ -49,6 +49,10 @@ function page() {
   const handleClick = async id => {
     router.push(`/news/${id}`);
   };
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  }
   return (
     <div className="w-full max-w-[100vw] ">
       <section className="m-[40px] mt-[40px] flex h-full min-h-[700px]  max-w-full flex-col justify-start bg-white text-left font-roboto text-xl md:mx-[80px]">
@@ -95,7 +99,7 @@ function page() {
               <div className="min-h-[200px] md:h-[700px] md:w-[900px]">
                 <Slider images={images} width={700} />
               </div>
-              <div className="flex w-full flex-col items-center justify-center p-[5px] md:p-[20px]">
+              {/* <div className="flex w-full flex-col items-center justify-center p-[5px] md:p-[20px]">
                 <p className="font-primary text-medium font-bold uppercase md:text-heading_2">
                   Trending News
                 </p>
@@ -105,21 +109,21 @@ function page() {
                   place="Lorem ipsum dolor sit amet consectetur. Ut non vitae arcu commodo sed in platea amet nec."
                   date="21/04/2024"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
               <p className="font-primary text-medium font-bold uppercase md:text-heading_2">
                 Latest News
               </p>
-              <div className="flex flex-col items-start justify-start gap-10 md:flex-row">
+              <div className="flex flex-col flex-wrap items-start justify-start gap-10 md:flex-row">
                 {data.map(news => (
                   <Newscard
                     key={news._id}
                     imageUrl={news.images[0].url}
                     header={news.title}
                     place={news.description.slice(0, 100) + "..."}
-                    date={new Date(news.createdAt).toLocaleString()}
+                    date={formatDate(news.createdAt)}
                     handleClick={() => handleClick(news._id)}
                   />
                 ))}

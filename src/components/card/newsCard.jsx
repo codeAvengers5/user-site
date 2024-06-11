@@ -19,7 +19,7 @@ const Newscard = ({ imageUrl, header, place, date, handleClick }) => {
       <img
         src={imageUrl}
         alt="Card Image"
-        className="h-full min-h-[300px] max-w-[200px] md:max-w-[400px]"
+        className="h-[300px] min-h-[300px] max-w-[200px] md:max-w-[400px]"
         style={imageStyle}
       />
       <div className="mt-[10px] flex h-full max-h-[400px] w-full flex-col place-content-evenly items-center">
@@ -38,11 +38,6 @@ const Newscard = ({ imageUrl, header, place, date, handleClick }) => {
             gap: "50px",
             marginTop: "20px"
           }}>
-          <p
-            className="font-secondary text-base font-normal text-black"
-            style={{ color: "#000", fontSize: "20px", marginRight: "10px" }}>
-            Date: {date}
-          </p>
           <button
             className="bg-blue-500 font-secondary font-semibold"
             onClick={handleClick}

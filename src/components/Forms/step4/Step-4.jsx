@@ -3,17 +3,17 @@ import Image from "next/image";
 import logo from "../../../../public/images/Group72.png";
 import axios from "axios";
 import Link from "../../../../node_modules/next/link";
+const API_URI = process.env.NEXT_PUBLIC_API_URI
 
 function FormPayment({ with_cash, eventId, price }) {
   const handleChapa = e => {
-    console.log("clicked chapa");
     e.preventDefault();
     axios
-      .post("http://localhost:8000/payment", { eventId })
+      .post(API_URI + 'payment', { eventId })
       .then(res => {
         setTimeout(() => {
           window.location.href = res.data.paymentUrl;
-        }, 5000);
+        }, 30000);
       })
       .catch(error => {
         console.log(error);
@@ -38,7 +38,7 @@ function FormPayment({ with_cash, eventId, price }) {
         {with_cash === true ? (
           <>
             <p>Complete your Payment</p>
-            <p>{price}</p>
+            <p className="font-bold text-heading_2">ETB {price}</p>
             <div className="flex flex-row items-start justify-center self-stretch">
               <form onSubmit={handleChapa}>
                 <button type="submit">

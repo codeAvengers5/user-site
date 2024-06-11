@@ -55,12 +55,12 @@ function page() {
               <Slider images={news.images} width="600" />
             ) : (
               <p>No images available</p>
-            )}{" "}
+            )}
           </div>
         </div>
         <div className="mt-[40px] flex flex-shrink-0 flex-col justify-center">
           <p className="text-2xl font-bold text-black">Recent News</p>
-          <div className="flex flex-col items-start justify-start gap-10 md:flex-row">
+          <div className="flex flex-col flex-wrap items-start justify-start gap-10 md:flex-row">
             {data.map(news => (
               <Newscard
                 key={news._id}
