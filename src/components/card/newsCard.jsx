@@ -38,11 +38,6 @@ const Newscard = ({ imageUrl, header, place, date, handleClick }) => {
             gap: "50px",
             marginTop: "20px"
           }}>
-          <p
-            className="font-secondary text-base font-normal text-black"
-            style={{ color: "#000", fontSize: "20px", marginRight: "10px" }}>
-            Date: {date}
-          </p>
           <button
             className="bg-blue-500 font-secondary font-semibold"
             onClick={handleClick}
